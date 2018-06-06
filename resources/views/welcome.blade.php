@@ -1,95 +1,368 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>EONESIA</title>
 
-        <title>Laravel</title>
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{{ asset('eonesia/f-n/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link
+            href="{{ asset('eonesia/f-n/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('eonesia/f-n/css/animate.css')}}">
+        <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+        <div class="loader  animated infinite bounce"></div>
+        <div id="particles-js"></div>
+        <div class="navbar-fixed hoverable">
+            <nav class="transparentBG" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="#" class="brand-logo">EONESIA</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a id="logo-container" class="scrollspy" href="#">HOME</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" class="event" href="#event">EVENT</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" class="patner" href="#patner">PATNER</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" class="contact" href="#contact">CONTACT</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" class="modal-trigger" href="{{ route('login') }}">LOGIN</a>
+                        </li>
+                    </ul>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                    <ul id="nav-mobile" class="sidenav">
+                        <li>
+                            <a id="logo-container" class="scrollspy" href="#">HOME</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" class="scrollspy" href="#event">EVENT</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" class="scrollspy" href="#client">CLIENT</a>
+                        </li>
+                        <li>
+                            <a id="logo-container" href="#contact">CONTACT</a>
+                        </li>
+                    </ul>
+                    <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
                 </div>
+            </nav>
+        </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br><br>
+                <h1 class="header center orange-text">EVENT EONESIA</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Brand Activation | Apparel & Merchendise |
+                        Advertising | Event Organizer | Product | 3D Animation | Exhibition | Multimedia
+                        Development | Customer Insight</h5>
                 </div>
+                <br><br>
+
+                <div class="row center" id="event">
+                    <a class="btn-floating btn-large waves-effect waves-light white">
+                        <i id="bawah" class="material-icons animated infinite bounceInDown">arrow_downward</i>
+                    </a>
+                </div>
+                <br><br><br><br><br>
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+                <h2 class="header center event-tersedia">EVENT READY</h1>
+                @foreach ($activities as $event)
+                <div class="col l4 s12">
+                    <div class="card hoverable event-card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{ $event->ImagePath }}">
+                            <span class="card-title blue-text" id="instansi">{{ $event->penyelenggara }}</span>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ $event->nama_event }}<i class="material-icons right">more_vert</i>
+                            </span>
+                            <p>
+                                <a href="#">Start : {{ $event->start_event }}</a>
+                                <br>
+                                <a href="#">Finish : {{ $event->finish_event }}</a>
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{ $event->nama_event }}<i class="material-icons right">close</i>
+                            </span>
+                            <p>{{ $event->ketentuan }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ route('pendaftaran', $event->slug) }}">
+                                <button class="btn waves-effect waves-light orange accent-3" type="submit" name="action">Daftar Peserta Event
+                                <i class="material-icons right">person_add</i>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <!-- koding -->
+
+                <!-- koding -->
+                {{-- <div class="col l4 s12">
+                    <div class="card hoverable event-card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="https://www.eonesia.id/image/Event/T-event-10.jpg">
+                            <span class="card-title" id="instansi">YAMAHA</span>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">ULANG TAHUN<i class="material-icons right">more_vert</i>
+                            </span>
+                            <p>
+                                <a href="#">Start : 20-Aug-2018 08:30</a>
+                                <br>
+                                <a href="#">Finish : 20-Aug-2018 08:30</a>
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i>
+                            </span>
+                            <p>Here is some more information about this product that is only revealed once
+                                clicked on.</p>
+                        </div>
+                        <div class="card-action">
+                            <button
+                                data-target="modal1"
+                                class="btn waves-effect waves-light orange accent-3"
+                                type="submit"
+                                name="action">Daftar Peserta Event
+                                <i class="material-icons right">person_add</i>
+                            </button>
+                        </div>
+                    </div>
+                </div> --}}
+                <!-- koding -->
+
+                <!-- koding -->
+                {{-- <div class="col l4 s12">
+                    <div class="card hoverable event-card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="https://www.eonesia.id/image/Event/T-event-10.jpg">
+                            <span class="card-title" id="instansi">YAMAHA</span>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Propan Batik Run & Color Fest 2015 Start<i class="material-icons right">more_vert</i>
+                            </span>
+                            <p>
+                                <a href="#">Start : 20-Aug-2018 08:30</a>
+                                <br>
+                                <a href="#">Finish : 20-Aug-2018 08:30</a>
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i>
+                            </span>
+                            <p>Here is some more information about this product that is only revealed once
+                                clicked on.</p>
+                        </div>
+                        <div class="card-action">
+                            <button
+                                data-target="modal1"
+                                class="btn waves-effect waves-light orange accent-3"
+                                type="submit"
+                                name="action">Daftar Peserta Event
+                                <i class="material-icons right">person_add</i>
+                            </button>
+
+                        </div>
+                    </div>
+                </div> --}}
+                <!-- koding -->
+            </div>
+        </div>
+
+       
+
+        <a href="#">
+            <h1 id="patner" class="header event-tersedia center">OUR PATNER</h1>
+        </a>
+
+        <div class="parallax-container patner-bawah">
+            <div class="parallax"><img src="{{ asset('eonesia/images/bh.png')}}"></div>
+            <div class="">
+                <!-- <div class="container-fluid grey lighten-2"> <div class="row center"> -->
+
+                <div class="carousel">
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#one!"><img
+                            class="responsive-img center"
+                            src="https://www.eonesia.id/image/kerjasama/png/bri.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#two!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/indosat.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#three!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/xl.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#four!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/bpjs.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#five!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/blackberry.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#six!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/abc.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#seven!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/pos.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#eight!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/ojk.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#nine!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/pnm.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#ten!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/propan.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#eleven!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/telkom.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#twelve!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/yamaha.png"></a>
+                    </div>
+                    <div class="col l4 s12">
+                        <a class="carousel-item" href="#thirteen!"><img
+                            class="responsive-img"
+                            src="https://www.eonesia.id/image/kerjasama/png/biznet.png"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> </div> -->
+        </div>
+
+        <footer id="contact" class="page-footer  blue-grey darken-3">
+            <div class="container contact-bawah">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Contact Us</h5>
+                        <table class="striped">
+                            <tbody>
+                                <tr>
+                                    <td class="striped">Company Name</td>
+                                    <td >: CV. Risa Creativindo</td>
+                                </tr>
+                                <tr>
+                                    <td >Brand Name</td>
+                                    <td >: EONESIA</td>
+                                </tr>
+                                <tr>
+                                    <td class="striped">Legal Creativindo</td>
+                                    <td >: CV. Risa Creativindo</td>
+                                </tr>
+                                <tr>
+                                    <td >NPWP</td>
+                                    <td >: 31.630.250.4-502.000</td>
+                                </tr>
+                                <tr>
+                                    <td class="striped">Tagline</td>
+                                    <td >: Turning Ideas Into Action</td>
+                                </tr>
+                                <tr>
+                                    <td >Unit Division</td>
+                                    <td >: Advertising, Production, EO</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Address</h5>
+                        <table class="striped">
+                            <tbody>
+                                <tr>
+                                    <td style="border-width: 0px;">OFFICE</td>
+                                    <td style="border-width: 0px;">Villa Madani No B43 Jl. Dharma Bakti Medono Pekalongan - Jawa Tengah 51111</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-width: 0px;">WORKSHOP</td>
+                                    <td style="border-width: 0px;">Jaten, Teter, RT 02/01 Simo Boyolali Jawa Tengah 57377 Hp. 08562699626</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-width: 0px;">Email</td>
+                                    <td style="border-width: 0px;">Marketing@Eonesia.id</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Sosial Media</h5>
+                        <ul>
+                            <li>
+                                <img src="https://png.icons8.com/color/50/000000/facebook.png">
+                                <img src="https://png.icons8.com/color/50/000000/twitter.png">
+                                <img src="https://png.icons8.com/color/50/000000/pinterest.png">
+                                <img src="https://png.icons8.com/color/50/000000/instagram-new.png">
+                                <img src="https://png.icons8.com/color/50/000000/linkedin.png">
+                                <img src="https://png.icons8.com/color/50/000000/whatsapp.png">
+                                <img src="https://png.icons8.com/color/50/000000/youtube-play.png">
+                                <img src="https://png.icons8.com/color/50/000000/google-plus-squared.png">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <div class="container">
+                    <a class="white-text" href="">© 2017 e.o.n.e.s.i.a All rights reserved</a>
+                    <a href="#" class="right white-text">
+                        Web Design By MegonoDev</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts-->
+
+        <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
+        <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
+        <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ asset('eonesia/f-n/js/materialize.js')}}"></script>
+        <!-- <script src="js/materialize.min.js"></script> -->
+        <script src="{{ asset('eonesia/f-n/js/init.js')}}"></script>
+        <script src="{{ asset('eonesia/f-n/js/eonesia.js')}}"></script>
+
     </body>
 </html>

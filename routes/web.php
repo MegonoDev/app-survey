@@ -11,6 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'FrontendController@event')->name('eonesia');
+Route::get('pendaftaran/event/{slug}', [
+	'uses' => 'FrontendController@pendaftaran',
+	'as'   => 'pendaftaran'
+]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function() {
+    Route::resource('event', 'ActivitieController');    
+    Route::resource('member', 'MemberController');
+    Route::post('search/getkode', [
+        'uses' => 'MemberController@getkode',
+        'as'   => 'search'
+    ]);   
 });
+

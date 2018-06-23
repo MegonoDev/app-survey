@@ -11,14 +11,8 @@ class Activitie extends Model
         'nama_event', 
         'slug', 
         'alamat', 
-        'provinsi', 
-        'kabupaten',
-        'kecamatan',
-        'kelurahan',
         'start_event',
         'finish_event',
-        'start_register',
-        'finish_register',
         'keterangan',
         'ketentuan',
         'image',
@@ -41,5 +35,14 @@ class Activitie extends Model
     public function members()
     {
     	return $this->hasMany(Member::class);
+    }
+
+    public function getMulaiEventAttribute()
+    {
+        return \Carbon\Carbon::parse($this->attributes['start_event'])->format('d-M-Y');
+    }
+    public function getBerakhirEventAttribute()
+    {
+        return \Carbon\Carbon::parse($this->attributes['finish_event'])->format('d-M-Y');
     }
 }

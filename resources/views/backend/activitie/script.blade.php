@@ -1,4 +1,4 @@
-
+{{--  
 @push('script')
 <script type="text/javascript">
 $('#imageUpload').change(function(){			
@@ -14,4 +14,4 @@ $('#imageUpload').change(function(){
 			     }	
 		});
 </script>
-@endpush
+@endpush  --}}

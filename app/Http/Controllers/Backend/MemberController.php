@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Member;
 use GuzzleHttp\Client;
+use App\Http\Requests\MemberRequest;
 
 class MemberController extends Controller
 {
@@ -14,6 +15,11 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $members = Member::paginate(10);
@@ -27,7 +33,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.member.create');
     }
 
     /**
@@ -36,25 +42,24 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemberRequest $request)
     {
         $activitie_id = $request->activitie_id;
         $nama = $request->nama;
+        $jenis_kelamin = $request->jenis_kelamin;
         $alamat = $request->alamat;
-        $provinsi = $request->provinsi;
-        $kabupaten = $request->kabupaten;
-        $kecamatan = $request->kecamatan;
-        $kelurahan = $request->kelurahan;
+        $tempat_lahir = $request->tempat_lahir;
         $tanggal_lahir = $request->tanggal_lahir;
         $handphone = $request->handphone;
-        $collection = collect(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        $collection = collect(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 1, 2, 3, 4, 5, 6, 7, 8, 9]);
         $random = $collection->random(5);
         $random->all();
         $kode= preg_replace("/[^a-zA-Z0-9]/", "", $random);
         $status = $request->status;
-        //sms getway
-        $userkey = "u3ak2l"; //userkey lihat di zenziva
-        $passkey = "kurniawadev"; // set passkey di zenziva
+
+        // smsgetway
+        $userkey = "bo7tye"; //userkey lihat di zenziva
+        $passkey = "kurniawanDev"; // set passkey di zenziva
         $telepon = $handphone;
         $message = "Terima Kasih, pendaftaran event nama $nama Berhasil. kode event : $kode";
         $url = "https://reguler.zenziva.net/apps/smsapi.php";
@@ -69,16 +74,13 @@ class MemberController extends Controller
         curl_setopt($curlHandle, CURLOPT_POST, 1);
         $results = curl_exec($curlHandle);
         curl_close($curlHandle);
-        //smsgatway
         
         Member::create([
             'activitie_id'=>$activitie_id,
             'nama'=>$nama,
+            'jenis_kelamin'=>$jenis_kelamin,
             'alamat'=>$alamat,
-            'provinsi'=>$provinsi,
-            'kabupaten'=>$kabupaten,
-            'kecamatan'=>$kecamatan,
-            'kelurahan'=>$kelurahan,            
+            'tempat_lahir'=>$tempat_lahir,            
             'tanggal_lahir'=>$tanggal_lahir,
             'handphone'=>$handphone,
             'kode'=>$kode,

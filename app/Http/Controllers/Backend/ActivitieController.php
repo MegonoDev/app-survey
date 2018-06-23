@@ -18,6 +18,11 @@ class ActivitieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $activities = Activitie::paginate(10);
@@ -71,7 +76,8 @@ class ActivitieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $activities = Activitie::find($id);
+        return view('backend.activitie.edit', compact('activities'));
     }
 
     /**
@@ -83,7 +89,23 @@ class ActivitieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $activities = Activitie::find($id);
+        $data = $request->all();
+        
+        if ($request->hasFile('image')) 
+        {
+            $data['image'] = $this->saveImage($request->file('image'));
+            if ($activities->image !== '') $this->deleteImage($activities->image);
+           
+        }
+
+        $activities->update($data);
+        // Session::flash('flash_notification', [
+        //     'level'=>'info',
+        //     'message'=>'<h4><i class="icon fa fa-check"></i> Berhasil !</h4> Post '.$posts->title.' telah di Update.'
+        // ]);
+
+        return redirect(route ('event.index'));
     }
 
     /**
@@ -94,7 +116,11 @@ class ActivitieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $activities = Activitie::find($id);
+        $data['image'] = $this->deleteImage($activities->image);
+        $activities->delete();
+        
+        return redirect(route ('event.index'));
     }
 
 
@@ -113,7 +139,6 @@ class ActivitieController extends Controller
     {
         $path = public_path() . DIRECTORY_SEPARATOR . 'eonesia/images' 
             . DIRECTORY_SEPARATOR . $filename;
-
         return File::delete($path);
     }
 }

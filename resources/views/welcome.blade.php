@@ -13,6 +13,13 @@
         <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
         <link rel="stylesheet" type="text/css" href="{{ asset('eonesia/f-n/css/animate.css')}}">
         <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
+        <style>
+            .material-icons{
+                color: black;
+            }.right{
+                color: black;
+            }
+        </style>
 
     </head>
     <body>
@@ -92,16 +99,20 @@
                             <span class="card-title blue-text" id="instansi">{{ $event->penyelenggara }}</span>
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">{{ $event->nama_event }}<i class="material-icons right">more_vert</i>
+                            <span class="card-title activator grey-text text-darken-4">{!! substr($event->nama_event,0,15) !!}...<i class="material-icons right">more_vert</i>
                             </span>
                             <p>
-                                <a href="#">Start : {{ $event->start_event }}</a>
+                                <a href="#"><i class="material-icons">event</i> Start : {{ $event->MulaiEvent }}</a>
                                 <br>
-                                <a href="#">Finish : {{ $event->finish_event }}</a>
+                                <a href="#"><i class="material-icons">event_available</i> Finish : {{ $event->BerakhirEvent }}</a>
+                                <br>
+                                <a href="#"> <i class="material-icons">location_on</i>{{ $event->alamat }}</a>
+                                
                             </p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ $event->nama_event }}<i class="material-icons right">close</i>
+                            <span class="card-title grey-text text-darken-4">{{ $event->nama_event }}
+                                <i class="material-icons right">close</i>
                             </span>
                             <p>{{ $event->ketentuan }}</p>
                         </div>
@@ -115,78 +126,6 @@
                     </div>
                 </div>
                 @endforeach
-                <!-- koding -->
-
-                <!-- koding -->
-                {{-- <div class="col l4 s12">
-                    <div class="card hoverable event-card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="https://www.eonesia.id/image/Event/T-event-10.jpg">
-                            <span class="card-title" id="instansi">YAMAHA</span>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">ULANG TAHUN<i class="material-icons right">more_vert</i>
-                            </span>
-                            <p>
-                                <a href="#">Start : 20-Aug-2018 08:30</a>
-                                <br>
-                                <a href="#">Finish : 20-Aug-2018 08:30</a>
-                            </p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i>
-                            </span>
-                            <p>Here is some more information about this product that is only revealed once
-                                clicked on.</p>
-                        </div>
-                        <div class="card-action">
-                            <button
-                                data-target="modal1"
-                                class="btn waves-effect waves-light orange accent-3"
-                                type="submit"
-                                name="action">Daftar Peserta Event
-                                <i class="material-icons right">person_add</i>
-                            </button>
-                        </div>
-                    </div>
-                </div> --}}
-                <!-- koding -->
-
-                <!-- koding -->
-                {{-- <div class="col l4 s12">
-                    <div class="card hoverable event-card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="https://www.eonesia.id/image/Event/T-event-10.jpg">
-                            <span class="card-title" id="instansi">YAMAHA</span>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Propan Batik Run & Color Fest 2015 Start<i class="material-icons right">more_vert</i>
-                            </span>
-                            <p>
-                                <a href="#">Start : 20-Aug-2018 08:30</a>
-                                <br>
-                                <a href="#">Finish : 20-Aug-2018 08:30</a>
-                            </p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i>
-                            </span>
-                            <p>Here is some more information about this product that is only revealed once
-                                clicked on.</p>
-                        </div>
-                        <div class="card-action">
-                            <button
-                                data-target="modal1"
-                                class="btn waves-effect waves-light orange accent-3"
-                                type="submit"
-                                name="action">Daftar Peserta Event
-                                <i class="material-icons right">person_add</i>
-                            </button>
-
-                        </div>
-                    </div>
-                </div> --}}
-                <!-- koding -->
             </div>
         </div>
 

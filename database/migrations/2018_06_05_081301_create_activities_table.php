@@ -19,14 +19,8 @@ class CreateActivitiesTable extends Migration
             $table->string('nama_event');
             $table->string('slug')->unique();
             $table->string('alamat');
-            $table->string('provinsi')->nullable();
-            $table->string('kabupaten')->nullable();
-            $table->string('kecamatan')->nullable();
-            $table->string('kelurahan')->nullable();
             $table->date('start_event');
             $table->date('finish_event');
-            $table->date('start_register');
-            $table->date('finish_register');
             $table->text('keterangan');
             $table->text('ketentuan');
             $table->text('image')->nullable();

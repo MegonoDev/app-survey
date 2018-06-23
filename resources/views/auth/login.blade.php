@@ -1,69 +1,152 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>EONESIA</title>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <!-- CSS -->
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+        <link
+            href="{{ asset('eonesia/f-n/css/materialize.css')}}"
+            type="text/css"
+            rel="stylesheet"
+            media="screen,projection"/>
+        <link
+            href="{{ asset('eonesia/f-n/css/style.css')}}"
+            type="text/css"
+            rel="stylesheet"
+            media="screen,projection"/>
+        <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('eonesia/f-n/css/animate.css')}}">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+            }
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+            main {
+                flex: 1 0 auto;
+            }
 
-                                @if ($errors->has('email'))
+            body {
+                background: #fff;
+            }
+
+            .input-field input[type=date]:focus + label,
+            .input-field input[type=email]:focus + label,
+            .input-field input[type=password]:focus + label,
+            .input-field input[type=text]:focus + label {
+                color: #e91e63;
+            }
+
+            .input-field input[type=date]:focus,
+            .input-field input[type=email]:focus,
+            .input-field input[type=password]:focus,
+            .input-field input[type=text]:focus {
+                border-bottom: 2px solid #e91e63;
+                box-shadow: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="loader  animated infinite bounce"></div>
+        <div id="particles-js"></div>
+        <main>
+            <center>
+                <br>
+                <img
+                    class="responsive-img"
+                    style="width: 80px;"
+                    src="https://eonesia.id/img/icon.png"/>
+                <!-- <div class="section"></div> -->
+
+                <h5 class="indigo-text">Please, login into your account</h5>
+                <div class="section"></div>
+
+                <div class="container">
+                    <div
+                        class="z-depth-1 grey lighten-4 row"
+                        style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+                        <form method="POST" class="col s12 m12" action="{{ route('login') }}">
+                            @csrf
+                            <div class='row'>
+                                <div class='col s12 m12'></div>
+                            </div>
+
+                            <div class='row'>
+                                <div class='input-field col s12'>
+                                    <input
+                                        class="validate {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                        type='email'
+                                        name='email'
+                                        id='email'/>
+                                    @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                    <label for='email'>{{ __('E-Mail Address') }}Enter your email</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
+                            <div class='row'>
+                                <div class='input-field col s12'>
+                                    <input
+                                        class="validate {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                        type='password'
+                                        name='password'
+                                        id='password'/>
+                                    <label for='password'>{{ __('Password') }}Enter your password</label>
+                                    @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
+                                    @endif
                                 </div>
+                                <label style='float: right;'>
+                                    <a class='pink-text' href='#!'>
+                                        <b>Forgot Password?</b>
+                                    </a>
+                                </label>
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                            <br/>
+                            <center>
+                                <div class='row'>
+                                    <button
+                                        type='submit'
+                                        name='btn_login'
+                                        class='col s12 btn btn-large waves-effect indigo'>Login</button>
+                                </div>
+                            </center>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+            </center>
+
+            <div class="section"></div>
+            <div class="section"></div>
+        </main>
+
+        <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
+        <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
+        <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ asset('eonesia/f-n/js/materialize.js')}}"></script>
+        <!-- <script src="js/materialize.min.js"></script> -->
+        <script src="{{ asset('eonesia/f-n/js/init.js')}}"></script>
+        <script src="{{ asset('eonesia/f-n/js/eonesia.js')}}"></script>
+    </body>
+</html>

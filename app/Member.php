@@ -8,12 +8,10 @@ class Member extends Model
 {
     protected $fillable = [
         'activitie_id',
-        'nama', 
+        'nama',
+        'jenis_kelamin', 
         'alamat', 
-        'provinsi', 
-        'kabupaten',
-        'kecamatan',
-        'kelurahan',
+        'tempat_lahir',
         'tanggal_lahir',
         'handphone',
         'kode',

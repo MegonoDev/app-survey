@@ -13,13 +13,20 @@
         <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
         <link rel="stylesheet" type="text/css" href="{{ asset('eonesia/f-n/css/animate.css')}}">
         <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
+        <style>
+            .help-block{
+                color: red;
+            }.radio{
+                color: black;
+            }
+        </style>
 
     </head>
     <body>
         
-        <div class="loader  animated infinite bounce"></div>
+        <divclass="loaderanimatedinfinitebounce"></div>
         <div id="particles-js" ></div>
-        <div class="spinner-layer spinner-red">
+        {{-- <div class="spinner-layer spinner-red">
                 <div class="circle-clipper left">
                   <div class="circle"></div>
                 </div><div class="gap-patch">
@@ -27,12 +34,13 @@
                 </div><div class="circle-clipper right">
                   <div class="circle"></div>
                 </div>
-              </div>
+              </div> --}}
         <div class="container">
             <div class="row">
                 <div class="card-panel tea pink darken-2  waves-light">
                     <span class="event-tersedia-bg" id="">
-                        <h4 class="center white-text">SILAHKAN DAFTARKAN DIRI ANDA DI EVENT {{ $pendaftaran->nama_event}}</h4>
+                        <h4 class="center white-text">ACARA INI DI SELENGGARAKAN OLEH {{ $pendaftaran->penyelenggara }} <br>
+                            SILAHKAN DAFTARKAN DIRI ANDA DI EVENT {{ $pendaftaran->nama_event}}</h4>
                     </span>
                     <div class="col s12 m12">
                         <div class="card z-depth-5">
@@ -40,12 +48,13 @@
                                 <div class="row">
                                     {!! Form::open(['route'=>'member.store' ]) !!}
                                     <input type="hidden" name="activitie_id" value="{{ $pendaftaran->id }}">
+                                    
                                         <div class="row">
                                         <div class="input-field col s12">
                                         <div class="form-group {{ $errors->has('nama') ? 'has-error' : '' }}">
-                                            <label  for="first_name">Nama Kamu</label>
+                                            <label  for="first_name">Nama</label>
                                                 {!! Form::text('nama', null, ['id' => 'first_name', 'class' => 'form-validate
-                                                form-control-line', 'placeholder' => 'Input Nama Lengkap Kamu']) !!} {!!
+                                                form-control-line', 'placeholder' => 'Input Nama Lengkap Kamu', 'minlength' => 4]) !!} {!!
                                                 $errors->first('nama', '<p class="help-block">:message</p>') !!}
                                             </div>
                                         </div>
@@ -53,8 +62,25 @@
 
                                         <div class="row">
                                             <div class="input-field col s12">
+                                            <div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' : '' }}">
+                                                <label for="">Jenis Kelamin</label><br><br>
+                                                <label>
+                                                    <input class="with-gap" name="jenis_kelamin" type="radio" value="laki-laki" />
+                                                    <span>Laki-laki</span>
+                                                  </label>
+                                                  <label>
+                                                    <input class="with-gap" name="jenis_kelamin" type="radio" value="perempuan"  />
+                                                    <span>Perempuan</span>
+                                                  </label>
+                                                    {!! $errors->first('jenis_kelamin', '<p class="help-block">:message</p>') !!}
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
                                             <div class="form-group {{ $errors->has('alamat') ? 'has-error' : '' }}">
-                                                <label  for="first_name">Alamat Kamu</label>
+                                                <label  for="first_name">Alamat</label>
                                                     {!! Form::text('alamat', null, ['id' => 'first_name', 'class' => 'form-validate
                                                     form-control-line', 'placeholder' => 'Input Alamat Lengkap Kamu']) !!} {!!
                                                     $errors->first('alamat', '<p class="help-block">:message</p>') !!}
@@ -62,62 +88,43 @@
                                             </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="input-field col m12 l3 s12">
-    
-                                                    {!! Form::select('provinsi', ['jawa tengah' => 'jawa tengah', 'riau' => 'riau'],null, ['class' => 'form-control form-control-line', 'placeholder' => 'Provinsi']); !!}
-                                                </div>
-                                
-                                                <div class="input-field col m12 l3 124">
-                                                    {!! Form::select('kabupaten', ['pekalongan' => 'pekalongan', 'dumai' => 'dumai'],null, ['class' => 'form-control form-control-line', 'placeholder' => 'Kabupaten']); !!}
-                                                </div>
-                                
-                                                <div class="input-field col m12 l3 124">
-                                                    {!! Form::select('kecamatan', ['pekalongan barat' => 'pekalongan barat', 'dumai barat' => 'dumai barat'],null, ['class' => 'form-control form-control-line', 'placeholder' => 'Kecamatan']); !!}
-                                                </div>
-
-                                                <div class="input-field col m12 l3 124">
-                                                    {!! Form::select('kelurahan', ['bojong barat' => 'bojong barat', 'regojo barat' => 'regojo barat'],null, ['class' => 'form-control form-control-line', 'placeholder' => 'Kecamatan']); !!}
-                                                </div>
-                                            </div>
-
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <div class="form-group {{ $errors->has('handphone') ? 'has-error' : '' }}">
-                                                    <label  for="first_name">No Handphone Kamu</label>
+                                                    <label  for="first_name">No Handphone</label>
                                                         {!! Form::number('handphone', null, ['id' => 'first_name', 'class' => 'form-validate
                                                         form-control-line', 'placeholder' => 'Input No Handphone Kamu']) !!} {!!
-                                                        $errors->first('handphonemat', '<p class="help-block">:message</p>') !!}
+                                                        $errors->first('handphone', '<p class="help-block">:message</p>') !!}
                                                     </div><span><font color="black"> *Pastikan
                                                     Nomor Handphone Anda Benar, Kode Event Akan Di kirim ke nomor Handphone</font></span>
                                             </div>
                                         </div>
 
+                                        <label  for="first_name">Tempat & Tanggal Lahir</label>
                                         <div class="row">
-                                            <div class="input-field col s12">
-                                                <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : '' }}">
-                                                    <label  for="first_name">No Handphone Kamu</label>
-                                                        {!! Form::date('tanggal_lahir', null, ['id' => 'first_name', 'class' => 'form-validate
-                                                        form-control-line']) !!} {!!
-                                                        $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
-                                                    </div>
+                                            <div class="input-field col m12 l6 s12">
+                                                    {!! Form::text('tempat_lahir', null, ['id' => 'first_name', 'class' => 'form-validate form-control-line', 'placeholder' => 'Tempat Lahir']) !!} 
+                                                    {!! $errors->first('tempat_lahir', '<p class="help-block">:message</p>') !!}
+                                            </div>
+                                            <div class="input-field col m12 l6 s12">
+                                                    {!! Form::date('tanggal_lahir', null, ['id' => 'first_name', 'class' => 'form-validate
+                                                    form-control-line']) !!} 
+                                                    {!! $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
                                             </div>
                                         </div>
 
+
                                         <label>
-                                            <input type="checkbox"/>
+                                                <input onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');" id="field_terms" type="checkbox" required>
                                             <span>
                                                 <a class="modal-trigger" href="#modal1">ketentuan & kebijakan event</a>
                                             </span>
                                         </label>
 
                                         <div class="card-action">
-                                            <button
-                                                class="btn pink darken-2 waves-effect waves-light"
-                                                type="submit"
-                                                name="action">Batal
+                                            <a href="{{ url('/') }}">
                                                 <i class="material-icons right">cancel</i>
-                                            </button>
+                                            </a>
                                             <button
                                                 class="btn pink darken-2 waves-effect waves-light"
                                                 type="submit"
@@ -125,7 +132,7 @@
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
-                                    </form>
+                                        {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
@@ -140,13 +147,13 @@
                   <p>{{ $pendaftaran->ketentuan}}</p>
                 </div>
                 <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Setuju</a>
                 </div>
               </div>
 
             <div class="footer-copyright">
                 <div class="container">
-                    <a class="white-text" href="">© 2017 e.o.n.e.s.i.a All rights reserved</a>
+                    <a class="white-text" href="">© 2018 e.o.n.e.s.i.a All rights reserved</a>
                     <a href="#" class="right white-text">
                         Web Design By MegonoDev</a>
                 </div>
@@ -154,7 +161,9 @@
         </footer>
 
         <!-- Scripts-->
-
+        <script type="text/javascript">
+            document.getElementById("field_terms").setCustomValidity("Mohon ceklis untuk setuju dengan ketentuan dan kebijakan event");
+          </script>
         <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>

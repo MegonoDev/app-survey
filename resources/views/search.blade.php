@@ -40,31 +40,11 @@
                          </div>
 
                          <div class="form-group">
-                        <label class="col-md-12">Provinsi</label>
-                        <div class="col-md-12">
-                            <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->provinsi }}">
-                        </div>
-                         </div>
-                         <div class="form-group">
-                        <label class="col-md-12">Kabupaten</label>
-                        <div class="col-md-12">
-                            <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->kabupaten }}">
-                        </div>
-                         </div>
-
-                         <div class="form-group">
-                        <label class="col-md-12">Kecamatan</label>
-                        <div class="col-md-12">
-                            <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->kecamatan }}">
-                        </div>
-                         </div>
-
-                         <div class="form-group">
-                        <label class="col-md-12">Kelurahan</label>
-                        <div class="col-md-12">
-                            <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->kelurahan }}">
-                        </div>
-                         </div>
+                            <label class="col-md-12">Tempat Lahir</label>
+                            <div class="col-md-12">
+                                <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->tempat_lahir }}">
+                            </div>
+                            </div>
 
                         <div class="form-group">
                         <label class="col-md-12">Tangggal Lahir</label>

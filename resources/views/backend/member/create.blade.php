@@ -16,9 +16,9 @@
     </div>
     <div class="col-md-8 col-xs-12">
         <div class="white-box">
-         {!! Form::open(['route'=>'event.store', 'class'=> 'form-horizontal form-material', 'files' => TRUE]) !!}
+         {!! Form::open(['route'=>'member.store', 'class'=> 'form-horizontal form-material']) !!}
          {{ csrf_field() }}
-            @include('backend.activitie._form')
+            @include('backend.member._form')
         {!! Form::close() !!}
         </div>
     </div>

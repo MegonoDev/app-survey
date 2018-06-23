@@ -15,6 +15,8 @@
 //     return view('welcome');
 // });
 Route::get('/', 'FrontendController@event')->name('eonesia');
+Route::get('/apievent', 'FrontendController@apievent');
+Route::get('/updateevent', 'FrontendController@updateevent');
 Route::get('pendaftaran/event/{slug}', [
 	'uses' => 'FrontendController@pendaftaran',
 	'as'   => 'pendaftaran'

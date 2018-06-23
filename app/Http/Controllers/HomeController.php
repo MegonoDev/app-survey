@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Activitie;
+use App\Member;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tersedia = Activitie::where('keterangan', 'tersedia')->get();
+        $eventtersedia = $tersedia->count();
+
+        $selesai = Activitie::where('keterangan', 'selesai')->get();
+        $eventselesai = $selesai->count();
+
+        $verifikasi = Member::where('status', 'Sudah di Verifikasi')->get();
+        $eventterverifikasi = $verifikasi->count();
+
+        return view('home', compact('eventtersedia', 'eventselesai', 'eventterverifikasi'));
     }
 }

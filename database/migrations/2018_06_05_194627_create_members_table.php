@@ -18,11 +18,9 @@ class CreateMembersTable extends Migration
             $table->integer('activitie_id')->unsigned();
             $table->foreign('activitie_id')->references('id')->on('activities')->onDelete('restrict');
             $table->string('nama');
+            $table->string('jenis_kelamin');
             $table->string('alamat');
-            $table->string('provinsi')->nullable();
-            $table->string('kabupaten')->nullable();
-            $table->string('kecamatan')->nullable();
-            $table->string('kelurahan')->nullable();
+            $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('handphone');
             $table->string('kode')->unique();

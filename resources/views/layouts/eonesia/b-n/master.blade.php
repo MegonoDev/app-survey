@@ -18,7 +18,6 @@
     <link href="{{ asset('eonesia/b-n/plugins/bower_components/morrisjs/morris.css')}}" rel="stylesheet">
     <!-- chartist CSS -->
     <link href="{{ asset('eonesia/b-n/plugins/bower_components/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('eonesia/b-n/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css')}}" rel="stylesheet">
     <!-- animation CSS -->
     <link href="{{ asset('eonesia/b-n/css/animate.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -27,7 +26,6 @@
     <!-- color CSS -->
     <link href="{{ asset('eonesia/b-n/css/colors/default.css')}}" id="theme" rel="stylesheet">
     <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
-    <link href="{{ asset('eonesia/b-n/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
 </head>
 
 <body class="fix-header">
@@ -64,8 +62,6 @@
     <script src="{{ asset('eonesia/b-n/js/custom.min.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/js/dashboard1.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/plugins/bower_components/toast-master/js/jquery.toast.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('eonesia/b-n/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>
-    <script type="text/javascript" src="{{ asset('eonesia/b-n/js/locales/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
 </body>
 
 </html>

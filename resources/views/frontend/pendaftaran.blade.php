@@ -46,7 +46,8 @@
                         <div class="card z-depth-5">
                             <div class="card-content white-text">
                                 <div class="row">
-                                    {!! Form::open(['route'=>'member.store' ]) !!}
+                                    {!! Form::open(['route'=>'pendaftaranevent' ]) !!}
+                                    {{-- <form method="POST" action="{{ route('pendaftaranevent') }}"> --}}
                                     <input type="hidden" name="activitie_id" value="{{ $pendaftaran->id }}">
                                     
                                         <div class="row">
@@ -91,9 +92,9 @@
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <div class="form-group {{ $errors->has('handphone') ? 'has-error' : '' }}">
-                                                    <label  for="first_name">No Handphone</label>
-                                                        {!! Form::number('handphone', null, ['id' => 'first_name', 'class' => 'form-validate
-                                                        form-control-line', 'placeholder' => 'Input No Handphone Kamu']) !!} {!!
+                                                    <label  for="first_name">No Handphone (cth : 081234567890)</label>
+                                                        {!! Form::number('handphone', null, ['class' => 'form-validate
+                                                        form-control-line', 'placeholder' => '081234567890']) !!} {!!
                                                         $errors->first('handphone', '<p class="help-block">:message</p>') !!}
                                                     </div><span><font color="black"> *Pastikan
                                                     Nomor Handphone Anda Benar, Kode Event Akan Di kirim ke nomor Handphone</font></span>
@@ -131,8 +132,8 @@
                                                 name="action">Daftar Event
                                                 <i class="material-icons right">send</i>
                                             </button>
-                                        </div>
-                                        {!! Form::close() !!}
+                                        </div> 
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
@@ -140,7 +141,7 @@
                 </div>
             </div>
         </div>
-        {!! Form::close() !!}
+        
         <div id="modal1" class="modal">
                 <div class="modal-content">
                   <h3>ketentuan dan Kebijakan Event</h3>

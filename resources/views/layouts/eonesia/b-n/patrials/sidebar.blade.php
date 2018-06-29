@@ -8,10 +8,10 @@
                         <a href="{{ url ('home') }}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{ route('event.index') }}" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Event</a>
+                        <a href="{{ route('event.index') }}" class="waves-effect"><i class="fa fa-calendar-o fa-fw" aria-hidden="true"></i>Event</a>
                     </li>
                     <li>
-                        <a href="{{ route('member.index') }}" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Member</a>
+                        <a href="{{ route('member.index') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Member</a>
                     </li>
 
                 </ul>

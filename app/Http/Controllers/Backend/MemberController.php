@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Member;
 use GuzzleHttp\Client;
 use App\Http\Requests\MemberRequest;
+use Session;
+
 
 class MemberController extends Controller
 {
@@ -33,7 +35,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('backend.member.create');
+        // return view('backend.member.create');
     }
 
     /**
@@ -50,7 +52,22 @@ class MemberController extends Controller
         $alamat = $request->alamat;
         $tempat_lahir = $request->tempat_lahir;
         $tanggal_lahir = $request->tanggal_lahir;
+
         $handphone = $request->handphone;
+        $nohp = str_replace(" ","",$handphone);
+        if(!preg_match('/[^+0-9]/',trim($nohp))){
+            // cek apakah no hp karakter 1-3 adalah +62
+            if(substr(trim($nohp), 0, 3)=='+62'){
+                $hp = trim($nohp);
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif(substr(trim($nohp), 0, 1)=='0'){
+                $hp = '+62'.substr(trim($nohp), 1);
+            }
+        }
+    
+
+
         $collection = collect(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 1, 2, 3, 4, 5, 6, 7, 8, 9]);
         $random = $collection->random(5);
         $random->all();
@@ -58,22 +75,35 @@ class MemberController extends Controller
         $status = $request->status;
 
         // smsgetway
-        $userkey = "bo7tye"; //userkey lihat di zenziva
-        $passkey = "kurniawanDev"; // set passkey di zenziva
-        $telepon = $handphone;
-        $message = "Terima Kasih, pendaftaran event nama $nama Berhasil. kode event : $kode";
-        $url = "https://reguler.zenziva.net/apps/smsapi.php";
-        $curlHandle = curl_init();
-        curl_setopt($curlHandle, CURLOPT_URL, $url);
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, 'userkey='.$userkey.'&passkey='.$passkey.'&nohp='.$telepon.'&pesan='.urlencode($message));
-        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curlHandle, CURLOPT_TIMEOUT,30);
-        curl_setopt($curlHandle, CURLOPT_POST, 1);
-        $results = curl_exec($curlHandle);
-        curl_close($curlHandle);
+//         $curl = curl_init();
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => "",
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 30,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => "POST",
+//   CURLOPT_POSTFIELDS => " {\n   \"from\":\"Risa Creativindo\",\n   \"to\":\"6282389492020\",\n   \"text\":\"TEST adsadsasa\"\n }",
+//   CURLOPT_HTTPHEADER => array(
+//     "accept: application/json",
+//     "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
+//     "cache-control: no-cache",
+//     "content-type: application/json",
+//     "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
+//   ),
+// ));
+
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
+
+// curl_close($curl);
+
+// if ($err) {
+//   echo "cURL Error #:" . $err;
+// } else {
+//   echo $response;
+// }
         
         Member::create([
             'activitie_id'=>$activitie_id,
@@ -82,9 +112,14 @@ class MemberController extends Controller
             'alamat'=>$alamat,
             'tempat_lahir'=>$tempat_lahir,            
             'tanggal_lahir'=>$tanggal_lahir,
-            'handphone'=>$handphone,
+            'handphone'=>$hp,
             'kode'=>$kode,
             'status'=>'Belum DI Verifikasi',
+        ]);
+
+        Session::flash('flash_notification', [
+            'level'=>'success',
+            'message'=>'<h4><i class="icon fa fa-check"></i> Berhasil !</h4> Register Anda Sukses kode event di kirim ke no handphone '.$hp.' jika kode dikirim ke nohandphone silahkan hubungi admin.'
         ]);
         return redirect('/');
     }

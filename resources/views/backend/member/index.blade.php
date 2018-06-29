@@ -16,6 +16,23 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
+
+    <div class="card">
+            <div class="card-body">
+                <p class="card-text">
+                        <form method="POST" action="{{ route('search') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Verifikasi Kode</label>
+                            <input type="text" name="kode" class="form-control" placeholder="Verifikasi Kode ......">
+                        </div>
+                            {{-- <a href="#" class="btn btn-primary">GOooo ... Ooo ...</a> --}}
+                        </form>
+                    </p>
+                </div>
+            </div>    
+            <hr>
+
     <!-- /row -->
     <div class="row">
     </div>

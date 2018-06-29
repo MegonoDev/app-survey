@@ -16,11 +16,17 @@
 // });
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('/apievent', 'FrontendController@apievent');
+Route::get('/testsms', 'FrontendController@testsms');
 Route::get('/updateevent', 'FrontendController@updateevent');
 Route::get('pendaftaran/event/{slug}', [
 	'uses' => 'FrontendController@pendaftaran',
 	'as'   => 'pendaftaran'
 ]);
+Route::post('registereonesia', [
+    'uses' => 'FrontendController@registereonesia',
+    'as'   => 'pendaftaranevent'
+]);  
+
 
 Auth::routes();
 

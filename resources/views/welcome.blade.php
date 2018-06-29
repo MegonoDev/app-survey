@@ -23,6 +23,7 @@
 
     </head>
     <body>
+        
         <div class="loader  animated infinite bounce"></div>
         <div id="particles-js"></div>
         <div class="navbar-fixed hoverable">
@@ -67,7 +68,7 @@
                 </div>
             </nav>
         </div>
-
+        @include('frontend._flash')
         <div class="section no-pad-bot" id="index-banner">
             <div class="container">
                 <br><br>

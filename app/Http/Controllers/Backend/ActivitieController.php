@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ActivitieRequest;
 use App\Activitie;
+use App\Member;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Intervention\Image\Facades\Image;
 use File;
@@ -65,7 +66,8 @@ class ActivitieController extends Controller
      */
     public function show($id)
     {
-        //
+        $members = Member::where('activitie_id', $id)->get();
+        return view('backend.activitie.show', compact('members'));
     }
 
     /**

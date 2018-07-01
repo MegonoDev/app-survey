@@ -1,1 +1,3 @@
-<footer class="footer text-center"> 2018 &copy; Eonesia </footer>
+<footer class="footer">
+    <center> © 2018 EONESIA</center>
+</footer>

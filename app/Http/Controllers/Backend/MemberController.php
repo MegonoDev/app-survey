@@ -24,8 +24,10 @@ class MemberController extends Controller
     
     public function index()
     {
-        $members = Member::paginate(10);
-        return view('backend.member.index', compact('members'));
+        $members = Member::all();
+        dd($members);
+
+        // return view('backend.member.index', compact('members'));
     }
 
     /**
@@ -135,6 +137,7 @@ class MemberController extends Controller
         $kode = $request->get('kode');
         $data = Member::where('kode', $kode)->get();
         return view('search', compact('data'));
+        
     }
 
     /**

@@ -1,22 +1,19 @@
-<div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav slimscrollsidebar">
-                <div class="sidebar-head">
-                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
-                </div>
-                <ul class="nav" id="side-menu">
-                    <li style="padding: 70px 0 0;">
-                        <a href="{{ url ('home') }}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('event.index') }}" class="waves-effect"><i class="fa fa-calendar-o fa-fw" aria-hidden="true"></i>Event</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('member.index') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Member</a>
-                    </li>
-
-                </ul>
-                <div class="center p-20">  
-                 </div>
-            </div>
-            
-        </div>
+<aside class="left-sidebar">
+    <div class="d-flex no-block nav-text-box align-items-center">
+        <span><img src="https://eonesia.id/img/icon.png" height="40" alt="elegant admin template"><font style="font-size:20px" color="white"> <b>NESIA</b></font></span>
+        <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
+        <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+    </div>
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li> <a class="waves-effect waves-dark" href="{{ url ('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li> <a class="waves-effect waves-dark" href="{{ route('event.index') }}" aria-expanded="false"><i class="fa fa-calendar-o"></i><span class="hide-menu">Event</span></a></li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

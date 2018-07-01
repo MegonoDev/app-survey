@@ -75,29 +75,29 @@ class FrontendController extends Controller
         $status = $request->status;
 
         // smsgetway
-        $curl = curl_init();
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => " {\n   \"from\":\"Risa Creativindo\",\n   \"to\":\"$hp'\",\n   \"text\":\"kode pendaftaran event anda:$kode\"\n }",
-  CURLOPT_HTTPHEADER => array(
-    "accept: application/json",
-    "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
-    "cache-control: no-cache",
-    "content-type: application/json",
-    "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
-  ),
-));
+//         $curl = curl_init();
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => "",
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 30,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => "POST",
+//   CURLOPT_POSTFIELDS => " {\n   \"from\":\"Risa Creativindo\",\n   \"to\":\"$hp'\",\n   \"text\":\"kode pendaftaran event anda:$kode\"\n }",
+//   CURLOPT_HTTPHEADER => array(
+//     "accept: application/json",
+//     "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
+//     "cache-control: no-cache",
+//     "content-type: application/json",
+//     "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
+//   ),
+// ));
 
-$response = curl_exec($curl);
-$err = curl_error($curl);
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
 
-curl_close($curl);
+// curl_close($curl);
 
 // if ($err) {
 //   echo "cURL Error #:" . $err;

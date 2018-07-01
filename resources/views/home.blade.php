@@ -1,58 +1,39 @@
 @extends('layouts/eonesia/b-n/master')
-@section('content') 
-<div id = "page-wrapper" > 
- <div class="container-fluid">
-    <div class="row bg-title">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Dashboard</h4>
+@section('content')
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Dashboard</h4>
+            </div>
+            <div class="col-md-7 align-self-center text-right">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    </div>
-    
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-
-                    <div class="white-box analytics-info">
-                        <h3 class="box-title">EVENT TERSEDIA</h3>
-                        <ul class="list-inline two-part">
-                            <li>
-                                <div id="sparklinedash"></div>
-                            </li>
-                            <li class="text-right">
-                                <i class="ti-arrow-up text-success"></i>
-                                <span class="counter text-success">{{ $eventtersedia }}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                    <div class="white-box analytics-info">
-                        <h3 class="box-title">EVENT SELESAI</h3>
-                        <ul class="list-inline two-part">
-                            <li>
-                                <div id="sparklinedash2"></div>
-                            </li>
-                            <li class="text-right">
-                                <i class="ti-arrow-up text-purple"></i>
-                                <span class="counter text-purple">{{ $eventselesai }}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                    <div class="white-box analytics-info">
-                        <h3 class="box-title">MEMBER TERVERIFIKASI</h3>
-                        <ul class="list-inline two-part">
-                            <li>
-                                <div id="sparklinedash3"></div>
-                            </li>
-                            <li class="text-right">
-                                <i class="ti-arrow-up text-info"></i>
-                                <span class="counter text-info">{{ $eventterverifikasi }}</span>
-                            </li>
-                        </ul>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card oh">
+                    <div class="card-body bg-light">
+                        <div class="row text-center m-b-20">
+                            <div class="col-lg-3 col-md-3 m-t-20">
+                                <h2 class="m-b-0 font-light">{{ $eventtersedia }}</h2><span class="text-muted">EVENT TERSEDIA</span>
+                            </div>
+                            <div class="col-lg-3 col-md-3 m-t-20">
+                                <h2 class="m-b-0 font-light">{{ $eventselesai }}</h2><span class="text-muted">EVENT SELESAI</span>
+                            </div>
+                            <div class="col-lg-3 col-md-3 m-t-20">
+                                <h2 class="m-b-0 font-light">{{ $eventterverifikasi }}</h2><span class="text-muted">MEMBER TERVERIFIKAS</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    @endsection
+</div>
+</div>
+@endsection

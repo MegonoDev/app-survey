@@ -11,9 +11,19 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/login-event', function () {
+    return view('auth.login');
+});
+Route::post('login-post', [
+    'uses' => 'Auth\LoginController@login',
+    'as'   => 'login'
+]); 
+Route::post('logout', [
+    'uses' => 'Auth\LoginController@logout',
+    'as'   => 'logout'
+]); 
+
+
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('/apievent', 'FrontendController@apievent');
 Route::get('/testsms', 'FrontendController@testsms');
@@ -28,7 +38,6 @@ Route::post('registereonesia', [
 ]);  
 
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function() {

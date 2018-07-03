@@ -43,9 +43,9 @@
                         <li>
                             <a id="logo-container" class="contact" href="#contact">CONTACT</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a id="logo-container" class="modal-trigger" href="{{ route('login') }}">LOGIN</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <ul id="nav-mobile" class="sidenav">

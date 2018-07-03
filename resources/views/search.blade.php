@@ -85,6 +85,8 @@
                                            <div class="form-group">
                                                <label for="exampleInputEmail1">Verifikasi Kode</label>
                                                <input type="hidden" name="status" value="Sudah di Verifikasi">
+                                               <input type="hidden" name="kode" value="{{ $da->kode }}">
+                                               <input type="hidden" name="nama" value="{{ $da->nama }}">
                                            </div>
                                            {!! Form::submit('Verifikasi Kode', ['class' => 'btn btn-primary']) !!}
                                    {!! Form::close() !!}

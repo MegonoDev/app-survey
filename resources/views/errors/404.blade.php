@@ -7,34 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
-    <title>Error</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('eonesia/b-n/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- animation CSS -->
-    <link href="{{ asset('eonesia/b-n/css/animate.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ asset('eonesia/b-n/css/style.css') }}" rel="stylesheet">
-    <!-- color CSS -->
-    <link href="{{ asset('eonesia/b-n/css/colors/default.css') }}" id="theme" rel="stylesheet">
-    <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://eonesia.id/img/icon.png">
+    <title>Errors</title>
+    <link href="{{ asset('eonesia/b-n/main/dist/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('eonesia/b-n/main/dist/css/pages/error-pages.css')}}" rel="stylesheet">
 </head>
-
-<body>
-    <!-- Preloader -->
+<body class="skin-default-dark fixed-layout">
     <section id="wrapper" class="error-page">
         <div class="error-box">
             <div class="error-body text-center">
-                <h1 class="text-danger">404</h1>
+                <h1>404</h1>
                 <h3 class="text-uppercase">Page Not Found !</h3>
-                <p class="text-muted m-t-30 m-b-30">MAINNYA JANGAN KEJAUHAN !!!</p>
-                <a href="{{ url('/') }}" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Back to home</a> </div>
+                <p class="text-muted m-t-30 m-b-30">YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</p>
+                <a href="{{ url('/') }}" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">Back to home</a> </div>
         </div>
     </section>
-    <!-- jQuery -->
-    <script src="{{ asset('eonesia/b-n/plugins/bower_components/jquery/dist/jquery.min.js')}}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('eonesia/b-n/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/popper/popper.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/waves.js')}}"></script>
 </body>
-
 </html>

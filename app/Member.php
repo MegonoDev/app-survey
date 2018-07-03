@@ -22,4 +22,9 @@ class Member extends Model
     {
     	return $this->belongsTo(Activitie::class);
     }
+
+    public function getTanggalLahirAttribute()
+    {
+        return \Carbon\Carbon::parse($this->attributes['tanggal_lahir'])->format('d-M-Y');
+    }
 }

@@ -161,9 +161,15 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         $members = Member::find($id);
-        $data       = $request->only(['status']);
+        $nama = $request->nama;
+        $kode = $request->kode;
+        $data    = $request->only(['status']);
         $members -> update($data);
-        return redirect('home');
+        Session::flash('flash_notification', [
+            'level'=>'success',
+            'message'=>'Kode : '.$kode.' <br> Nama : '.$nama.'<br> Berhasil di Verifikasi</h4>'
+        ]);
+        return redirect(route('event.index'));
     }
 
     /**

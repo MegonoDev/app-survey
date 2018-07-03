@@ -67,7 +67,8 @@ class ActivitieController extends Controller
     public function show($id)
     {
         $members = Member::where('activitie_id', $id)->get();
-        return view('backend.activitie.show', compact('members'));
+        $activities = Activitie::where('id', $id)->get();
+        return view('backend.activitie.show', compact('members', 'activities'));
     }
 
     /**

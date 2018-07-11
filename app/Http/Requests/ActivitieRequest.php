@@ -25,11 +25,11 @@ class ActivitieRequest extends FormRequest
     {
         return [
             'penyelenggara' => 'required',
-            'nama_event'    => 'required',
+            'nama_event'    => 'required|unique:activities',
             'alamat'        => 'required',
             'start_event'   => 'required',
             'finish_event'  => 'required',
-            'keterangan'    => 'required',
+            'status'        => 'required',
             'ketentuan'     => 'required'
         ];
     }
@@ -39,10 +39,11 @@ class ActivitieRequest extends FormRequest
         return [
             'penyelenggara.required'   => 'Kolom ini di larang Kosong',
             'nama_event.required'      => 'Kolom ini di larang Kosong',
+            'nama_event.unique'        => 'Nama Event Sudah Ada',
             'alamat.required'          => 'Kolom ini di larang Kosong',
             'start_event.required'     => 'Kolom ini di larang Kosong',
             'finish_event.required'    => 'Kolom ini di larang Kosong',
-            'keterangan.required'      => 'Kolom ini di larang Kosong',
+            'status.required'          => 'Kolom ini di larang Kosong',
             'ketentuan.required'       => 'Kolom ini di larang Kosong'
         ];
     }

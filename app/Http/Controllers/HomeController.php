@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tersedia = Activitie::where('keterangan', 'tersedia')->get();
+        $tersedia = Activitie::where('status', 'tersedia')->get();
         $eventtersedia = $tersedia->count();
 
-        $selesai = Activitie::where('keterangan', 'selesai')->get();
+        $selesai = Activitie::where('status', 'selesai')->get();
         $eventselesai = $selesai->count();
 
         $verifikasi = Member::where('status', 'Sudah di Verifikasi')->get();

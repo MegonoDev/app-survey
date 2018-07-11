@@ -77,53 +77,53 @@ class MemberController extends Controller
         $status = $request->status;
 
         // smsgetway
-//         $curl = curl_init();
-// curl_setopt_array($curl, array(
-//   CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => "",
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 30,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => "POST",
-//   CURLOPT_POSTFIELDS => " {\n   \"from\":\"Risa Creativindo\",\n   \"to\":\"6282389492020\",\n   \"text\":\"TEST adsadsasa\"\n }",
-//   CURLOPT_HTTPHEADER => array(
-//     "accept: application/json",
-//     "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
-//     "cache-control: no-cache",
-//     "content-type: application/json",
-//     "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
-//   ),
-// ));
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => " {\n   \"from\":\"Risa Creativindo\",\n   \"to\":\"6282389492020\",\n   \"text\":\"TEST adsadsasa\"\n }",
+  CURLOPT_HTTPHEADER => array(
+    "accept: application/json",
+    "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
+    "cache-control: no-cache",
+    "content-type: application/json",
+    "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
+  ),
+));
 
-// $response = curl_exec($curl);
-// $err = curl_error($curl);
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-// curl_close($curl);
+curl_close($curl);
 
-// if ($err) {
-//   echo "cURL Error #:" . $err;
-// } else {
-//   echo $response;
-// }
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
         
-        Member::create([
-            'activitie_id'=>$activitie_id,
-            'nama'=>$nama,
-            'jenis_kelamin'=>$jenis_kelamin,
-            'alamat'=>$alamat,
-            'tempat_lahir'=>$tempat_lahir,            
-            'tanggal_lahir'=>$tanggal_lahir,
-            'handphone'=>$hp,
-            'kode'=>$kode,
-            'status'=>'Belum DI Verifikasi',
-        ]);
+        // Member::create([
+        //     'activitie_id'=>$activitie_id,
+        //     'nama'=>$nama,
+        //     'jenis_kelamin'=>$jenis_kelamin,
+        //     'alamat'=>$alamat,
+        //     'tempat_lahir'=>$tempat_lahir,            
+        //     'tanggal_lahir'=>$tanggal_lahir,
+        //     'handphone'=>$hp,
+        //     'kode'=>$kode,
+        //     'status'=>'Belum DI Verifikasi',
+        // ]);
 
-        Session::flash('flash_notification', [
-            'level'=>'success',
-            'message'=>'<h4><i class="icon fa fa-check"></i> Berhasil !</h4> Register Anda Sukses kode event di kirim ke no handphone '.$hp.' jika kode dikirim ke nohandphone silahkan hubungi admin.'
-        ]);
-        return redirect('/');
+        // Session::flash('flash_notification', [
+        //     'level'=>'success',
+        //     'message'=>'<h4><i class="icon fa fa-check"></i> Berhasil !</h4> Register Anda Sukses kode event di kirim ke no handphone '.$hp.' jika kode dikirim ke nohandphone silahkan hubungi admin.'
+        // ]);
+        // return redirect('/');
     }
 
     /**

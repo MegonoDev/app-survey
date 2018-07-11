@@ -7,16 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Activitie extends Model
 {
     protected $fillable = [
+        'user_id',
         'penyelenggara', 
         'nama_event', 
         'slug', 
         'alamat', 
         'start_event',
         'finish_event',
-        'keterangan',
+        'status',
         'ketentuan',
         'image',
     ];
+
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
+
+    public function members()
+    {
+    	return $this->hasMany(Member::class);
+    }
+
     public function setNamaeventAttribute($value)
     {
     	$this->attributes['nama_event'] = $value;
@@ -30,11 +42,6 @@ class Activitie extends Model
         } else {
             return url('eonesia/images/noimage.png');
         }
-    }
-
-    public function members()
-    {
-    	return $this->hasMany(Member::class);
     }
 
     public function getMulaiEventAttribute()

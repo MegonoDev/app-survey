@@ -37,12 +37,18 @@ Route::post('registereonesia', [
     'as'   => 'pendaftaranevent'
 ]);  
 
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function() {
     Route::resource('event', 'ActivitieController');    
     Route::resource('member', 'MemberController');
+    Route::resource('kota', 'RoleController');
+    Route::resource('admin-kota', 'UserController');  
+Route::get('editpassword/{id}', 'ProfileController@editpassword')->name('editpassword');
+Route::put('updatepassword/{id}', 'ProfileController@updatepassword')->name('updatepassword'); 
+Route::get('profile/{name}', 'ProfileController@profile')->name('profile');
+Route::put('updateprofile/{id}', 'ProfileController@updateprofile')->name('updateprofile');
+Route::get('profilepassword/{name}', 'ProfileController@profilepassword')->name('profilepassword');
+
     Route::post('search/getkode', [
         'uses' => 'MemberController@getkode',
         'as'   => 'search'

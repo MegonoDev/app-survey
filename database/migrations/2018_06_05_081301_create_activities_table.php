@@ -15,15 +15,17 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->string('penyelenggara');
             $table->string('nama_event');
             $table->string('slug')->unique();
             $table->string('alamat');
             $table->date('start_event');
             $table->date('finish_event');
-            $table->text('keterangan');
             $table->text('ketentuan');
             $table->text('image')->nullable();
+            $table->text('status');
             $table->timestamps();
         });
     }

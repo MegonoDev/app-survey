@@ -1,4 +1,5 @@
-@extends('layouts/eonesia/b-n/master') @section('content')
+@extends('layouts/eonesia/b-n/master') 
+@section('content')
 <div class="page-wrapper">
     <div class="container-fluid">
         <div class="row page-titles">
@@ -16,7 +17,7 @@
                 </div>
             </div>
         </div>
-@include('backend.activitie._flash')            
+        @include('layouts.eonesia.b-n.patrials._flash')            
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -42,6 +43,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row">
             <!-- column -->
             <div class="col-12">
@@ -57,7 +60,7 @@
                         </h6>
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
+                                <thead class="thead-dark">
                                     <tr>
                                         <th>#</th>
                                         <th>Penyelenggara</th>
@@ -79,7 +82,7 @@
                                         <td>{{ $event->MulaiEvent }}</td>
                                         <td>{{ $event->BerakhirEvent }}</td>
                                         <td>
-                                            <span class="label label-warning">{{ $event->keterangan }}</span>
+                                            <span class="label label-warning">{{ $event->status }}</span>
                                         </td>
                                         <td>
                                             <a href="{{ route ('event.show',$event->id) }}">
@@ -93,11 +96,9 @@
                                             <a
                                                 href="{{ route ('event.edit',$event->id) }}"
                                                 class="btn btn-success  waves-effect waves-light">
-                                                <i class="fa fa-edit" aria-hidden="true"></i>Edit</a>
+                                                <i class="fa fa-edit" aria-hidden="true"></i></a>
                                             <button type="submit" class="btn btn-danger  waves-effect waves-light">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                Delete
-                                            </button>
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             {!! Form::close() !!}
                                         </td>
                                     </tr>
@@ -111,6 +112,8 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 </div>
 @endsection

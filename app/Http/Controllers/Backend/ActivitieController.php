@@ -10,6 +10,7 @@ use App\Member;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Intervention\Image\Facades\Image;
 use File;
+use Session;
 
 
 class ActivitieController extends Controller
@@ -49,12 +50,15 @@ class ActivitieController extends Controller
     public function store(ActivitieRequest $request)
     {
         $data = $request->all();
-
         if($request->hasFile('image'))
         {
             $data['image'] = $this->saveImage($request->file('image'));
         }
         Activitie::create($data);
+        Session::flash('flash_notification', [
+            'level'=>'info',
+            'message'=>'<i class="fa fa-check"></i> Event '.$request->nama_event.' Berhasil Di Tambah'
+        ]);
         return redirect(route('event.index'));
     }
 
@@ -103,10 +107,10 @@ class ActivitieController extends Controller
         }
 
         $activities->update($data);
-        // Session::flash('flash_notification', [
-        //     'level'=>'info',
-        //     'message'=>'<h4><i class="icon fa fa-check"></i> Berhasil !</h4> Post '.$posts->title.' telah di Update.'
-        // ]);
+        Session::flash('flash_notification', [
+            'level'=>'success',
+            'message'=>'<i class="fa fa-check"></i> Event '.$request->nama_event.' Berhasil Di Update'
+        ]);
 
         return redirect(route ('event.index'));
     }
@@ -122,10 +126,12 @@ class ActivitieController extends Controller
         $activities = Activitie::find($id);
         $data['image'] = $this->deleteImage($activities->image);
         $activities->delete();
-        
+        Session::flash('flash_notification', [
+            'level'=>'danger',
+            'message'=>'<i class="fa fa-check"></i>Event '.$activities->nama_event.' Berhasil Di Delete'
+        ]);
         return redirect(route ('event.index'));
     }
-
 
     public function saveImage(UploadedFile $image)
     {

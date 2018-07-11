@@ -43,11 +43,7 @@
                         <li>
                             <a id="logo-container" class="contact" href="#contact">CONTACT</a>
                         </li>
-                        {{-- <li>
-                            <a id="logo-container" class="modal-trigger" href="{{ route('login') }}">LOGIN</a>
-                        </li> --}}
                     </ul>
-
                     <ul id="nav-mobile" class="sidenav">
                         <li>
                             <a id="logo-container" class="scrollspy" href="#">HOME</a>
@@ -79,7 +75,6 @@
                         Development | Customer Insight</h5>
                 </div>
                 <br><br>
-
                 <div class="row center" id="event">
                     <a class="btn-floating btn-large waves-effect waves-light white">
                         <i id="bawah" class="material-icons animated infinite bounceInDown">arrow_downward</i>
@@ -88,7 +83,6 @@
                 <br><br><br><br><br>
             </div>
         </div>
-
         <div class="container">
             <div class="row">
                 <h2 class="header center event-tersedia">EVENT READY</h1>
@@ -129,13 +123,9 @@
                 @endforeach
             </div>
         </div>
-
-       
-
         <a href="#">
             <h1 id="patner" class="header event-tersedia center">OUR PATNER</h1>
         </a>
-
         <div class="parallax-container patner-bawah">
             <div class="parallax"><img src="{{ asset('eonesia/images/bh.png')}}"></div>
             <div class="">
@@ -211,7 +201,6 @@
             </div>
             <!-- </div> </div> -->
         </div>
-
         <footer id="contact" class="page-footer  blue-grey darken-3">
             <div class="container contact-bawah">
                 <div class="row">
@@ -265,7 +254,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="col l3 s12">
                         <h5 class="white-text">Sosial Media</h5>
                         <ul>
@@ -292,15 +280,11 @@
                 </div>
             </div>
         </footer>
-
-        <!-- Scripts-->
-
         <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="{{ asset('eonesia/f-n/js/materialize.js')}}"></script>
-        <!-- <script src="js/materialize.min.js"></script> -->
         <script src="{{ asset('eonesia/f-n/js/init.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/eonesia.js')}}"></script>
 

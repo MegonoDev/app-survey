@@ -15,16 +15,21 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('activitie_id')->unsigned();
-            $table->foreign('activitie_id')->references('id')->on('activities')->onDelete('restrict');
             $table->string('nama');
             $table->string('jenis_kelamin');
+            $table->string('email');
             $table->string('alamat');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('handphone');
             $table->string('kode')->unique();
             $table->string('status');
+            $table->integer('organizer_id')->unsigned();
+            $table->foreign('organizer_id')->references('id')->on('organizers')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('dealereo_id')->unsigned();
+            $table->foreign('dealereo_id')->references('id')->on('dealereos')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('location_id')->unsigned();
+            $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

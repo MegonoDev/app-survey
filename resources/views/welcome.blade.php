@@ -43,6 +43,9 @@
                         <li>
                             <a id="logo-container" class="contact" href="#contact">CONTACT</a>
                         </li>
+                        <li>
+                            <a id="logo-container" class="contact" href="{{ route('getData') }}">DAFTAR</a>
+                        </li>
                     </ul>
                     <ul id="nav-mobile" class="sidenav">
                         <li>
@@ -83,7 +86,7 @@
                 <br><br><br><br><br>
             </div>
         </div>
-        <div class="container">
+        {{-- <div class="container">
             <div class="row">
                 <h2 class="header center event-tersedia">EVENT READY</h1>
                 @foreach ($activities as $event)
@@ -122,7 +125,7 @@
                 </div>
                 @endforeach
             </div>
-        </div>
+        </div> --}}
         <a href="#">
             <h1 id="patner" class="header event-tersedia center">OUR PATNER</h1>
         </a>

@@ -12,7 +12,7 @@
                         <li class="breadcrumb-item">
                             <a href="javascript:void(0)">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">Admin</li>
+                        <li class="breadcrumb-item active">Kota</li>
                     </ol>
                 </div>
             </div>

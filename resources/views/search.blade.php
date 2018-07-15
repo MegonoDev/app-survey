@@ -12,7 +12,7 @@
                         <li class="breadcrumb-item">
                             <a href="javascript:void(0)">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">Event</li>
+                        <li class="breadcrumb-item active">Verifikasi kode</li>
                     </ol>
                 </div>
             </div>
@@ -22,71 +22,71 @@
             <!-- Tab panes -->
             <div class="card-body">
                     <form  class="form-horizontal form-material">
-                            @if(count($data) == "")
+                            @if(count($getKode) == "")
                             <center>
                                 <h2 class="text-themecolor"><b><font color="black">Kode Yang Anda Cari Tidak Ada !!!</font></b></h2>
                             </center>
                             @else
-                            @foreach($data as $da)
+                            @foreach($getKode as $kode)
                             <div class="form-group">
                                    <label class="col-md-12">Kode</label>
                                    <div class="col-md-12">
-                                        <span class="badge badge-pill badge-info">{{ $da->kode }}</span>       
+                                        <span class="badge badge-pill badge-info">{{ $kode->kode }}</span>       
                                    </div>
                                    </div>
    
                             <div class="form-group">
                                    <label class="col-md-12">Nama</label>
                                    <div class="col-md-12">
-                                           <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->nama }}">
+                                           <input type="text"  id="title" class="form-control form-control-line" value="{{ $kode->nama }}">
                                    </div>
                             </div>
                             <div class="form-group {{ $errors->has('start_register') ? 'has-error' : '' }}">
                                    <label class="col-md-12">Alamat</label>
                            <div class="col-md-12">
-                               <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->alamat }}">                              </div>
+                               <input type="text"  id="title" class="form-control form-control-line" value="{{ $kode->alamat }}">                              </div>
                             </div>
    
                             <div class="form-group">
                                <label class="col-md-12">Tempat Lahir</label>
                                <div class="col-md-12">
-                                   <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->tempat_lahir }}">
+                                   <input type="text"  id="title" class="form-control form-control-line" value="{{ $kode->tempat_lahir }}">
                                </div>
                                </div>
    
                            <div class="form-group">
                            <label class="col-md-12">Tangggal Lahir</label>
                            <div class="col-md-12">
-                               <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->tanggal_lahir }}">
+                               <input type="text"  id="title" class="form-control form-control-line" value="{{ $kode->tanggal_lahir }}">
                            </div>
                            </div>
    
                            <div class="form-group">
                            <label class="col-md-12">No Handphone</label>
                            <div class="col-md-12">
-                               <input type="text"  id="title" class="form-control form-control-line" value="{{ $da->handphone }}">
+                               <input type="text"  id="title" class="form-control form-control-line" value="{{ $kode->handphone }}">
                            </div>
                            </div>
                            <div class="form-group">
                                    <label class="col-md-12">Status</label>
                                    <div class="col-md-12">
-                                       @if($da->status == 'Belum DI Verifikasi')
-                                           <span class="badge badge-danger">{{ $da->status }}</span>
+                                       @if($kode->status == 0)
+                                           <span class="badge badge-danger">Belum Di Verikasi</span>
                                         @else
-                                          <span class="badge badge-info">{{ $da->status }}</span>
+                                          <span class="badge badge-info">Sudah Di Verifikasi</span>
                                         @endif
                                    </div>
                                    </div>
                        </form> 
-                                @if( $da->status == 'Belum DI Verifikasi')
+                                @if( $kode->status == '0')
                                    <td>
-                                           {!! Form::model($data, ['route' => ['member.update', $da->id], 'method' => 'put']) !!}
-                                           <input type="hidden" name="id" value="{{ $da->id }}">
+                                           {!! Form::model($getKode, ['route' => ['verifikasiKode', $kode->id], 'method' => 'put']) !!}
+                                           <input type="hidden" name="id" value="{{ $kode->id }}">
                                            <div class="form-group">
                                                <label for="exampleInputEmail1">Verifikasi Kode</label>
-                                               <input type="hidden" name="status" value="Sudah di Verifikasi">
-                                               <input type="hidden" name="kode" value="{{ $da->kode }}">
-                                               <input type="hidden" name="nama" value="{{ $da->nama }}">
+                                               <input type="hidden" name="status" value="1">
+                                               <input type="hidden" name="kode" value="{{ $kode->kode }}">
+                                               <input type="hidden" name="nama" value="{{ $kode->nama }}">
                                            </div>
                                            {!! Form::submit('Verifikasi Kode', ['class' => 'btn btn-primary']) !!}
                                    {!! Form::close() !!}

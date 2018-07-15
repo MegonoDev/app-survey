@@ -7,24 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     protected $fillable = [
-        'activitie_id',
         'nama',
         'jenis_kelamin', 
+        'email',
         'alamat', 
         'tempat_lahir',
         'tanggal_lahir',
         'handphone',
         'kode',
         'status',
+        'organizer_id',
+        'dealereo_id',
+        'location_id'
     ];
 
-    public function activitie()
+    public function organizer()
     {
-    	return $this->belongsTo(Activitie::class);
+    	return $this->hasOne('App\Organizer', 'foreign_key');
     }
 
-    public function getTanggalLahirAttribute()
+    public function dealereo()
     {
-        return \Carbon\Carbon::parse($this->attributes['tanggal_lahir'])->format('d-M-Y');
+    	return $this->belongsTo(Dealereo::class);
+    }
+
+    public function location()
+    {
+    	return $this->belongsTo(Location::class);
     }
 }

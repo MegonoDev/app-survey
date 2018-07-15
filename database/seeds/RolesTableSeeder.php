@@ -22,11 +22,7 @@ class RolesTableSeeder extends Seeder
             ['role_id' => '1', 'model_type' => 'App\User', 'model_id' => '1']
         ]);
         $role = Role::create(['name' => 'tegal']);
-        $role = Role::create(['name' => 'solo']);
-        $role = Role::create(['name' => 'semarang']);
-        $role = Role::create(['name' => 'purwokerto']);
-        $role = Role::create(['name' => 'yogya']);
-        $role = Role::create(['name' => 'kepu']);
-        
+        $role = Role::create(['name' => 'pekalongan']);
+        $role = Role::create(['name' => 'semarang']);        
     }
 }

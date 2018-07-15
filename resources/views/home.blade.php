@@ -23,19 +23,19 @@
                     <div class="card-body bg-light">
                         <div class="row text-center m-b-20">
                             <div class="col-lg-3 col-md-3 m-t-20">
-                                <h2 class="m-b-0 font-light">{{ $eventtersedia }}</h2>
+                                <h2 class="m-b-0 font-light"></h2>
                                 <span class="text-muted">EVENT TERSEDIA</span>
                             </div>
                             <div class="col-lg-3 col-md-3 m-t-20">
-                                <h2 class="m-b-0 font-light">{{ $eventselesai }}</h2>
+                                <h2 class="m-b-0 font-light"></h2>
                                 <span class="text-muted">EVENT SELESAI</span>
                             </div>
                             <div class="col-lg-3 col-md-3 m-t-20">
-                                <h2 class="m-b-0 font-light">{{ $eventterverifikasi }}</h2>
+                                <h2 class="m-b-0 font-light"></h2>
                                 <span class="text-muted">MEMBER TERVERIFIKAS</span>
                             </div>
                             <div class="col-lg-3 col-md-3 m-t-20">
-                                <h2 class="m-b-0 font-light">{{ $eventterverifikasi }}</h2>
+                                <h2 class="m-b-0 font-light"></h2>
                                 <span class="text-muted">Kota</span>
                             </div>
                         </div>

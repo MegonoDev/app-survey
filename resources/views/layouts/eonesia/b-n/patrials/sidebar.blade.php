@@ -11,9 +11,12 @@
             <ul id="sidebarnav">
                 <li> <a class="waves-effect waves-dark" href="{{ url ('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('member.index') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Member</span></a></li>
-                <li> <a class="waves-effect waves-dark" href="{{ route('penyelenggara.index') }}" aria-expanded="false"><i class="fa fa-university"></i><span class="hide-menu">Penyelenggara</span></a></li>
+                <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu"><b>LAPORAN</b></span></a></li>
+                <li> <a class="waves-effect waves-dark" href="{{ route('penyelenggara.index') }}" aria-expanded="false"><i class="fa fa-file-excel-o "></i><span class="hide-menu">Excel</span></a></li>
+                <li> <a class="waves-effect waves-dark" href="{{ route('penyelenggara.index') }}" aria-expanded="false"><i class="fa fa-file-pdf-o "></i><span class="hide-menu">Pdf</span></a></li>
                 @can('manageadmin')
-                <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">MANAGEMENT ADMIN</span></a></li>
+                <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu"><b>MANAGEMENT ADMIN</b></span></a></li>
+                <li> <a class="waves-effect waves-dark" href="{{ route('penyelenggara.index') }}" aria-expanded="false"><i class="fa fa-university"></i><span class="hide-menu">Penyelenggara</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('admin-kota.index') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Admin</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('kota.index') }}" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">Kota</span></a></li>
                 @endcan

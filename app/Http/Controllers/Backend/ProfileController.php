@@ -14,13 +14,11 @@ class ProfileController extends Controller
         $users = User::where('name', $name)->first();
         return view('backend.profile.index', compact('users'));
     }
-
     public function profilepassword($name)
     {
         $users = User::where('name', $name)->first();
         return view('backend.profile.password', compact('users'));
     }
-
     public function updateprofile(Request $request, $id)
     {
        $users = User::find($id);

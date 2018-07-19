@@ -13,6 +13,7 @@
     <link href="{{ asset('eonesia/b-n/assets/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('eonesia/b-n/main/dist/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('eonesia/b-n/main/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
+    {!! Charts::assets() !!}
 </head>
 
 <body class="skin-default-dark fixed-layout">

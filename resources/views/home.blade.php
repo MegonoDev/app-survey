@@ -43,6 +43,23 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card oh">
+                        {!!$chartbar->html()!!}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                    <div class="card oh">
+                            {!!$chartpie->html()!!}
+                    </div>
+                </div>
+        </div>
+
     </div>
 </div>
+
+{!! Charts::scripts() !!}
+{!! $chartpie->script() !!}
+{!! $chartbar->script() !!}
 @endsection

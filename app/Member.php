@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Member extends Model
 {
@@ -34,5 +35,30 @@ class Member extends Model
     public function location()
     {
     	return $this->belongsTo(Location::class);
+    }
+
+    public function getTanggallahirAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal_lahir'])->format('d-M-Y');
+    }
+
+    public function getLaporanbulanAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('M-Y');
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d-M-Y');
+    }
+
+    public function getJeniskelaminAttribute()
+    {
+        if ($this->attributes['jenis_kelamin'] == 1) 
+        {
+            return 'laki-laki';
+        } else {
+            return 'perempuan';
+        }
     }
 }

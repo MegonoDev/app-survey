@@ -28,7 +28,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama Kota</th>
+                                        <th>Nama Admin</th>
                                         <th>Email</th>
                                         <th>Kota</th>
                                         <th>Action</th>

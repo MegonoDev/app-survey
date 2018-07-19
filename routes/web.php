@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function() {
     Route::resource('member', 'MemberController');
     Route::resource('kota', 'RoleController');
     Route::resource('admin-kota', 'UserController'); 
+    Route::resource('lokasi-kota', 'LocationController'); 
     //profile 
     Route::get('editpassword/{id}', 'ProfileController@editpassword')->name('editpassword');
     Route::put('updatepassword/{id}', 'ProfileController@updatepassword')->name('updatepassword'); 
@@ -44,10 +45,23 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function() {
         'uses' => 'VerifikasiController@getkode',
         'as'   => 'search'
     ]); 
-    
     Route::put('verifikasi/kode/', [
         'uses' => 'VerifikasiController@verifikasiKode',
         'as'   => 'verifikasiKode'
     ]); 
-});
+    //cetak laporan
+    Route::get('cetakLaporan', [
+        'uses' => 'CetakController@cetakLaporan',
+        'as'   => 'cetak.laporan'
+    ]);
+    Route::post('cetakLaporanPost', [
+        'uses' => 'CetakController@cetakLaporanPost',
+        'as'   => 'cetak.laporan-post'
+    ]);
+
+    });
+
+
+
+
 

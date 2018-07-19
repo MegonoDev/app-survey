@@ -78,7 +78,6 @@
                         @else
                         @include('backend.penyelenggara.create') 
                         @endif
-
                     </div>
                 </div>
             </div>

@@ -49,11 +49,9 @@ form-material']) !!}
             @endif
         </div>
     </div>
-    
     <div class="form-group">
         <div class="col-sm-12">
             {!! Form::submit('simpan', ['class' => 'btn btn-primary']) !!}
         </div>
     </div>
-
 {!! Form::close() !!}

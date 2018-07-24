@@ -30,7 +30,7 @@ $(document).ready(function() {
      $('select').formSelect();
 });
 $(window).load(function() {
-    $(".loader").delay(100).fadeOut();
+    $(".loader").delay(10).fadeOut();
 });
 
 

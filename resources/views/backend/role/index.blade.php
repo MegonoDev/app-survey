@@ -29,7 +29,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama Kota</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -40,10 +40,10 @@
                                         <td>{{  $no++ }}</td>
                                         <td>{{ $role->name }}</td>
                                         <td>
-                                            {!! Form::open(['route' => ['kota.destroy', $role->id], 'method' =>
+                                            {!! Form::open(['route' => ['role.destroy', $role->id], 'method' =>
                                             'DELETE'])!!}
                                             <a
-                                                href="{{ route ('kota.edit',$role->id) }}"
+                                                href="{{ route ('role.edit',$role->id) }}"
                                                 class="btn btn-success  waves-effect waves-light">
                                                 <i class="fa fa-edit" aria-hidden="true"></i></a>
                                             <button type="submit" class="btn btn-danger  waves-effect waves-light">

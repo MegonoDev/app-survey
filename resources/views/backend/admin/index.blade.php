@@ -30,7 +30,7 @@
                                         <th>#</th>
                                         <th>Nama Admin</th>
                                         <th>Email</th>
-                                        <th>Kota</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -44,33 +44,17 @@
                                         <td>
                                             <span class="label label-info">{{ $user->roles->implode('name') }}</span></td>
                                         <td>
-                                            {!! Form::open(['route' => ['admin-kota.destroy', $user->id], 'method' =>
-                                            'DELETE'])!!}
-                                            <a
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Edit"
-                                                href="{{ route ('admin-kota.edit',$user->id) }}"
-                                                class="btn btn-success  waves-effect waves-light">
+                                       {!! Form::open(['route' => ['admin-kota.destroy', $user->id], 'method' => 'DELETE'])!!}
+                                            <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route ('admin-kota.edit',$user->id) }}" class="btn btn-success  waves-effect waves-light">
                                                 <i class="fa fa-edit" aria-hidden="true"></i>
                                             </a>
-                                            <button
-                                                type="submit"
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Hapus"
-                                                class="btn btn-danger  waves-effect waves-light">
+                                            <button type="submit" data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger  waves-effect waves-light">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </button>
-                                            <a
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Ganti Password"
-                                                href="{{ route ('editpassword',$user->id) }}"
-                                                class="btn btn-warning  waves-effect waves-light">
+                                            <a data-toggle="tooltip" data-placement="top" title="Ganti Password" href="{{ route ('editpassword',$user->id) }}" class="btn btn-warning  waves-effect waves-light">
                                                 <i class="fa fa-key" aria-hidden="true"></i>
                                             </a>
-                                            {!! Form::close() !!}
+                                       {!! Form::close() !!}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -84,13 +68,8 @@
             <div class="ccol-lg-4 col-md-5 m-t-20">
                 <div class="card">
                     <div class="card-body">
-                        @if(!empty($admin)) 
-                        @include('backend.admin.edit') 
-                        @elseif(!empty($password))
-                        @include('backend.admin.password') 
-                        @else
-                        @include('backend.admin.create') 
-                        @endif
+                        @if(!empty($admin)) @include('backend.admin.edit') @elseif(!empty($password))
+                        @include('backend.admin.password') @else @include('backend.admin.create') @endif
                     </div>
                 </div>
             </div>

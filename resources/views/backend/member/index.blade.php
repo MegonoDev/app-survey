@@ -52,7 +52,6 @@
                                             <th>Alamat</th>
                                             <th>Kode</th>
                                             <th>Penyelenggara</th>
-                                            <th>Kota</th>
                                             <th>Lokasi</th>
                                             <th>Status</th>
                                         </tr>
@@ -67,7 +66,6 @@
                                 <td>{{ $member->alamat }} </td>
                                 <td><span class="badge badge-warning">{{ $member->kode }}</span></td>
                                 <td>{{ $member->dealereo->nama }}</td>
-                                <td>{{ $member->dealereo->role->name }}</td>
                                 <td>{{ $member->location->nama }}</td>
                                 @if( $member->status == '0')
                                 <td>

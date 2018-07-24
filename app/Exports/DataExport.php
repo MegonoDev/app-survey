@@ -18,7 +18,7 @@ class DataExport implements FromView
     
     public function view(): View
     {
-        return view('backend.cetak.laporan', [
+        return view('backend.cetak.excel-laporan', [
             'members' => $this->members
         ]);
     }

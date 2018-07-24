@@ -59,9 +59,8 @@
             }
         </style>
     </head>
-
     <body>
-        <div class="loader  animated infinite bounce"></div>
+        {{--  <div class="loader  animated infinite bounce"></div>  --}}
         <div id="particles-js"></div>
         <main>
             <center>
@@ -70,21 +69,17 @@
                     class="responsive-img"
                     style="width: 80px;"
                     src="https://eonesia.id/img/icon.png"/>
-                <!-- <div class="section"></div> -->
-
                 <h5 class="indigo-text">Please, login into your account</h5>
                 <div class="section"></div>
-
                 <div class="container">
                     <div
                         class="z-depth-1 grey lighten-4 row"
                         style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-                        <form method="POST" class="col s12 m12" action="{{ route('login') }}">
+                        <form method="POST" class="col s12 m12" action="{{ route('login.post') }}">
                             @csrf
                             <div class='row'>
                                 <div class='col s12 m12'></div>
                             </div>
-
                             <div class='row'>
                                 <div class='input-field col s12'>
                                     <input
@@ -100,7 +95,6 @@
                                     <label for='email'>{{ __('E-Mail Address') }}Enter your email</label>
                                 </div>
                             </div>
-
                             <div class='row'>
                                 <div class='input-field col s12'>
                                     <input
@@ -121,7 +115,6 @@
                                     </a>
                                 </label>
                             </div>
-
                             <br/>
                             <center>
                                 <div class='row'>
@@ -139,7 +132,6 @@
             <div class="section"></div>
             <div class="section"></div>
         </main>
-
         <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
         <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>

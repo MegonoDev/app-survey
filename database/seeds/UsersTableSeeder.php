@@ -14,10 +14,42 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = App\User::create([
+        DB::table('users')->insert([
+            [
             'name' => 'Super Admin',
             'email' => 'superadmin@admin.com',
             'password' => bcrypt('password')
+            ],
+            [
+            'name'     => 'Tegal',
+            'email'    => 'tegal@test.com',
+            'password' => bcrypt('password')
+            ],
+            [
+            'name'     => 'Pekalongan',
+            'email'    => 'pekalongan@test.com',
+            'password' => bcrypt('password')
+            ],
+            [
+            'name'     => 'Semarang',
+            'email'    => 'semarang@test.com',
+            'password' => bcrypt('password')
+            ],
+            [
+            'name'     => 'Eonesia',
+            'email'    => 'eonesia@test.com',
+            'password' => bcrypt('password')
+            ],
+            [
+            'name'     => 'Dinamika',
+            'email'    => 'dinamika@test.com',
+            'password' => bcrypt('password')
+            ],
+            [
+            'name'     => 'Aria',
+            'email'    => 'aria@test.com',
+            'password' => bcrypt('password')
+            ],   
         ]);
     }
 }

@@ -23,22 +23,18 @@ class OraganizersTableSeeder extends Seeder
         $dea = Dealereo::create(['nama' => 'YAMAHA AGUNG SEMARANG', 
                                  'organizer_id' => '1',
                                  'role_id'=> '4']);
-
-        $org  = Organizer::create(['nama' => 'Eo']);
-        $eo  = Dealereo::create(['nama' => 'EONESIa', 
+        $org = Organizer::create(['nama' => 'Eo']);
+        $eo  = Dealereo::create(['nama' => 'EONESIA', 
                                  'organizer_id' => '2',
-                                 'role_id' => '3']);
+                                 'role_id' => '5']);
         $eo  = Dealereo::create(['nama' => 'DINAMIKA', 
                                  'organizer_id' => '2',
-                                 'role_id' => '2']);
+                                 'role_id' => '6']);
         $eo  = Dealereo::create(['nama' => 'ARIA', 
                                  'organizer_id' => '2',
-                                 'role_id' => '4']);
-        
+                                 'role_id' => '7']);
         $alamat = Location::create(['nama' => 'jl.Sudirman Tegal']);
         $alamat = Location::create(['nama' => 'jl.Sudirman Pekalongan']);
         $alamat = Location::create(['nama' => 'jl.Sudirman Semarang']);
-
-        
     }
 }

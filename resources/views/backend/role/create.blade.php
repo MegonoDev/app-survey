@@ -1,5 +1,5 @@
                         <h4 class="card-title">Tambah Kota</h4>
-                        {!! Form::open(['route'=>'kota.store', 'class'=> 'form-horizontal form-material']) !!}
+                        {!! Form::open(['route'=>'role.store', 'class'=> 'form-horizontal form-material']) !!}
                         {{ csrf_field() }}
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <label class="col-md-12">Nama Kota</label>

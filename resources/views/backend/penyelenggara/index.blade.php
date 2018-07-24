@@ -28,7 +28,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>#</th>
-                                        <th>Kota</th>
+                                        <th>Role</th>
                                         <th>Penyelenggara</th>
                                         <th>Dealer / Eo</th>
                                         <th>Action</th>

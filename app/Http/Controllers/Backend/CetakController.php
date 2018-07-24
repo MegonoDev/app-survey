@@ -10,16 +10,24 @@ use Session;
 use Auth;
 use Excel;
 use App\Exports\DataExport;
+use App\Exports\PdfExport;
+use PDF;
 
 
 class CetakController extends Controller
 {
     
-    public function cetakLaporan()
+    public function __construct()
     {
-        return view('backend.cetak.index');
+        $this->middleware('auth');
     }
-    public function cetakLaporanPost(Request $request)
+
+    public function cetakLaporanExcel()
+    {
+        return view('backend.cetak.excel');
+    }
+
+    public function cetakLaporanPostExcel(Request $request)
     {
         $bulan = $request->get('bulan');
         $tahun = $request->get('tahun');
@@ -41,7 +49,7 @@ class CetakController extends Controller
                 'level'=>'danger',
                 'message'=>'<i class="fa fa-check"></i> Data Member Bulan '.$bulan.' Tahun '.$tahun.' Tidak Ada'
             ]);
-            return view('backend.cetak.index');
+            return view('backend.cetak.excel');
         } else {
             Session::flash('flash_notification', [
                 'level'=>'success',
@@ -51,6 +59,43 @@ class CetakController extends Controller
         }   
     
     }
+
+    public function cetakLaporanPdf()
+    {
+        return view('backend.cetak.pdf');
+    }
+
+    public function cetakLaporanPostPdf(Request $request)
+    {
+        $bulan = $request->get('bulan');
+        $tahun = $request->get('tahun');
+        $filename = 'Laporan Data Member '.$bulan.'-'.$tahun;
+        $role = $this->lihatId();
+        $dealereo_id = $role['0'];
+        if (Auth::user()->id == 1) {
+        $members = Member::all();
+        } else {
+        $members = Member::whereMonth('created_at', $bulan)
+                        ->whereYear('created_at', $tahun)
+                        ->where('dealereo_id', $dealereo_id)
+                        ->get();
+        }
+        if (count($members) == "") {
+            Session::flash('flash_notification', [
+                'level'=>'danger',
+                'message'=>'<i class="fa fa-check"></i> Data Member Bulan '.$bulan.' Tahun '.$tahun.' Tidak Ada'
+            ]);
+            return view('backend.cetak.pdf');
+        } else {
+            Session::flash('flash_notification', [
+                'level'=>'success',
+                'message'=>'<i class="fa fa-check"></i> Data Member Bulan '.$bulan.' Tahun '.$tahun.' Berhasil di Download'
+            ]);
+            $pdf = PDF::loadView('backend.cetak.pdf-laporan', compact('members'));
+            return $pdf->setPaper('a4', 'landscape')->download('invoice.pdf');
+        } 
+    }
+
     public function lihatId()
     {
         $role_id = Auth::user()->roles->implode('id');

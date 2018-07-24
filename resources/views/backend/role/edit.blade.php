@@ -1,5 +1,5 @@
                         <h4 class="card-title">Edit Kota</h4>
-                        {!! Form::model($rolesedit, ['route' => ['kota.update', $rolesedit],'method'=>'PUT', 'class' => 'form-horizontal
+                        {!! Form::model($rolesedit, ['route' => ['role.update', $rolesedit],'method'=>'PUT', 'class' => 'form-horizontal
                         form-material']) !!}
                         {{ csrf_field() }}
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -12,7 +12,7 @@
                             </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                {!! Form::submit('edit', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::submit('update', ['class' => 'btn btn-primary']) !!}
                             </div>
                         </div>
                         {!! Form::close() !!}

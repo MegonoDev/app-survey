@@ -14,6 +14,7 @@ use App\Member;
 
 class FrontendController extends Controller
 {
+	
     public function event()
     {
         return view('welcome');

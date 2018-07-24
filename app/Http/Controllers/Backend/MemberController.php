@@ -28,16 +28,16 @@ class MemberController extends Controller
     public function index()
     {
         $lihat_id = $this->lihatId();
-        $id_lihat = $lihat_id['0'];
        if (Auth::user()->id == 1) {
           $members = Member::paginate(10);
           $totalmembers = Member::all();
        } else {
-          $members = Member::where('dealereo_id', $id_lihat)->paginate(10);
-          $totalmembers = Member::where('dealereo_id', $id_lihat)->get();
+          $members = Member::where('dealereo_id', $lihat_id['0'])
+                            ->paginate(10);
+          $totalmembers = Member::where('dealereo_id', $lihat_id['0'])->get();
        }
        $totalMember = count($totalmembers);
-        return view('backend.member.index', compact('members', 'totalMember'));
+       return view('backend.member.index', compact('members', 'totalMember'));
     }
 
     /**

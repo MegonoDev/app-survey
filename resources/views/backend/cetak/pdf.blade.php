@@ -1,4 +1,5 @@
-@extends('layouts/eonesia/b-n/master') @section('content')
+@extends('layouts/eonesia/b-n/master')
+@section('content')
 <div class="page-wrapper">
     <div class="container-fluid">
         <div class="row page-titles">
@@ -22,7 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Cetak Laporan</h4>
-                        {!! Form::open(['route'=>'cetak.laporan-post', 'class'=> 'form-horizontal
+                        {!! Form::open(['route'=>'cetak.laporan-post.pdf', 'class'=> 'form-horizontal
                         form-material']) !!}
                         {{ csrf_field() }}
                         <div class="form-group {{ $errors->has('bulan') ? 'has-error' : '' }}">

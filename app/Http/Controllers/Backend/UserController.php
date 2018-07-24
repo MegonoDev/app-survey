@@ -15,6 +15,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $roles = Role::pluck('name', 'id');
@@ -29,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {        
-        return view('backend.admin.create');
+        
     }
 
     /**

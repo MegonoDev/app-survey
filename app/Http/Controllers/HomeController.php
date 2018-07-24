@@ -29,20 +29,12 @@ class HomeController extends Controller
     public function index()
     {
 
-    $chartbar = Charts::database(Member::all(), 'bar', 'highcharts')
-    ->title('Data Member Pertahun')
-    ->elementLabel("Total")
-    ->dimensions(500, 500)
-    ->responsive(true)
-    ->groupByYear(10);
- 
-
-    $chartpie = Charts::database(Member::all(), 'pie', 'highcharts')
+    $chartpie = Charts::database(Dealereo::all(), 'pie', 'highcharts')
     ->title("Data Member Pertahun")
     ->dimensions(500, 500)
     ->responsive(true)
-    ->groupByYear(10);
-    return view('home',compact('chartbar', 'chartpie'));
+    ->groupBy('nama');
+    return view('home',compact('chartpie'));
     }
 
     public function lihatId()

@@ -22,11 +22,6 @@
             <!-- Tab panes -->
             <div class="card-body">
                     <form  class="form-horizontal form-material">
-                            @if(count($getKode) == "")
-                            <center>
-                                <h2 class="text-themecolor"><b><font color="black">Kode Yang Anda Cari Tidak Ada !!!</font></b></h2>
-                            </center>
-                            @else
                             @foreach($getKode as $kode)
                             <div class="form-group">
                                    <label class="col-md-12">Kode</label>
@@ -77,7 +72,7 @@
                                         @endif
                                    </div>
                                    </div>
-                       </form> 
+                                </form> 
                                 @if( $kode->status == '0')
                                    <td>
                                            {!! Form::model($getKode, ['route' => ['verifikasiKode', $kode->id], 'method' => 'put']) !!}
@@ -93,13 +88,10 @@
                                    </td> 
                                    @endif
                                    @endforeach
-                                   @endif
-                </form>
             </div>
         </div>
        
     </div>
 </div>
 </div>
-
 @endsection

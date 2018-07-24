@@ -14,6 +14,11 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $roles = Role::paginate(5);
@@ -44,7 +49,7 @@ class RoleController extends Controller
             'level'=>'info',
             'message'=>'<h4><i class="fa fa-check">Berhasil !</i></h4> <br> Kota  '.$request->name.' Sukses Di Tambah'
         ]);
-        return redirect(route('kota.index'));
+        return redirect(route('role.index'));
     }
 
     /**
@@ -87,7 +92,7 @@ class RoleController extends Controller
             'level'=>'success',
             'message'=>'<h4><i class="fa fa-check">Berhasil !</i></h4> <br> Kota  '.$roles->name.' Sudah Di Update'
         ]);
-        return redirect(route('kota.index'));
+        return redirect(route('role.index'));
     }
 
     /**

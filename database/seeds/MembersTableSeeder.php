@@ -31,7 +31,7 @@ class MembersTableSeeder extends Seeder
                 'kode'           => mt_rand(10000, 99999),
                 'status'         => rand(0, 1),
                 'organizer_id'   => rand(1, 2),
-                'dealereo_id'    => rand(1, 3),
+                'dealereo_id'    => rand(1, 6),
                 'location_id'    => rand(1, 3),
                 'created_at'     => $faker->date, 
             ];

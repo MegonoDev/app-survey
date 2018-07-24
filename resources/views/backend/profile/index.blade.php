@@ -47,13 +47,11 @@
             </div>
             <div class="col-lg-8 col-xlg-9 col-md-7">
                 <div class="card">
-                    <!-- Tab panes -->
                     <div class="card-body">
                             <h4 class="card-title">Edit Profile</h4>
                         {!! Form::model($users, ['route' => ['updateprofile', $users],'method'=>'PUT',
                         'class' => 'form-horizontal form-material']) !!}
-                        {{ csrf_field() }}
-                        
+                        {{ csrf_field() }}                        
                                 {!! Form::hidden('id', $users->id, ['id' => 'title', 'class' => 'form-control
                                 form-control-line', 'placeholder' => 'Input Nama Admin']) !!} 
                                 
@@ -70,8 +68,8 @@
                             <label class="col-md-12">Email</label>
                             <div class="col-md-12">
                                 {!! Form::text('email', $users->email, ['id' => 'title', 'class' =>
-                                'form-control form-control-line', 'placeholder' => 'Input Email Admin']) !!} {!!
-                                $errors->first('email', '<p class="help-block">:message</p>') !!}
+                                'form-control form-control-line', 'placeholder' => 'Input Email Admin']) !!} 
+                                {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
 

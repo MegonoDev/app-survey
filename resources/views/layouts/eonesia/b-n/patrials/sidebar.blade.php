@@ -7,7 +7,7 @@
     <div class="scroll-sidebar">
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li> <a class="waves-effect waves-dark" href="{{ url ('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li> <a class="waves-effect waves-dark" href="{{ url ('backend/home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('member.index') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Member</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('lokasi-kota.index') }}" aria-expanded="false"><i class="fa fa-map-marker"></i><span class="hide-menu">Lokasi</span></a></li>
                 <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu"><b>LAPORAN</b></span></a></li>

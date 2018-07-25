@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dealereo;
 use App\Member;
@@ -16,10 +17,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+       
+    // }
 
     /**
      * Show the application dashboard.
@@ -29,12 +30,20 @@ class HomeController extends Controller
     public function index()
     {
 
-    $chartpie = Charts::database(Dealereo::all(), 'pie', 'highcharts')
+    $chartbar = Charts::database(Member::all(), 'bar', 'highcharts')
+    ->title('Data Member Pertahun')
+    ->elementLabel("Total")
+    ->dimensions(500, 500)
+    ->responsive(true)
+    ->groupByYear(10);
+ 
+
+    $chartpie = Charts::database(Member::all(), 'pie', 'highcharts')
     ->title("Data Member Pertahun")
     ->dimensions(500, 500)
     ->responsive(true)
-    ->groupBy('nama');
-    return view('home',compact('chartpie'));
+    ->groupByYear(10);
+    return view('home',compact('chartbar', 'chartpie'));
     }
 
     public function lihatId()

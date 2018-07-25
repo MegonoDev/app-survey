@@ -1,18 +1,31 @@
 <?php
 
+// Route::get('/login-event', function () {
+//     return view('auth.login');
+// });
+
+// Route::post('login-post', [
+//     'uses' => 'Auth\LoginController@login',
+//     'as'   => 'login.post'
+// ]); 
+
+// Route::post('logout', [
+//     'uses' => 'Auth\LoginController@logout',
+//     'as'   => 'logout'
+// ]); 
 Route::get('/login-event', function () {
     return view('auth.login');
 });
 
 Route::post('login-post', [
     'uses' => 'Auth\LoginController@login',
-    'as'   => 'login.post'
+    'as'   => 'login'
 ]); 
-
 Route::post('logout', [
     'uses' => 'Auth\LoginController@logout',
     'as'   => 'logout'
 ]); 
+
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('pendaftaran/test-drive', 'DopdownController@getData')->name('getData');
@@ -23,18 +36,17 @@ Route::post('pendaftaran/post', [
 	'as'   => 'registerTestdrive'
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function() { 
+
+Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['auth']], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+
     Route::resource('penyelenggara', 'DealereoController', ['except' => [
         'create', 'show'      
      ]]); 
      Route::resource('member', 'MemberController', ['only' => [
         'index'     
      ]]);
-    //  Route::resource('kota', 'RoleController', ['only' => [
-    //     'index', 'update', 'edit',      
-    //  ]]);
      Route::resource('role', 'RoleController', ['except' => [
         'create', 'show'      
      ]]);

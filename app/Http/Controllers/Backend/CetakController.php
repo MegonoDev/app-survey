@@ -35,9 +35,10 @@ class CetakController extends Controller
         $role = $this->lihatId();
         $dealereo_id = $role['0'];
         if (Auth::user()->id == 1) {
-        $members = Member::whereMonth('created_at', $bulan)
-                         ->whereYear('created_at', $tahun)
-                         ->get();
+        // $members = Member::whereMonth('created_at', $bulan)
+        //                  ->whereYear('created_at', $tahun)
+        //                  ->get();
+        $members = Member::all();
         } else {
         $members = Member::whereMonth('created_at', $bulan)
                         ->whereYear('created_at', $tahun)
@@ -55,7 +56,7 @@ class CetakController extends Controller
                 'level'=>'success',
                 'message'=>'<i class="fa fa-check"></i> Data Member Bulan '.$bulan.' Tahun '.$tahun.' Berhasil di Download'
             ]);
-            return Excel::download(new DataExport($members), $filename.'.xls');
+            return Excel::download(new DataExport($members), $filename.'.xls'); 
         }   
     
     }
@@ -92,7 +93,7 @@ class CetakController extends Controller
                 'message'=>'<i class="fa fa-check"></i> Data Member Bulan '.$bulan.' Tahun '.$tahun.' Berhasil di Download'
             ]);
             $pdf = PDF::loadView('backend.cetak.pdf-laporan', compact('members'));
-            return $pdf->setPaper('a4', 'landscape')->download('invoice.pdf');
+            return $pdf->setPaper('legal', 'landscape')->download($filename.'.pdf');
         } 
     }
 

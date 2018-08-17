@@ -1,6 +1,5 @@
 <h4 class="card-title">Tambah Admin Kota</h4>
-{!! Form::open(['route'=>'admin-kota.store', 'class'=> 'form-horizontal
-form-material']) !!}
+{!! Form::open(['route'=>'admin-kota.store', 'class'=> 'form-horizontal form-material']) !!}
 {{ csrf_field() }}
 
 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">

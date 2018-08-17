@@ -65,11 +65,29 @@
             .setCustomValidity("Mohon ceklis untuk setuju dengan ketentuan dan kebijakan");
     </script>
     <script type="text/javascript">
-        $("select[name='organizer_id']").change(function () {
-            var organizer_id = $(this).val();
+        $("select[name='id_prov']").change(function () {
+            var id_prov = $(this).val();
             var token = $("input[name='_token']").val();
             $.ajax({
-                url: "<?php echo route('select-ajax') ?>",
+                url: "<?php echo route('select-kabupaten') ?>",
+                method: 'POST',
+                data: {
+                    id_prov: id_prov,
+                    _token: token
+                },
+                success: function (data) {
+                    $("select[name='id_kab'").html('');
+                    $("select[name='id_kab'").html(data.options);
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $("select[name='organizer_id']").change(function () {
+            var id_prov = $(this).val();
+            var token = $("input[name='_token']").val();
+            $.ajax({
+                url: "<?php echo route('select-dealereo') ?>",
                 method: 'POST',
                 data: {
                     organizer_id: organizer_id,

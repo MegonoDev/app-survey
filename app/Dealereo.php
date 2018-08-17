@@ -21,7 +21,7 @@ class Dealereo extends Model
     {
         return $this->belongsTo(Role::class);
     }
-    
+
     public function members()
     {
     	return $this->hasMany(Member::class,'dealereo_id');

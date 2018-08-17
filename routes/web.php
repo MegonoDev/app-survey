@@ -7,29 +7,29 @@
 // Route::post('login-post', [
 //     'uses' => 'Auth\LoginController@login',
 //     'as'   => 'login.post'
-// ]); 
+// ]);
 
 // Route::post('logout', [
 //     'uses' => 'Auth\LoginController@logout',
 //     'as'   => 'logout'
-// ]); 
+// ]);
 Route::get('/login-event', function () {
     return view('auth.login');
 });
-
 Route::post('login-post', [
     'uses' => 'Auth\LoginController@login',
     'as'   => 'login'
-]); 
+]);
 Route::post('logout', [
     'uses' => 'Auth\LoginController@logout',
     'as'   => 'logout'
-]); 
+]);
 
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('pendaftaran/test-drive', 'DopdownController@getData')->name('getData');
-Route::post('select-ajax', ['as'=>'select-ajax','uses'=>'DopdownController@selectAjax']);
+Route::post('select-kabupaten', ['as'=>'select-kabupaten','uses'=>'DopdownController@selectKabupaten']);
+Route::post('select-dealereo', ['as'=>'select-dealereo','uses'=>'DopdownController@selectDealereo']);
 
 Route::post('pendaftaran/post', [
 	'uses' => 'FrontendController@registerTestdrive',
@@ -42,24 +42,24 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('penyelenggara', 'DealereoController', ['except' => [
-        'create', 'show'      
-     ]]); 
+        'create', 'show'
+     ]]);
      Route::resource('member', 'MemberController', ['only' => [
-        'index'     
+        'index'
      ]]);
      Route::resource('role', 'RoleController', ['except' => [
-        'create', 'show'      
+        'create', 'show'
      ]]);
      Route::resource('admin-kota', 'UserController', ['except' => [
-        'create', 'show'      
+        'create', 'show'
      ]]);
      Route::resource('lokasi-kota', 'LocationController', ['except' => [
-        'create', 'show'      
+        'create', 'show'
      ]]);
 
-    //profile 
+    //profile
     Route::get('editpassword/{id}', 'ProfileController@editpassword')->name('editpassword');
-    Route::put('updatepassword/{id}', 'ProfileController@updatepassword')->name('updatepassword'); 
+    Route::put('updatepassword/{id}', 'ProfileController@updatepassword')->name('updatepassword');
     Route::get('profile/{name}', 'ProfileController@profile')->name('profile');
     Route::put('updateprofile/{id}', 'ProfileController@updateprofile')->name('updateprofile');
     Route::get('profilepassword/{name}', 'ProfileController@profilepassword')->name('profilepassword');
@@ -67,11 +67,11 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
     Route::post('search/getkode/', [
         'uses' => 'VerifikasiController@getkode',
         'as'   => 'search'
-    ]); 
+    ]);
     Route::put('verifikasi/kode/', [
         'uses' => 'VerifikasiController@verifikasiKode',
         'as'   => 'verifikasiKode'
-    ]); 
+    ]);
     //cetak laporan
     Route::get('cetakLaporanExcel', [
         'uses' => 'CetakController@cetakLaporanExcel',

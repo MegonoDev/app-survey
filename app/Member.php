@@ -9,18 +9,32 @@ class Member extends Model
 {
     protected $fillable = [
         'nama',
-        'jenis_kelamin', 
+        'jenis_kelamin',
         'email',
-        'alamat', 
+        'alamat',
         'tempat_lahir',
         'tanggal_lahir',
         'handphone',
         'kode',
         'status',
+        'pekerjaan',
+        'perkawinan',
+        'id_prov',
+        'id_kab',
         'organizer_id',
         'dealereo_id',
         'location_id'
     ];
+
+    public function provinsi()
+    {
+    	return $this->belongsTo(Provinsi::class);
+    }
+
+    public function kabupaten()
+    {
+    	return $this->belongsTo(Kabupaten::class);
+    }
 
     public function organizer()
     {
@@ -54,7 +68,7 @@ class Member extends Model
 
     public function getJeniskelaminAttribute()
     {
-        if ($this->attributes['jenis_kelamin'] == 1) 
+        if ($this->attributes['jenis_kelamin'] == 1)
         {
             return 'laki-laki';
         } else {

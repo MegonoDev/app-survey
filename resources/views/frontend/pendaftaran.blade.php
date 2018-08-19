@@ -23,7 +23,7 @@
         <div class="container">
             <br>
             <p class="text-center">
-                <b>PENDAFTARAN TEST DRIVE YAMAHA</b>
+                <h4 class="text-center">Silahkan isi data diri untuk mendapatkan nomor<br> undian Bahagia Keluarga Bersama YAMAHA</h4>
             </a>
         </p>
         <hr>
@@ -31,8 +31,8 @@
             <div class="col-md-6">
                 <div class="card">
                     <header class="card-header">
-                        <a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
-                        <h4 class="card-title mt-2">Sign up</h4>
+                        <h6 class="card-title mt-2">INFORMASI PERSONAL ANDA</h6>
+                        <span>Isi Data Diri Anda</span>
                     </header>
                     @include('frontend._form')
                 </div>
@@ -42,20 +42,8 @@
     <br><br>
     <article class="bg-secondary mb-3">
         <div class="card-body text-center">
-            <h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>
-            <p class="h5 text-white">Components and templates
-                <br>
-                for Ecommerce, marketplace, booking websites and product landing pages</p>
-            <br>
-            <p>
-                <a
-                    class="btn btn-warning"
-                    target="_blank"
-                    href="http://bootstrap-ecommerce.com/">
-                    Bootstrap-ecommerce.com
-                    <i class="fa fa-window-restore "></i>
-                </a>
-            </p>
+            <h3 class="text-white mt-3">EONESIA</h3>
+            <p class="h5 text-white">Brand Activation | Apparel & Merchendise | Advertising | Event Organizer | Product <br>| 3D Animation | Exhibition | Multimedia Development | Customer Insight
         </div>
         <br><br>
     </article>
@@ -78,24 +66,6 @@
                 success: function (data) {
                     $("select[name='id_kab'").html('');
                     $("select[name='id_kab'").html(data.options);
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $("select[name='organizer_id']").change(function () {
-            var id_prov = $(this).val();
-            var token = $("input[name='_token']").val();
-            $.ajax({
-                url: "<?php echo route('select-dealereo') ?>",
-                method: 'POST',
-                data: {
-                    organizer_id: organizer_id,
-                    _token: token
-                },
-                success: function (data) {
-                    $("select[name='dealereo_id'").html('');
-                    $("select[name='dealereo_id'").html(data.options);
                 }
             });
         });

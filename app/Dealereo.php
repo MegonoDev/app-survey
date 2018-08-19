@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dealereo extends Model
 {
     protected $fillable = [
-        'nama',
-        'organizer_id',
-        'role_id'
+        'kode_dealer'
     ];
 
     public function organizer()
@@ -25,5 +23,10 @@ class Dealereo extends Model
     public function members()
     {
     	return $this->hasMany(Member::class,'dealereo_id');
+    }
+
+    public function users()
+    {
+    	return $this->hasMany(User::class,'dealereo_id');
     }
 }

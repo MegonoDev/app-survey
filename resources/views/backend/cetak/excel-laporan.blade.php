@@ -46,6 +46,7 @@
 <table id="customers" border="1" cellpadding="10">
     <thead>
     <tr>
+        <th>No</th>
         <th width="500px">Nama</th>
         <th>Email</th>
         <th>Jenis Kelamin</th>
@@ -54,36 +55,25 @@
         <th>Handphone</th>
         <th>Kode</th>
         <th>Status</th>
-        <th>Organizer</th>
-        <th>Kota</th>
-        <th>Lokasi</th>
+        <th>status</th>
         <th>Register</th>
     </tr>
     </thead>
     <tbody>
+        <?php $no = 1; ?>
     @foreach($members as $member)
         <tr>
-            <td width="500px">{{ $member->nama }}</td>
-            <td>{{ $member->email }}</td>
-            <td>{{ $member->Jeniskelamin }}</td>
-            <td>{{ $member->alamat }}</td>
-            <td>{{ $member->tempat_lahir }}, {{ $member->Tanggallahir }}</td>
-            <td>+{{ $member->handphone }}</td>
-            <td>{{ $member->kode }}</td>
-            @if( $member->status == '0')
-            <td>
-                <span class="badge badge-danger">Belum Di Verifikasi</span>
-            </td>
-            @else
-            <td>
-                <span class="badge badge-success">Sudah Di Verifikasi</span>
-            </td>
-            @endif
-            <td>{{ $member->dealereo->nama }}</td>
-            <td>{{ $member->dealereo->role->name }}</td>
-            <td>{{ $member->location->nama }}</td>
-            <td>{{ $member->CreatedAt }}</td>
+                    <td>{{ $no++ }}</td>
+                    <td >{{ $member->nama }}</td>
+                    <td >{{ $member->email }}</td>
+                    <td >{{ $member->jenis_kelamin }}</td>
+                    <td >{{ $member->alamat }}</td>
+                    <td >{{ $member->tempat_lahir }}, {{ $member->Tanggallahir }}</td>
+                    <td >+{{ $member->handphone }}</td>
+                    <td >{{ $member->kode }}</td>
+                    <td >{{ $member->status_verifikasi }}</td>
+                    <td >{{ $member->CreatedAt }}</td>
         </tr>
-    @endforeach 
+    @endforeach
 </body>
 </html>

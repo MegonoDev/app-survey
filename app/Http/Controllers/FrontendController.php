@@ -21,10 +21,14 @@ class FrontendController extends Controller
 
     public function registerTestdrive(MemberRequest $request)
     {
-		$data = $request->except('handphone', 'status');
-		$kode = $this->makeKode();
-		$data['kode'] = $this->makeKode();
-		$data['status'] = 0;
+
+		$data = $request->all();
+        $data['kode'] = $this->makeKode();
+        $kode = $this->makeKode();
+        $data['status_verifikasi'] = 0;
+        $data['motorbaru'] = implode(",", $request->motorbaru);
+        $data['kendaraan'] = implode(",", $request->kendaraan);
+        $data['operator_input'] = 2;
 		if(isset($request->handphone)){
 			$nohp = str_replace(" ","",$request->handphone);
             if(!preg_match('/[^+0-9]/',trim($nohp))){
@@ -38,40 +42,34 @@ class FrontendController extends Controller
 			}
 		}
 
-        // smsgetway
-//   $curl = curl_init();
-//   curl_setopt_array($curl, array(
-//   CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => "",
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 30,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => "POST",
-//   CURLOPT_POSTFIELDS => " {\n   \"from\":\"EONESIA\",\n   \"to\":\"$hp'\",\n   \"text\":\"kode pendaftaran event anda:$kode\"\n }",
-//   CURLOPT_HTTPHEADER => array(
-//     "accept: application/json",
-//     "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
-//     "cache-control: no-cache",
-//     "content-type: application/json",
-//     "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
-//   ),
-// ));
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => " {\n   \"from\":\"EONESIA\",\n   \"to\":\"$hp'\",\n   \"text\":\"Terima Kasih Telah Registrasi. Simpan Kode Registrasi Anda $kode. Untuk Melihat Produk Terbaru Klik Link : https://www.yamaha-motor.co.id/product/lexi-s\"\n }",
+  CURLOPT_HTTPHEADER => array(
+    "accept: application/json",
+    "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
+    "cache-control: no-cache",
+    "content-type: application/json",
+    "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
+  ),
+));
 
-// $response = curl_exec($curl);
-// $err = curl_error($curl);
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
 
-// curl_close($curl);
 
-// if ($err) {
-//   echo "cURL Error #:" . $err;
-// } else {
-//   echo $response;
-// }
 		 Member::create($data);
          Session::flash('flash_notification', [
             'level'=>'success',
-            'message'=>'<h4><i class="material-icons">check</i> Berhasil !</h4>Pendaftaran Test Drive.... <br> kode di kirim 1x24 jam ke no handphone '.$request->handphone.' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
+            'message'=>'<h4><i class="material-icons">check</i> Berhasil !</h4>Terima Kasih Telah Registrasi...<br> kode di kirim 1x24 jam ke no handphone '.$request->handphone.' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
         ]);
         return redirect('/');
 

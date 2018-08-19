@@ -15,47 +15,29 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function profile($name)
+    public function profile($email)
     {
-        $users = User::where('name', $name)->first();
+        $users = User::where('email', $email)->first();
         return view('backend.profile.index', compact('users'));
     }
 
-    public function profilepassword($name)
-    {
-        $users = User::where('name', $name)->first();
-        return view('backend.profile.password', compact('users'));
-    }
-    
     public function updateprofile(Request $request, $id)
     {
-       $users = User::find($id);
-       $this->validate($request, [
-        'name' => 'bail|required|min:2',
-        'email' => 'required',
-        'password'=>'confirmed'
-    ]);
-  
-       if($request->password){
-        $pass = bcrypt($request->password);
-        $data = array('password' => $pass,
-        );
-       }else{
-        $data = $request->only('name', 'email');
-       }
-       $users->update($data);
-       Session::flash('flash_notification', [
-        'level'=>'success',
-        'message'=>'<i class="fa fa-check"></i> Profile  '.$users->name.' Berhasil Di Update'
+        $update  = User::findOrFail($id);
+        $data = $request->all();
+        $update->update($data);
+        Session::flash('flash_notification', [
+            'level'=>'success',
+            'message'=>'<i class="fa fa-check"></i>'.$request->name.' Anda Berhasil Update Profile'
         ]);
-       return redirect(route('home'));       
+        return redirect(route('home'));
+
     }
 
-    public function editpassword($id)
+    public function profilepassword($email)
     {
-        $password = User::findOrFail($id);
-        $users = User::paginate(10);
-        return view('backend.admin.index', compact('password', 'users')); 
+        $users = User::where('email', $email)->first();
+        return view('backend.profile.password', compact('users'));
     }
 
     public function updatepassword(Request $request, $id)
@@ -72,6 +54,6 @@ class ProfileController extends Controller
             'level'=>'success',
             'message'=>'<i class="fa fa-check"></i> Password  '.$users->name.' Berhasil Di Update'
             ]);
-        return redirect(route('admin-kota.index'));  
+        return redirect(route('home'));
     }
 }

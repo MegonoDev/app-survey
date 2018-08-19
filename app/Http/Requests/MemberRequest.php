@@ -31,10 +31,13 @@ class MemberRequest extends FormRequest
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'handphone' => 'required|min:11|max:13',
-            'location_id' => 'required',
-            'organizer_id' => 'required',
-            'dealereo_id' => 'required'
-            
+            'pekerjaan' => 'required',
+            'perkawinan' => 'required',
+            'kendaraan' => 'required',
+            'id_kab' => 'required',
+            'id_prov' => 'required',
+            'motorbaru' => 'required'
+
         ];
     }
 
@@ -51,9 +54,12 @@ class MemberRequest extends FormRequest
             'handphone.required' => 'Nomer Handphone Mohon Di isi dengan Benar',
             'handphone.max' => 'No Handphone harus benar ',
             'handphone.min' => 'No Handphone harus benar',
-            'location_id.required' => 'Lokasi Belum Di pilih',
-            'organizer_id.required' => 'Penyelenggara Belum Di pilih',
-            'dealereo_id.required' => 'Penyelenggara Belum Di pilih',
+            'pekerjaan.required' => 'Pekerjan Belum Di pilih',
+            'perkawinan.required' => 'Status Belum Di pilih',
+            'id_prov.required' => 'Provinsi Belum Di pilih',
+            'id_kab.required' => 'Kabupaten/Kota Belum Di pilih',
+            'kendaraan.required' => 'Kendaraan Belum Di pilih',
+            'motorbaru.required' => 'Silahkan Jawab Pertanyaan',
         ];
     }
 }

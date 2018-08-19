@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PenyelenggaraRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,17 @@ class PenyelenggaraRequest extends FormRequest
     public function rules()
     {
         return [
-            'kode_dealer' => 'required|string|unique:dealereos'
+            'name'  => 'required|string',
+            'email' => 'required|string',
+            'no_handphone' => 'required'
         ];
     }
     public function messages(Type $var = null)
     {
         return[
-            'kode_dealer.required' => 'Kode Dealer Dilarang Kosong',
-            'kode_dealer.unique' => 'Kode Dealer Sudah Ada',
+            'name.required' => 'Nama Dilarang Kosong',
+            'email.required' => 'Email Dilarang Kosong',
+            'no_handphone.required' => 'No Handphone Dilarang Kosong',
         ];
     }
 }

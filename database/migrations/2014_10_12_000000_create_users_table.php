@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('no_handphone');
+            $table->unsignedInteger('dealereo_id');
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('dealereo_id')->references('id')->on('dealereos')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

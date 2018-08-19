@@ -18,7 +18,7 @@ class RoleController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $roles = Role::paginate(5);

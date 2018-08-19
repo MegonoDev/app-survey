@@ -25,7 +25,6 @@
                         <center class="m-t-30">
                             <img src="http://www.408w130.com/admin-855.jpg" class="img-circle" width="150"/>
                             <h4 class="card-title m-t-10">{{ $users->name }}</h4>
-                            <h6 class="card-subtitle">{{ $users->roles->implode('name') }}</h6>
                             <div class="row text-center justify-content-md-center">
                                 <div class="col-4">
                                     <a href="javascript:void(0)" class="link">
@@ -49,13 +48,13 @@
                     <!-- Tab panes -->
                     <div class="card-body">
                         <h4 class="card-title">Ganti Password</h4>
-                        {!! Form::model($users, ['route' => ['updateprofile', $users],'method'=>'PUT',
+                        {!! Form::model($users, ['route' => ['updatepassword', $users],'method'=>'PUT',
                         'class' => 'form-horizontal form-material']) !!}
                         {{ csrf_field() }}
-                        
-                        {!! Form::hidden('id', $users->id) !!} 
+
+                        {!! Form::hidden('id', $users->id) !!}
                         {!! Form::hidden('name', $users->name) !!}
-                        {!! Form::hidden('email', $users->email) !!}                            
+                        {!! Form::hidden('email', $users->email) !!}
                         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                                 {!! Form::label('password', 'Password', ['class' => 'col-md-3

@@ -15,32 +15,16 @@ class VerifikasiController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function getkode(Request $request)
     {
-        $kode = $request->kode;
-        $role_id = $this->lihatId();
-        if (Auth::user()->id == 1) {
-        $getKode = Member::where('kode', $kode)
-                        ->get();
-                if(count($getKode) == ""){
-                    Session::flash('flash_notification', [
-                        'level'=>'danger',
-                        'message'=>'Kode : '.$request->kode.' Tidak Ada Silahkan Cek Kembali</h4>'
-                    ]);
-                    return back();
-                }
-        } else {
-        $getKode = Member::where('kode', $kode)
-                        ->where('dealereo_id', $role_id)
-                        ->get();
-                        if(count($getKode) == ""){
-                        Session::flash('flash_notification', [
-                            'level'=>'danger',
-                            'message'=>'Kode : '.$request->kode.' Tidak Ada Silahkan Cek Kembali</h4>'
-                        ]);
-                            return back();
-                        }
+        $getKode = $this->userCheckKode($request);
+        if (count($getKode) == 0) {
+           Session::flash('flash_notification', [
+            'level'=>'danger',
+            'message'=>'Kode : '.$request->kode.' Tidak Ada'
+         ]);
+        return redirect()->back();
         }
         return view('search', compact('getKode'));
     }
@@ -49,22 +33,29 @@ class VerifikasiController extends Controller
     {
         $id = $request->id;
         $members = Member::find($id);
-        $data    = $request->only(['status']);
-        $members->update($data);    
+        $data    = $request->only(['status_verifikasi']);
+        $members->update($data);
         Session::flash('flash_notification', [
             'level'=>'success',
             'message'=>'Kode : '.$request->kode.' <br> Nama : '.$request->nama.'<br> Berhasil di Verifikasi</h4>'
         ]);
-        return redirect(route('member.index'));
+        return redirect(route('customers.index'));
     }
 
-    public function lihatId()
+    public function userCheckKode($request)
     {
-        $role_id = Auth::user()->roles->implode('id');
-        $data = Dealereo::where('role_id', $role_id)->get();
-        foreach ($data as $key => $value) {
-            $id = $value->members->pluck('dealereo_id');
-        return $id;
+        $kode = $request->kode;
+        $role = Auth::user()->role_id;
+        $sales = Auth::user()->id;
+        if ($role == 1) {
+            $members = Member::where('kode', $kode)->get();;
+        } elseif($role == 2) {
+            $members = Member::where('kode', $kode)->where('operator_input', $role)->get();
+        } elseif ($role == 3) {
+            $members = Member::where('kode', $kode)->where('operator_input', $sales)->get();
         }
+        return $members;
+
     }
+
 }

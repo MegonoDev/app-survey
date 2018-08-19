@@ -22,13 +22,11 @@ class DealereoController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $organizers = DB::table('organizers')->pluck("nama","id")->all();
-        $roles = DB::table('roles')->pluck("name","id")->all();
         $dealereos = Dealereo::paginate(10);
-        return view('backend.penyelenggara.index', compact('dealereos', 'organizers', 'roles'));
+        return view('backend.dealereo.index', compact('dealereos'));
     }
 
     /**
@@ -53,10 +51,10 @@ class DealereoController extends Controller
         Dealereo::create($data);
         Session::flash('flash_notification', [
             'level'=>'info',
-            'message'=>'<i class="fa fa-check"></i> Penyelenggara '.$request->nama.' Berhasil Di Tambah'
+            'message'=>'<i class="fa fa-check"></i> Dealer '.$request->kode_dealer.' Berhasil Di Tambah'
         ]);
-        return redirect(route('penyelenggara.index'));
-        
+        return redirect(route('dealer.index'));
+
     }
 
     /**
@@ -78,11 +76,9 @@ class DealereoController extends Controller
      */
     public function edit($id)
     {
-        $organizers = DB::table('organizers')->pluck("nama","id")->all();
-        $roles = DB::table('roles')->pluck("name","id")->all();
         $dealereos = Dealereo::paginate(10);
         $edit      = Dealereo::findOrFail($id);
-        return view('backend.penyelenggara.index', compact('dealereos', 'organizers', 'edit', 'roles'));
+        return view('backend.dealereo.index', compact('edit','dealereos'));
     }
 
     /**
@@ -99,9 +95,9 @@ class DealereoController extends Controller
         $update->update($data);
         Session::flash('flash_notification', [
             'level'=>'success',
-            'message'=>'<i class="fa fa-check"></i> Penyelenggara '.$request->nama.' Berhasil Di Update'
+            'message'=>'<i class="fa fa-check"></i> Dealer '.$request->nama.' Berhasil Di Update'
         ]);
-        return redirect(route('penyelenggara.index'));
+        return redirect(route('dealer.index'));
 
     }
 
@@ -120,6 +116,6 @@ class DealereoController extends Controller
             'message'=>'<i class="fa fa-check"></i> Penyelenggara '.$update->nama.' Berhasil Di Hapus'
         ]);
         return redirect()->back();
-        
+
     }
 }

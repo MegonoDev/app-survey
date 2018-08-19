@@ -4,18 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends \Spatie\Permission\Models\Role
+class Role extends Model
 {
-    public function dealereos()
+    public function users()
     {
-        return $this->hasMany(Dealereo::class, 'role_id');
-    }
-
-    public function getNameCollAttribute()
-    {
-        if ($this->name == superadmin) 
-        {
-            return '';
-        } 
+    	return $this->hasMany(User::class,'dealereo_id');
     }
 }

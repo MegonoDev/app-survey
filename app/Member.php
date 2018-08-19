@@ -16,40 +16,20 @@ class Member extends Model
         'tanggal_lahir',
         'handphone',
         'kode',
-        'status',
+        'status_verifikasi',
         'pekerjaan',
         'perkawinan',
-        'id_prov',
+        'kendaraan',
         'id_kab',
-        'organizer_id',
-        'dealereo_id',
-        'location_id'
+        'motorbaru',
+        'operator_input'
     ];
-
-    public function provinsi()
-    {
-    	return $this->belongsTo(Provinsi::class);
-    }
-
-    public function kabupaten()
-    {
-    	return $this->belongsTo(Kabupaten::class);
-    }
-
-    public function organizer()
-    {
-    	return $this->hasOne('App\Organizer', 'foreign_key');
-    }
 
     public function dealereo()
     {
     	return $this->belongsTo(Dealereo::class);
     }
 
-    public function location()
-    {
-    	return $this->belongsTo(Location::class);
-    }
 
     public function getTanggallahirAttribute()
     {
@@ -63,16 +43,16 @@ class Member extends Model
 
     public function getCreatedAtAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->format('d-M-Y');
+        return Carbon::parse($this->attributes['created_at'])->format('d-M-Y H:i:s');
     }
 
-    public function getJeniskelaminAttribute()
+   public function getStatusverifikasiAtAttribute()
     {
-        if ($this->attributes['jenis_kelamin'] == 1)
+        if ($this->attributes['status_verifikasi'] == 0)
         {
-            return 'laki-laki';
+            return '<span class="badge badge-danger">Belum Di Verifikasi</span>';
         } else {
-            return 'perempuan';
+            return '<span class="badge badge-success">Sudah Di Verifikasi</span>';
         }
     }
 }

@@ -36,7 +36,7 @@
         </style>
     </head>
     <body>
-        <h4> <center> Laporan Data Member Test Drive <br> 
+        <h4> <center> Laporan Data Member Test Drive <br>
             Bulan {{ $members['0']->Laporanbulan }} </center> <hr></h4>
         <br>
         <table id="customers">
@@ -67,9 +67,6 @@
                        Status
                     </th>
                     <th >
-                       Lokasi
-                    </th>
-                    <th >
                        Register
                     </th>
                 </tr>
@@ -79,20 +76,17 @@
                     <td>{{ $no++ }}</td>
                     <td >{{ $member->nama }}</td>
                     <td >{{ $member->email }}</td>
-                    <td >{{ $member->Jeniskelamin }}</td>
+                    <td >{{ $member->jenis_kelamin }}</td>
                     <td >{{ $member->alamat }}</td>
-                    <td >{{ $member->tempat_lahir }},
-                        {{ $member->Tanggallahir }}</td>
+                    <td >{{ $member->tempat_lahir }}, {{ $member->Tanggallahir }}</td>
                     <td >+{{ $member->handphone }}</td>
                     <td >{{ $member->kode }}</td>
-                    @if( $member->status == '0')
-                    <td >Belum Di Verifikasi</td>
+                    @if($member->status_verifikasi == 0)
+                        <td >Belum Di verifikasi </td>
                     @else
-                    <td>
-                        Sudah Di Verifikasi
-                    </td>
+                        <td >Sudah Di verifikasi </td>
                     @endif
-                    <td >{{ $member->location->nama }}</td>
+
                     <td >{{ $member->CreatedAt }}</td>
                 </tr>
                 @endforeach

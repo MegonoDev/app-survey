@@ -251,14 +251,11 @@
               <img src="https://png.icons8.com/color/50/000000/whatsapp.png">
               <img src="https://png.icons8.com/color/50/000000/youtube-play.png">
               <img src="https://png.icons8.com/color/50/000000/google-plus-squared.png">
-            </li>ooter-copyright
+            </li>
           </ul>
         </div>
       </div>
     </div>
-    {{--  <div class="daftar-tombol blue-grey darken-3 center">
-          <a class="white-text center" href="">DAFTAR</a>
-      </div>  --}}
     <div class="footer-copyright blue-grey darken-3">
       <div class="container">
         <a class="white-text" href="">© 2017 e.o.n.e.s.i.a All rights reserved</a>

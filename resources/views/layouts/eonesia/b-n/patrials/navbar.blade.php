@@ -20,17 +20,19 @@
         <li class="nav-item dropdown">
             <div class="btn-group">
                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="http://www.408w130.com/admin-855.jpg" alt="user" class="img-circle" width="30"> 
+                    <img src="http://www.408w130.com/admin-855.jpg" alt="user" class="img-circle" width="30">
                     &nbsp;&nbsp;&nbsp; <font style="color:black">
                             @if(!Auth::user()->name)
-                            return redirect(route('login-event'))
+                            <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display:none;">
+                            {{ csrf_field() }}
+                            </form>
                             @else
                             {{ Auth::user()->name }}
                             @endif
                             </font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('profile', Auth::user()->name) }}">Profile</a>
-                        <a class="dropdown-item" href="{{ route('profilepassword', Auth::user()->name) }}">Ganti Password</a>
+                        <a class="dropdown-item" href="{{ route('profile', Auth::user()->email) }}">Profile</a>
+                        <a class="dropdown-item" href="{{ route('profilepassword', Auth::user()->email) }}">Ganti Password</a>
                         <a class="dropdown-item" href="{{ url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign Out</a>
                         <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display:none;">
                         {{ csrf_field() }}

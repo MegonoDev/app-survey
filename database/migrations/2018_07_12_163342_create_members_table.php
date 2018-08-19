@@ -23,13 +23,13 @@ class CreateMembersTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('handphone');
             $table->string('kode')->unique();
-            $table->string('status');
-            $table->integer('organizer_id')->unsigned();
-            $table->foreign('organizer_id')->references('id')->on('organizers')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('dealereo_id')->unsigned();
-            $table->foreign('dealereo_id')->references('id')->on('dealereos')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('location_id')->unsigned();
-            $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('status_verifikasi');
+            $table->string('pekerjaan');
+            $table->string('perkawinan');
+            $table->text('kendaraan');
+            $table->integer('id_kab');
+            $table->text('motorbaru');
+            $table->string('operator_input');
             $table->timestamps();
         });
     }

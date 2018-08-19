@@ -1,18 +1,5 @@
 <?php
 
-// Route::get('/login-event', function () {
-//     return view('auth.login');
-// });
-
-// Route::post('login-post', [
-//     'uses' => 'Auth\LoginController@login',
-//     'as'   => 'login.post'
-// ]);
-
-// Route::post('logout', [
-//     'uses' => 'Auth\LoginController@logout',
-//     'as'   => 'logout'
-// ]);
 Route::get('/login-event', function () {
     return view('auth.login');
 });
@@ -41,22 +28,16 @@ Route::post('pendaftaran/post', [
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('penyelenggara', 'DealereoController', ['except' => [
-        'create', 'show'
-     ]]);
-     Route::resource('member', 'MemberController', ['only' => [
-        'index'
-     ]]);
-     Route::resource('role', 'RoleController', ['except' => [
-        'create', 'show'
-     ]]);
-     Route::resource('admin-kota', 'UserController', ['except' => [
-        'create', 'show'
-     ]]);
-     Route::resource('lokasi-kota', 'LocationController', ['except' => [
+    Route::post('kabupaten-select', ['as'=>'kabupaten-select','uses'=>'MemberController@kabupatenSelect']);
+    Route::resource('dealer', 'DealereoController', ['except' => [
         'create', 'show'
      ]]);
 
+     Route::resource('customers', 'MemberController');
+     Route::resource('users', 'UserController');
+     Route::resource('role', 'RoleController', ['except' => [
+        'create', 'show'
+     ]]);
     //profile
     Route::get('editpassword/{id}', 'ProfileController@editpassword')->name('editpassword');
     Route::put('updatepassword/{id}', 'ProfileController@updatepassword')->name('updatepassword');

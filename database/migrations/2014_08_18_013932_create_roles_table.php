@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDealereosTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateDealereosTable extends Migration
      */
     public function up()
     {
-        Schema::create('dealereos', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->integer('organizer_id')->unsigned();
-            $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateDealereosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dealereos');
+        Schema::dropIfExists('roles');
     }
 }

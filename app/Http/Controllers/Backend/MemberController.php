@@ -24,19 +24,11 @@ class MemberController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $lihat_id = $this->lihatId();
-       if (Auth::user()->id == 1) {
-          $members = Member::paginate(10);
-          $totalmembers = Member::all();
-       } else {
-          $members = Member::where('dealereo_id', $lihat_id['0'])
-                            ->paginate(10);
-          $totalmembers = Member::where('dealereo_id', $lihat_id['0'])->get();
-       }
-       $totalMember = count($totalmembers);
+       $members = $this->userCheckMember();
+       $totalMember = count($members);
        return view('backend.member.index', compact('members', 'totalMember'));
     }
 
@@ -47,7 +39,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        // return view('backend.member.create');
+        $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
+        return view('backend.member.create', compact('provinsi'));
     }
 
     /**
@@ -58,7 +51,55 @@ class MemberController extends Controller
      */
     public function store(MemberRequest $request)
     {
+        $data = $request->all();
+        $data['kode'] = $this->makeKode();
+        $kode = $this->makeKode();
+        $data['status_verifikasi'] = 0;
+        $data['motorbaru'] = implode(",", $request->motorbaru);
+        $data['kendaraan'] = implode(",", $request->kendaraan);
+        $data['operator_input'] = $this->operatorInput();
+		if(isset($request->handphone)){
+			$nohp = str_replace(" ","",$request->handphone);
+            if(!preg_match('/[^+0-9]/',trim($nohp))){
+             if(substr(trim($nohp), 0, 1)!='0'){
+                return redirect('/');
+                }
+             elseif(substr(trim($nohp), 0, 1)=='0'){
+				$hp = '62'.substr(trim($nohp), 1);
+				$data['handphone'] = $hp;
+				}
+			}
+        }
+        // smsgetway
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => " {\n   \"from\":\"EONESIA\",\n   \"to\":\"$hp'\",\n   \"text\":\"Terima Kasih Telah Registrasi. Simpan Kode Registrasi Anda $kode. Untuk Melihat Produk Terbaru Klik Link : https://www.yamaha-motor.co.id/product/lexi-s\"\n }",
+  CURLOPT_HTTPHEADER => array(
+    "accept: application/json",
+    "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
+    "cache-control: no-cache",
+    "content-type: application/json",
+    "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
+  ),
+));
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
 
+
+		 Member::create($data);
+         Session::flash('flash_notification', [
+            'level'=>'success',
+            'message'=>'kode di kirim 1x24 jam ke no handphone '.$request->handphone.' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
+        ]);
+        return redirect(route('customers.index'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +121,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
     }
 
     /**
@@ -94,13 +135,51 @@ class MemberController extends Controller
         //
     }
 
-    public function lihatId()
+    public function userCheckMember()
     {
-        $role_id = Auth::user()->roles->implode('id');
-        $data = Dealereo::where('role_id', $role_id)->get();
-        foreach ($data as $key => $value) {
-            $id = $value->members->pluck('dealereo_id');
-         return $id;
+        $role = Auth::user()->role_id;
+        $sales = Auth::user()->id;
+        if ($role == 1) {
+            $members = Member::paginate(10);
+        } elseif($role == 2) {
+            $members = Member::where('operator_input', '2')->paginate(10);
+        } elseif ($role == 3) {
+            $members = Member::where('operator_input', $sales)->paginate(10);
         }
+        return $members;
+    }
+
+    public function kabupatenSelect(Request $request)
+    {
+    	if($request->ajax()){
+    		$kabupaten = DB::table('kabupatens')->where('id_prov', $request->id_prov)->pluck("nama","id_kab")->all();
+    		$data      = view('backend.member.kabupaten', compact('kabupaten'))->render();
+    		return response()->json(['options'=>$data]);
+    	}
+    }
+
+    public function makeKode()
+	{
+			$collection = collect(['A', 2, 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M',
+								   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+								   'a','b','c','d',6,'f',9,'h','i','j','k','l','m','n','o','p',
+								   'q','r','s','t','u','v','w','x','y','z',
+								   1, 'B', 3, 4, 5, 'e', 7, 8, 'g']);
+            $random = $collection->random(5);
+            $random->all();
+			$kode = preg_replace("/[^a-zA-Z0-9]/", "", $random);
+			return $kode;
+    }
+
+    public function operatorInput()
+    {
+        $role = Auth::user()->role_id;
+        $sales = Auth::user()->id;
+        if ($role == 3) {
+            $operator = $sales;
+        } else{
+            $operator = 2;
+        }
+        return $operator;
     }
 }

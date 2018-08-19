@@ -26,7 +26,6 @@
                         <center class="m-t-30">
                             <img src="http://www.408w130.com/admin-855.jpg" class="img-circle" width="150"/>
                             <h4 class="card-title m-t-10">{{ $users->name }}</h4>
-                            <h6 class="card-subtitle">{{ $users->roles->implode('name') }}</h6>
                             <div class="row text-center justify-content-md-center">
                                 <div class="col-4">
                                     <a href="javascript:void(0)" class="link">
@@ -51,10 +50,10 @@
                             <h4 class="card-title">Edit Profile</h4>
                         {!! Form::model($users, ['route' => ['updateprofile', $users],'method'=>'PUT',
                         'class' => 'form-horizontal form-material']) !!}
-                        {{ csrf_field() }}                        
+                        {{ csrf_field() }}
                                 {!! Form::hidden('id', $users->id, ['id' => 'title', 'class' => 'form-control
-                                form-control-line', 'placeholder' => 'Input Nama Admin']) !!} 
-                                
+                                form-control-line', 'placeholder' => 'Input Nama Admin']) !!}
+
                              <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <label class="col-md-12">Nama</label>
                             <div class="col-md-12">
@@ -67,9 +66,17 @@
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label class="col-md-12">Email</label>
                             <div class="col-md-12">
-                                {!! Form::text('email', $users->email, ['id' => 'title', 'class' =>
-                                'form-control form-control-line', 'placeholder' => 'Input Email Admin']) !!} 
+                                {!! Form::email('email', $users->email, ['id' => 'title', 'class' =>
+                                'form-control form-control-line', 'placeholder' => 'Input Email Admin']) !!}
                                 {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('no_handphone') ? 'has-error' : '' }}">
+                            <label class="col-md-12">No Handphone</label>
+                            <div class="col-md-12">
+                                {!! Form::number('no_handphone', $users->no_handphone, ['id' => 'title', 'class' =>
+                                'form-control form-control-line', 'placeholder' => 'Input Email Admin']) !!}
+                                {!! $errors->first('no_handphone', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
 

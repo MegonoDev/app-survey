@@ -23,8 +23,6 @@ Route::post('pendaftaran/post', [
 	'as'   => 'registerTestdrive'
 ]);
 
-
-
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
 

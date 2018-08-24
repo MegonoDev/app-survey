@@ -1,52 +1,72 @@
 /* Custom Stylesheet */
+
 /**
  * Use this file to override Materialize files so you can update
  * the core Materialize files in the future
  *
  * Made By MaterializeCSS.com
  */
- @import url(https://fonts.googleapis.com/css?family=Do+Hyeon);
- @import url('https://fonts.googleapis.com/css?family=Pattaya');
+
+@import url(https://fonts.googleapis.com/css?family=Do+Hyeon);
+@import url('https://fonts.googleapis.com/css?family=Pattaya');
 .icon-block {
   padding: 0 15px;
 }
+
 .icon-block .material-icons {
-	font-size: inherit;
-/* }.brand-logo{
+  font-size: inherit;
+  /* }.brand-logo{
   background-image: url(https://www.eonesia.id/img/icon.png);
   height: 20px;
   width: 30px; */
-}#nav-mobile{
-    font-family: 'Do Hyeon', sans-serif;
-    align:center;
-    
-}.transparentBG {
-  background-color: rgba(0,0,0,0);
+}
+
+#nav-mobile {
+  font-family: 'Do Hyeon', sans-serif;
+  align: center;
+}
+
+.transparentBG {
+  background-color: rgba(0, 0, 0, 0);
   position: absolute;
-}#logo-container{
+}
+
+#logo-container {
   color: black;
   font-family: 'Do Hyeon', sans-serif;
-  align:center;
-}#bawah{
+  align: center;
+}
+
+#bawah {
   color: black;
-}#nav-mobile{
+}
+
+#nav-mobile {
   color: black;
-}.event-tersedia{
+}
+
+.event-tersedia {
   font-family: 'pataya', cursive;
   font-weight: bold;
   font-size: 25px;
-color: #000;
-}.navbar {
-	background: #ffffff;
-	padding: 0;
-	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
-	transition-duration: 0.6s;
-}#instansi{
-  margin-bottom:-30px;
+  color: #000;
+}
+
+.navbar {
+  background: #ffffff;
+  padding: 0;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+  transition-duration: 0.6s;
+}
+
+#instansi {
+  margin-bottom: -30px;
   font-size: 30px;
   font-weight: bold;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}#particles-js{
+}
+
+#particles-js {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
@@ -58,18 +78,21 @@ color: #000;
   width: 100%;
   height: 100%;
   z-index: -1;
+}
 
-}h4{
+h4 {
   font-family: 'Do Hyeon', sans-serif;
   font-weight: bold;
   font-size: 25px;
-}.loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('https://eonesia.id/img/icon.png') 50% 50% no-repeat rgb(249,249,249);
-    opacity: 1;
+}
+
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('https://eonesia.id/img/icon.png') 50% 50% no-repeat rgb(249, 249, 249);
+  opacity: 1;
 }

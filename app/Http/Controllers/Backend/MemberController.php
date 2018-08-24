@@ -43,19 +43,17 @@ class MemberController extends Controller
         return view('backend.member.create', compact('provinsi'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(MemberRequest $request)
     {
         $data = $request->all();
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        $data['motorbaru'] = implode(",", $request->motorbaru);
+        if ($request->motorbaru != "") {
+            $data['motorbaru'] = $request->motorbaru;
+        } else {
+           $data['motorbaru'] = $request->motorbaru1;
+        }
         $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['operator_input'] = $this->operatorInput();
 		if(isset($request->handphone)){
@@ -101,50 +99,17 @@ curl_close($curl);
         ]);
         return redirect(route('customers.index'));
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     public function userCheckMember()
     {
         $role = Auth::user()->role_id;
         $sales = Auth::user()->id;
         if ($role == 1) {
-            $members = Member::paginate(10);
+            $members = Member::latest()->paginate(10);
         } elseif($role == 2) {
-            $members = Member::where('operator_input', '2')->paginate(10);
+            $members = Member::where('operator_input', '2')->latest()->paginate(10);
         } elseif ($role == 3) {
-            $members = Member::where('operator_input', $sales)->paginate(10);
+            $members = Member::where('operator_input', $sales)->latest()->paginate(10);
         }
         return $members;
     }

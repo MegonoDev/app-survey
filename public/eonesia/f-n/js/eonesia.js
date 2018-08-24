@@ -27,6 +27,3 @@ $(document).ready(function() {
   $('.datepicker').datepicker();
   $('select').formSelect();
 });
-// $(window).load(function() {
-//     $(".loader").delay(10).fadeOut();
-// });

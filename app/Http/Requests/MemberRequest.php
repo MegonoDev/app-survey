@@ -36,7 +36,8 @@ class MemberRequest extends FormRequest
             'kendaraan' => 'required',
             'id_kab' => 'required',
             'id_prov' => 'required',
-            'motorbaru' => 'required'
+            'motorbaru' => 'required',
+            'ketentuan' => 'required'
 
         ];
     }
@@ -60,6 +61,7 @@ class MemberRequest extends FormRequest
             'id_kab.required' => 'Kabupaten/Kota Belum Di pilih',
             'kendaraan.required' => 'Kendaraan Belum Di pilih',
             'motorbaru.required' => 'Silahkan Jawab Pertanyaan',
+            'ketentuan.required' => 'Silahkan Ceklis Syarat dan Ketentuan'
         ];
     }
 }

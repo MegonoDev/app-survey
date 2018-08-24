@@ -21,12 +21,15 @@ class FrontendController extends Controller
 
     public function registerTestdrive(MemberRequest $request)
     {
-
-		$data = $request->all();
+        $data = $request->all();
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        $data['motorbaru'] = implode(",", $request->motorbaru);
+        if ($request->motorbaru != "") {
+            $data['motorbaru'] = $request->motorbaru;
+        } else {
+           $data['motorbaru'] = $request->motorbaru1;
+        }
         $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['operator_input'] = 2;
 		if(isset($request->handphone)){

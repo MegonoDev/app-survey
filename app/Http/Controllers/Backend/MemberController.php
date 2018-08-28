@@ -15,11 +15,7 @@ use App\Dealereo;
 
 class MemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -32,11 +28,7 @@ class MemberController extends Controller
        return view('backend.member.index', compact('members', 'totalMember'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
@@ -49,11 +41,6 @@ class MemberController extends Controller
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        if ($request->motorbaru != "") {
-            $data['motorbaru'] = $request->motorbaru;
-        } else {
-           $data['motorbaru'] = $request->motorbaru1;
-        }
         $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['operator_input'] = $this->operatorInput();
 		if(isset($request->handphone)){
@@ -68,7 +55,7 @@ class MemberController extends Controller
 				}
 			}
         }
-        // smsgetway
+
   $curl = curl_init();
   curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",

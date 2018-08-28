@@ -33,11 +33,12 @@ class MembersTableSeeder extends Seeder
                 'kode'           => mt_rand(10000, 99999),
                 'status_verifikasi' => rand(0, 1),
                 'perkawinan'    => $faker->randomElement($array = array('menikah', 'belum menikah', 'berpisah')),
-                'pekerjaan'    => $faker->randomElement($array = array('pns', 'wiraswasta','ibu rumah tangga')),
+                'pekerjaan'     => $faker->randomElement($array = array('pns', 'wiraswasta','ibu rumah tangga')),
                 'kendaraan'     => $faker->randomElement($array = array('mio', 'vixion', 'jupiter mx', 'jupiter mx', 'R 15', 'R 25')),
                 'motorbaru'     => $faker->randomElement($array = array('3 bulan kedepan', '6 bulan kedepan', '1 Tahunkedepan')),
-                'id_kab'     => rand(1101, 1215),
-                'operator_input'   => rand(2,7),
+                'motorbaru1'    => $faker->randomElement($array = array('Ya, Membeli sepeda motoruntuk pertama kali', 'Ya, Membeli sepeda motor sebagai pengganti')),
+                'id_kab'        => rand(1101, 1215),
+                'operator_input'=> rand(2,7),
                 'created_at'    => $faker->date,
             ];
         }

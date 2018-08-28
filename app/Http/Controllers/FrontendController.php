@@ -25,11 +25,6 @@ class FrontendController extends Controller
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        if ($request->motorbaru != "") {
-            $data['motorbaru'] = $request->motorbaru;
-        } else {
-           $data['motorbaru'] = $request->motorbaru1;
-        }
         $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['operator_input'] = 2;
 		if(isset($request->handphone)){

@@ -22,6 +22,7 @@ class Member extends Model
         'kendaraan',
         'id_kab',
         'motorbaru',
+        'motorbaru1',
         'operator_input'
     ];
 

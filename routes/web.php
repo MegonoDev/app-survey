@@ -3,7 +3,7 @@
 Route::get('/login-event', function () {
     return view('auth.login');
 });
-Route::post('login-post', [
+Route::post('login-event', [
     'uses' => 'Auth\LoginController@login',
     'as'   => 'login'
 ]);

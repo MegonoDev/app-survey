@@ -143,16 +143,16 @@
   <div class="row">
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-          <label class="check">Yamaha MAXI (Nmax, Lexi, Aerox, Xmax
-            {!! Form::checkbox('kendaraan[]', 'Yamaha MAXI (Nmax, Lexi, Aerox, Xmax') !!}
+          <label class="check">Yamaha MAXI (Nmax, Lexi, Aerox, Xmax)
+            {!! Form::checkbox('kendaraan[]', 'Yamaha MAXI (Nmax, Lexi, Aerox, Xmax)') !!}
             <span class="checkmark"></span>
           </label>
       </div>
     </div>
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">YAMAHA MX
-            {!! Form::checkbox('kendaraan[]', 'Yamaha MX') !!}
+        <label class="check">Yamaha Sport series(Vixion, R series)
+            {!! Form::checkbox('kendaraan[]', 'Yamaha Sport series(Vixion, R series)') !!}
             <span class="checkmark"></span>
         </label>
       </div>
@@ -233,7 +233,7 @@
   <div class="row">
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Suzuli GSX
+        <label class="check">Suzuki GSX
             {!! Form::checkbox('kendaraan[]', 'Suzuli GSX') !!}
             <span class="checkmark"></span>
         </label>

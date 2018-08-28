@@ -210,8 +210,8 @@
           _token: token
         },
         success: function(data) {
-          $("select[name='id_kab'").html('');
-          $("select[name='id_kab'").html(data.options);
+          $("select[name='id_kab']").html('');
+          $("select[name='id_kab']").html(data.options);
         }
       });
     });

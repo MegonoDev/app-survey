@@ -70,14 +70,14 @@
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('id_prov') ? 'has-error' : '' }}">
         <label for="first_name">Provinsi</label>
-        {!! Form::select('id_prov', ['' => 'provinsi']+$provinsi, null, ['class' => 'form-control id_prov']) !!}
+        {!! Form::select('id_prov', ['' => 'provinsi']+$provinsi, null, ['class' => 'form-control', 'id' => 'id_prov']) !!}
         {!! $errors->first('id_prov', '<p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('id_kab') ? 'has-error' : '' }}">
         <label for="first_name">Kabupaten</label>
-        {!! Form::select('id_kab', ['' => 'kabupaten'], null, ['class' => 'form-control id_kab']) !!}
+        {!! Form::select('id_kab', ['' => 'kabupaten'], null, ['class' => 'form-control', 'id' => 'id_kab']) !!}
         {!! $errors->first('id_kab', '<p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>

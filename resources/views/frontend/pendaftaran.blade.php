@@ -7,7 +7,6 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
   <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <style>
     .radio {
       display: block;
@@ -198,8 +197,11 @@
     <br>
     <br>
   </article>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script type="text/javascript">
-    $(".id_prov").change(function() {
+    $('#id_prov').change(function() {
       var id_prov = $(this).val();
       var token = $("input[name='_token']").val();
       $.ajax({
@@ -210,13 +212,11 @@
           _token: token
         },
         success: function(data) {
-          $(".id_kab").html('');
-          $(".id_kab").html(data.options);
+          $("#id_kab").html('');
+          $("#id_kab").html(data.options);
         }
       });
     });
   </script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>

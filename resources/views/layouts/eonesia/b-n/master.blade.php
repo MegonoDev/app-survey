@@ -194,7 +194,7 @@
     <script src="{{ asset('eonesia/b-n/main/dist/js/dashboard1.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/main/dist/js/dropdown.js') }}"></script>
     <script type="text/javascript">
-       $(".id_prov").change(function() {
+       $("#id_prov").change(function() {
       var id_prov = $(this).val();
       var token = $("input[name='_token']").val();
       $.ajax({
@@ -205,8 +205,8 @@
           _token: token
         },
         success: function(data) {
-          $(".id_kab").html('');
-          $(".id_kab").html(data.options);
+          $("#id_kab").html('');
+          $("#id_kab").html(data.options);
         }
       });
     });

@@ -199,7 +199,7 @@
     <br>
   </article>
   <script type="text/javascript">
-    $("select[name='id_prov']").change(function() {
+    $(".id_prov").change(function() {
       var id_prov = $(this).val();
       var token = $("input[name='_token']").val();
       $.ajax({
@@ -210,8 +210,8 @@
           _token: token
         },
         success: function(data) {
-          $("select[name='id_kab']").html('');
-          $("select[name='id_kab']").html(data.options);
+          $(".id_kab").html('');
+          $(".id_kab").html(data.options);
         }
       });
     });

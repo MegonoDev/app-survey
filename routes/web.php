@@ -1,16 +1,17 @@
 <?php
 
-Route::get('/login-event', function () {
-    return view('auth.login');
-});
-Route::post('login-event', [
-    'uses' => 'Auth\LoginController@login',
-    'as'   => 'login'
-]);
-Route::post('logout', [
-    'uses' => 'Auth\LoginController@logout',
-    'as'   => 'logout'
-]);
+Route::get('/login', function() {
+    return view('errors.404');
+})->name('login');
+
+
+Route::post('/admin/login', 'Auth\LoginController@loginadmin')->name('login.admin');
+Route::post('/sales/login', 'Auth\LoginController@loginsales')->name('login.sales');
+Route::get('/admin/login', 'Auth\LoginController@adminform')->name('login.admin');;
+Route::get('/sales/login', 'Auth\LoginController@salesform')->name('login.sales');;
+Route::post('/admin/logout', 'Auth\LoginController@adminlogout')->name('admin.logout');
+Route::post('/sales/logout', 'Auth\LoginController@saleslogout')->name('sales.logout');
+Route::post('/sales/register', 'Auth\RegisterController@salesregister')->name('register.sales');
 
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
@@ -27,6 +28,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::post('kabupaten-select', ['as'=>'kabupaten-select','uses'=>'MemberController@kabupatenSelect']);
+    Route::get('customers/kode/{kode}', 'MemberController@detailCustomer')->name('detail.customer');
     Route::resource('dealer', 'DealereoController', ['except' => [
         'create', 'show'
      ]]);

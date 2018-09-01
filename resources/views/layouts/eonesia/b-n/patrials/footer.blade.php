@@ -1,3 +1,3 @@
 <footer class="footer">
-    <center> © 2018 EONESIA</center>
+    <center> © {{ date('Y') }}</center>
 </footer>

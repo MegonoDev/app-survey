@@ -24,19 +24,19 @@
                 <div class="card">
                     <div class="card-body">
                         <center class="m-t-30">
-                            <img src="http://www.408w130.com/admin-855.jpg" class="img-circle" width="150"/>
+                            <img src="{{ asset('eonesia/images/admin.jpeg') }}" class="img-circle" width="150"/>
                             <h4 class="card-title m-t-10">{{ $users->name }}</h4>
                             <div class="row text-center justify-content-md-center">
                                 <div class="col-4">
-                                    <a href="javascript:void(0)" class="link">
+                                    <a href="javascript:void(0)" class="link" data-toggle="tooltip" data-placement="top" title="Kode Dealer Anda">
                                         <i class="icon-people"></i>
-                                        <font class="font-medium">254</font>
+                                        <font class="font-medium">{{ Auth::user()->dealereo->kode_dealer }}</font>
                                     </a>
                                 </div>
                                 <div class="col-4">
-                                    <a href="javascript:void(0)" class="link">
+                                    <a href="javascript:void(0)" class="link" data-toggle="tooltip" data-placement="top" title="{{ $title }}">
                                         <i class="icon-picture"></i>
-                                        <font class="font-medium">54</font>
+                                        <font class="font-medium">{{ $counts }}</font>
                                     </a>
                                 </div>
                             </div>

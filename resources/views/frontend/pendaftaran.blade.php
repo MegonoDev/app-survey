@@ -7,6 +7,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
   <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.css') }}">
   <style>
     .radio {
       display: block;
@@ -200,6 +201,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
   <script type="text/javascript">
     $('#id_prov').change(function() {
       var id_prov = $(this).val();
@@ -217,6 +219,19 @@
         }
       });
     });
+  </script>
+   <script type="text/javascript">
+    $(document).ready(function() {
+      $('.tanggal').datepicker({
+        format: "dd-mm-yyyy",
+        showOnFocus: true,
+        toggleActive:true,
+        todayHighlight:true,
+        keyboardNavigation:true,
+        autoclose: true
+      });
+    });
+
   </script>
 </body>
 </html>

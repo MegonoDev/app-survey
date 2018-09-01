@@ -12,6 +12,8 @@
   <link href="{{ asset('eonesia/b-n/assets/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
   <link href="{{ asset('eonesia/b-n/main/dist/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('eonesia/b-n/main/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/bootstrap-datepicker3.css') }}">
+  <link href="{{ asset('css/bjquery.tagsinput.min.css') }}">
   <style>
     .radio {
       display: block;
@@ -167,18 +169,22 @@
       color: #f8204f;
       border-radius: 20px;
       transform-style: 2s;
+    }.border-white{
+     border-color: #fff;
     }
 
   </style>
 </head>
 <body class="skin-default-dark fixed-layout">
   <div id="main-wrapper">
-    @include('layouts.eonesia.b-n.patrials.navbar') @include('layouts.eonesia.b-n.patrials.sidebar') @yield('content')
+    @include('layouts.eonesia.b-n.patrials.navbar')
+    @include('layouts.eonesia.b-n.patrials.sidebar')
+    @yield('content')
   </div>
   <br>
   <footer class="footer">
-    <center>
-      © 2018 EONESIA</center>
+    <center> © {{ date('Y') }} YAMAHA</center>
+</footer>
     <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/assets/node_modules/popper/popper.min.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -193,6 +199,8 @@
     <script src="{{ asset('eonesia/b-n/assets/node_modules/c3-master/c3.min.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/main/dist/js/dashboard1.js')}}"></script>
     <script src="{{ asset('eonesia/b-n/main/dist/js/dropdown.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/jquery.tagsinput.min.js') }}"></script>
     <script type="text/javascript">
        $("#id_prov").change(function() {
       var id_prov = $(this).val();
@@ -233,7 +241,43 @@
         });
 
       });
-
     </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.tanggal').datepicker({
+        format: "dd-mm-yyyy",
+        showOnFocus: true,
+        toggleActive:true,
+        todayHighlight:true,
+        keyboardNavigation:true,
+        autoclose: true
+      });
+    });
+  </script>
+  <script>
+   $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+   });
+  </script>
+
+	<script type="text/javascript">
+
+
+  $(function() {
+
+    $('#tags_1').tagsInput({ width: 'auto' });
+    $('#tags_2').tagsInput({
+      width: 'auto',
+      onChange: function(elem, elem_tags) {
+        var languages = ['php', 'ruby', 'javascript'];
+        $('.tag', elem_tags).each(function() {
+          if ($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
+            $(this).css('background-color', 'yellow');
+        });
+      }
+    });
+  });
+
+</script>
 </body>
 </html>

@@ -28,6 +28,12 @@ class MemberController extends Controller
        return view('backend.member.index', compact('members', 'totalMember'));
     }
 
+    public function detailCustomer($kode)
+    {
+        $details = Member::where('kode', $kode)->get();
+        return view('backend.member.detail', compact('details'));
+    }
+
 
     public function create()
     {
@@ -42,6 +48,7 @@ class MemberController extends Controller
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
         $data['kendaraan'] = implode(",", $request->kendaraan);
+        $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
         $data['operator_input'] = $this->operatorInput();
 		if(isset($request->handphone)){
 			$nohp = str_replace(" ","",$request->handphone);

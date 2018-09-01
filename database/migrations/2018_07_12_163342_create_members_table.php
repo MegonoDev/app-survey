@@ -28,6 +28,7 @@ class CreateMembersTable extends Migration
             $table->string('perkawinan');
             $table->text('kendaraan');
             $table->integer('id_kab');
+            $table->integer('id_prov');
             $table->text('motorbaru');
             $table->text('motorbaru1');
             $table->string('operator_input');

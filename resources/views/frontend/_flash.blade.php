@@ -13,7 +13,7 @@
 <script>
 	window.setTimeout(function() {
     	$(".alert").fadeTo(10000, 0).slideUp(500, function(){
-        	$(this).remove(); 
+        	$(this).remove();
     	});
 	}, 4000);
 </script>

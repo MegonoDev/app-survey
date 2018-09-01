@@ -82,8 +82,7 @@
                             </div>
                             <div class='row'>
                                 <div class='input-field col s12'>
-                                    <input
-                                        class="validate {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                    <input class="validate {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                         type='email'
                                         name='email'
                                         id='email'/>

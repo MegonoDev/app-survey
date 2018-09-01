@@ -21,6 +21,7 @@ class Member extends Model
         'perkawinan',
         'kendaraan',
         'id_kab',
+        'id_prov',
         'motorbaru',
         'motorbaru1',
         'operator_input'
@@ -31,6 +32,15 @@ class Member extends Model
     	return $this->belongsTo(Dealereo::class);
     }
 
+    public function kabupaten()
+    {
+    	return $this->belongsTo('App\Kabupaten', 'id_kab');
+    }
+
+    public function provinsi()
+    {
+        return $this->belongsTo('App\Provinsi', 'id_prov');
+    }
 
     public function getTanggallahirAttribute()
     {

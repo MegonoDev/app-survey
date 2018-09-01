@@ -10,11 +10,6 @@ class Dealereo extends Model
         'kode_dealer'
     ];
 
-    public function organizer()
-    {
-    	return $this->belongsTo(Organizer::class);
-    }
-
     public function role()
     {
         return $this->belongsTo(Role::class);

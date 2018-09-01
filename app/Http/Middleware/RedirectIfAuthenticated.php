@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             // return redirect('/home');
-            return redirect()->route('login');
+            return redirect()->route('login.sales');
         }
 
         return $next($request);

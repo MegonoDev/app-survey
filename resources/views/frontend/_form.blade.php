@@ -13,8 +13,8 @@
     <div class="input-field col s12">
       <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
         <label for="first_name">E-mail</label>
-        {!! Form::text('email', null, ['id' => 'first_name', 'class' => 'form-control', 'placeholder' => 'email@test.com', 'minlength' => 4]) !!} {!! $errors->first('email', '
-        <p style="color:darkred" class="help-block">:message</p>') !!}
+        {!! Form::text('email', null, ['id' => 'first_name', 'class' => 'form-control', 'placeholder' => 'email@test.com', 'minlength' => 4]) !!}
+         {!! $errors->first('email', '<p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>
   </div>
@@ -41,8 +41,8 @@
       <p style="color:darkred" class="help-block">:message</p>') !!}
     </div>
     <div class="input-field col m12 l6 s12">
-      {!! Form::date('tanggal_lahir', null, ['id' => 'first_name', 'class' => 'form-control']) !!} {!! $errors->first('tanggal_lahir', '
-      <p style="color:darkred" class="help-block">:message</p>') !!}
+       {!! Form::text('tanggal_lahir', null, ['class' => 'form-control tanggal', 'placeholder' => 'hh-bb-tttt']) !!}
+      {!! $errors->first('tanggal_lahir', '<p style="color:darkred" class="help-block">:message</p>') !!}
     </div>
   </div>
   <div class="row">
@@ -132,8 +132,8 @@
     </div>
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">YAMAHA Soul
-            {!! Form::checkbox('kendaraan[]', 'Yamaha Sport') !!}
+          <label class="check">YAMAHA Jupiter series(MX, Z)
+            {!! Form::checkbox('kendaraan[]', 'YAMAHA Jupiter series(MX, Z)') !!}
             <span class="checkmark"></span>
         </label>
       </div>

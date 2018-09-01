@@ -51,6 +51,7 @@
                     <th>Kode</th>
                     <th>No handphone</th>
                     <th>Daftar</th>
+                    <th>Detail</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -64,7 +65,16 @@
                     <td><span class="badge badge-warning">{{ $member->kode }}</span></td>
                     <td>{{ $member->handphone }}</td>
                     <td>{{ $member->CreatedAt }}</td>
-                    <td>{!! $member->StatusVerifikasiAt !!}</td>
+                    <td>
+                      <a href="{{ route('detail.customer',$member->kode) }}" data-toggle="tooltip" data-placement="top">
+                        <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="Detail {{ $member->nama }}">
+                          <i class="fa fa-eye"> Detail</i>
+                        </span>
+                      </a>
+                    </td>
+                    <td>
+                      {!! $member->StatusVerifikasiAt !!}
+                    </td>
                   </tr>
                 </tbody>
                 @endforeach

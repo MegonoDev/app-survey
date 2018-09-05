@@ -89,7 +89,7 @@ class LoginController extends Controller
                 ]);
                 return redirect()->back()->withInput($request->only('name', 'remember'));
             } else {
-                return redirect()->intended(route('home'));
+                return redirect()->intended(route('customers.create'));
             }
         }
         Session::flash('flash_notification', [

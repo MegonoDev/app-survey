@@ -14,20 +14,27 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'namalengkap' => 'required',
+            'name' => 'required|alpha_dash|unique:users',
             'password' => 'required',
-            'no_hanphone' => 'required',
-            'email' => 'required',
+            'no_handphone' => 'required',
+            'email' => 'required|email',
+            'dealereo_id' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
+            'namalengkap.required' => 'Nama Lengkap Mohon Di isi',
             'name.required' => 'Username Mohon Di isi',
+            'name.alpha_dash' => 'Username Dilarang Menggunakan spasi',
+            'name.unique' => 'Username Sudah Digunakan',
             'password.required' => 'Password Mohon Di isi',
-            'no_hanphone.required' => 'No Handphone Mohon Di isi',
+            'no_handphone.required' => 'No Handphone Mohon Di isi',
             'email.required' => 'Email Mohon Di isi',
+            'email.email' => 'Mohon Di isi Dengan Benar Format Email',
+            'dealereo_id.required' => 'Kode Dealer Mohon Di isi'
         ];
     }
 }

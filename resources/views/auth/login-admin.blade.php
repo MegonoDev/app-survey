@@ -1,63 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="eonesia" content="">
+  <link href="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('eonesia/f-n/css/login.css') }}">
   <link rel="shortcut icon" href="{{ asset('eonesia/images/favicon.ico') }}" type="image/x-icon">
   <title>YAMAHA</title>
 </head>
 <body>
-  <div class="login-wrap">
-    <div class="login-html">
-      <div class="row">
-        <center>
-          <img class="img-logo" src="{{ asset('eonesia/images/logo.png') }}" alt="" srcset="">
-          <p style="color:red;">
-          @include('auth._flash')
-         </p>
-        </center>
-      </div>
-      <br>
-
-      <center><h4 class="text-logo">LOGIN ADMIN</h4></center>
-      <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
-      <label for="tab-1" class="tab"></label>
-      <input id="tab-2" type="radio" name="tab" class="sign-up">
-      <label for="tab-2" class="tab"></label>
-      <div class="login-form">
-        <div class="sign-in-htm">
-          {!! Form::open(['route'=>'login.admin' ]) !!} @csrf
-          <div class="group  {{ $errors->has('name') ? 'has-error' : '' }}">
-            <label for="user" class="label">Username</label>
-            {!! Form::text('name', null, ['class' => 'input', 'placeholder' => 'Username']) !!}
-                @if ($errors->has('name'))
-                    <span style="color:red;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-12">
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
+            <div class="fadeIn first">
+              <img src="{{ asset('eonesia/images/logo2.png') }}" style="width:50%; height:auto;" id="icon" alt="User Icon" />
+            </div>
+            {!! Form::open(['route'=>'login.admin']) !!}
+            @csrf
+              {!! Form::text('name', null, ['class' => 'fadeIn second', 'id' => 'login', 'placeholder' => 'Username']) !!}
+              @if ($errors->has('name'))
+              <span style="color:red;">
                         {{ $errors->first('name') }}
                     </span>
-                @endif
-          </div>
-          <div class="group">
-            <label for="pass" class="label">Password</label>
-            {!! Form::password('password', null, ['class' => 'input', 'placeholder' => 'Password']) !!}
+                    @endif
+             <!-- {!! Form::text('password', null, ['class' => 'fadeIn third', 'id' =>'password', 'placeholder' => 'Password']) !!} -->
+             <input type="password" name="password" id="password" class="fadeIn third" placeholder="Password">
              @if ($errors->has('password'))
-                    <span style="color:red;">
+              <span style="color:red;">
                         {{ $errors->first('password') }}
                     </span>
-                @endif
-          </div>
-          <div class="group">
-            <input type="submit" class="button" value="Sign In">
-          </div>
-          {!! Form::close() !!}
-          <div class="hr"></div>
-          <div class="foot-lnk">
-            <a href="#" class="text-copi">@copyright yamaha</a>
+             @endif
+<br>
+              <input type="submit" class="fadeIn fourth" value="Log In">
+              {!! Form::close() !!}
+            <div id="formFooter">
+              <a class="underlineHover" href="#">@yamaha</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 </body>
 </html>

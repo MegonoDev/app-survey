@@ -8,6 +8,7 @@
   <meta name="author" content="">
   <link rel="icon" type="image/png" sizes="16x16" href="https://eonesia.id/img/icon.png">
   <title>EONESIA</title>
+
   <link href="{{ asset('eonesia/b-n/assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
   <link href="{{ asset('eonesia/b-n/assets/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
   <link href="{{ asset('eonesia/b-n/main/dist/css/style.css') }}" rel="stylesheet">

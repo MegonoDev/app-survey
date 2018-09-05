@@ -7,16 +7,13 @@ use App\User;
 class UsersTableSeeder extends Seeder
 
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
         DB::table('users')->insert([
             [
-            'name' => 'Super Admin',
+            'namalengkap' => 'Super Admin',
+            'name' => 'SuperAdmin',
             'email' => 'superadmin@admin.com',
             'role_id'    => '1',
             'dealereo_id'    => '1',
@@ -24,7 +21,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password')
             ],
             [
-            'name'     => 'Tegal',
+            'namalengkap' => 'Admin Tegal',
+            'name'     => 'AdminTegal',
             'email'    => 'tegal@test.com',
             'role_id'    => '2',
             'dealereo_id'    => '2',
@@ -32,7 +30,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password')
             ],
             [
-            'name'     => 'Pekalongan',
+            'namalengkap' => 'Admin Pekalongan',
+            'name'     => 'AdminPekalongan',
             'email'    => 'pekalongan@test.com',
             'role_id'    => '2',
             'dealereo_id'    => '3',
@@ -40,7 +39,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password')
             ],
             [
-            'name'     => 'Batang',
+            'namalengkap' => 'Admin Batang',
+            'name'     => 'AdminBatang',
             'email'    => 'batang@test.com',
             'role_id'    => '2',
             'dealereo_id'    => '4',
@@ -48,7 +48,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password')
             ],
             [
-            'name'     => 'Sales Tegal',
+            'namalengkap' => 'Sales Tegal',
+            'name'     => 'SalesTegal',
             'email'    => 'salestegal@test.com',
             'role_id'    => '3',
             'dealereo_id'    => '2',
@@ -56,7 +57,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password')
             ],
             [
-            'name'     => 'Sales Pekalongan',
+            'namalengkap' => 'Sales Pekalongan',
+            'name'     => 'SalesPekalongan',
             'email'    => 'salespekalongan@test.com',
             'role_id'    => '3',
             'dealereo_id'    => '3',
@@ -64,7 +66,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password')
             ],
             [
-            'name'     => 'Sales Batang',
+            'namalengkap'     => 'Sales Batang',
+            'name'     => 'SalesBatang',
             'email'    => 'salesbatang@test.com',
             'role_id'    => '3',
             'dealereo_id'    => '4',

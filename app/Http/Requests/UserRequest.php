@@ -24,7 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|string',
+            'namalengkap' => 'required',
+            'name' => 'required|alpha_dash|unique:users',
             'email' => 'required|string',
             'no_handphone' => 'required'
         ];
@@ -32,7 +33,10 @@ class UserRequest extends FormRequest
     public function messages(Type $var = null)
     {
         return[
-            'name.required' => 'Nama Dilarang Kosong',
+            'namalengkap.required' => 'Nama Lengkap Dilarang Kosong',
+            'name.required' => 'Username Dilarang Kosong',
+            'name.alpha_dash' => 'Username Dilarang Menggunakan spasi',
+            'name.unique' => 'Username Sudah Digunakan',
             'email.required' => 'Email Dilarang Kosong',
             'no_handphone.required' => 'No Handphone Dilarang Kosong',
         ];

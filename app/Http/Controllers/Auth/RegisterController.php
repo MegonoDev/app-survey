@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use Session;
-
+use App\Dealereo;
 
 class RegisterController extends Controller
 {
@@ -25,26 +26,13 @@ class RegisterController extends Controller
     }
 
 
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:6|confirmed',
-    //     ]);
-    // }
+    public function salesregisterform()
+    {
+        $dealereos = Dealereo::all();
+        return view('auth.register-sales', compact('dealereos'));
+    }
 
-
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // }
-
-    public function salesregister(Request $request)
+    public function salesregister(RegisterRequest $request)
     {
        $data = $request->all();
        $data['password'] = Hash::make($request->password);

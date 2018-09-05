@@ -37,9 +37,10 @@ class LoginController extends Controller
 
     public function salesform()
     {
-        $dealereos = Dealereo::all();
-        return view('auth.login-sales', compact('dealereos'));
+        return view('auth.login-sales');
     }
+
+
 
     public function adminform()
     {

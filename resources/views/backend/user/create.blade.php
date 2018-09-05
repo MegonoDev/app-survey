@@ -1,10 +1,17 @@
 <h4 class="card-title">Create User</h4>
 {!! Form::open(['route'=>'users.store', 'class'=> 'form-horizontal form-material']) !!}
 {{ csrf_field() }}
-<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has('namalengkap') ? 'has-error' : '' }}">
   <label class="col-md-12">Nama Lengkap</label>
   <div class="col-md-12">
-    {!! Form::text('name', null, ['id' => 'title', 'class' => 'form-control form-control-line', 'placeholder' => 'nama lengkap']) !!}
+    {!! Form::text('namalengkap', null, ['id' => 'title', 'class' => 'form-control form-control-line', 'placeholder' => 'nama lengkap']) !!}
+    {!! $errors->first('namalengkap', '<p style="color:darkred" class="help-block">:message</p>') !!}
+  </div>
+</div>
+<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+  <label class="col-md-12">Username</label>
+  <div class="col-md-12">
+    {!! Form::text('name', null, ['id' => 'title', 'class' => 'form-control form-control-line', 'placeholder' => 'Username']) !!}
     {!! $errors->first('name', '<p style="color:darkred" class="help-block">:message</p>') !!}
   </div>
 </div>

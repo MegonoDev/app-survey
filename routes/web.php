@@ -12,6 +12,7 @@ Route::get('/sales/login', 'Auth\LoginController@salesform')->name('login.sales'
 Route::post('/admin/logout', 'Auth\LoginController@adminlogout')->name('admin.logout');
 Route::post('/sales/logout', 'Auth\LoginController@saleslogout')->name('sales.logout');
 Route::post('/sales/register', 'Auth\RegisterController@salesregister')->name('register.sales');
+Route::get('/sales/register', 'Auth\RegisterController@salesregisterform')->name('register.sales');
 
 
 Route::get('/', 'FrontendController@event')->name('eonesia');

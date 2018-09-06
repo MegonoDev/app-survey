@@ -26,8 +26,8 @@ class UserRequest extends FormRequest
         return [
             'namalengkap' => 'required',
             'name' => 'required|alpha_dash|unique:users',
-            'email' => 'required|string',
-            'no_handphone' => 'required'
+            'email' => 'required|unique:users',
+            'no_handphone' => 'required|unique:users'
         ];
     }
     public function messages(Type $var = null)
@@ -37,7 +37,9 @@ class UserRequest extends FormRequest
             'name.required' => 'Username Dilarang Kosong',
             'name.alpha_dash' => 'Username Dilarang Menggunakan spasi',
             'name.unique' => 'Username Sudah Digunakan',
+            'email.unique' => 'Username Sudah Digunakan',
             'email.required' => 'Email Dilarang Kosong',
+            'no_handphone.unique' => 'No handphone Sudah Digunakan',
             'no_handphone.required' => 'No Handphone Dilarang Kosong',
         ];
     }

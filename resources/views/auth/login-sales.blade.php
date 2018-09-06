@@ -20,7 +20,7 @@
             <div class="fadeIn first">
               <img src="{{ asset('eonesia/images/logo2.png') }}" style="width:50%; height:auto;" id="icon" alt="User Icon" />
             </div>
-            {!! Form::open(['route'=>'login.sales']) !!}
+           {!! Form::open(['route'=>'login.sales']) !!}
             @csrf
               {!! Form::text('name', null, ['class' => 'fadeIn second', 'id' => 'login', 'placeholder' => 'Username']) !!}
               @if ($errors->has('name'))
@@ -39,6 +39,7 @@
               <input type="submit" class="fadeIn fourth" value="Log In">
               {!! Form::close() !!}
             <div id="formFooter">
+                @include('auth._flash')
               <a class="underlineHover" href="{{ route('register.sales') }}"><b>Daftar</b></a>
             </div>
           </div>

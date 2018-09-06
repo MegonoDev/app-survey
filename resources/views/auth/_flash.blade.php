@@ -1,13 +1,19 @@
 @if (session()->has('flash_notification.message'))
-<div class="pesan">
-   <span style="color:red;">{!! session()->get('flash_notification.message') !!}</span>
-</div>
+        <div class="row center">
+        <div class="alert alert-{{ session()->get('flash_notification.level') }}">
+        <div class="col s12 m12 l12">
+          <div class="card-panel teal accent-3">
+            <span class="white-text center">{!! session()->get('flash_notification.message') !!}</span>
+            </div>
+          </div>
+        </div>
+      </div>
 @endif
 
 <script>
 	window.setTimeout(function() {
-    	$(".pesan").fadeTo(1000, 0).slideUp(500, function(){
+    	$(".alert").fadeTo(10000, 0).slideUp(500, function(){
         	$(this).remove();
     	});
-	}, 1000);
+	}, 4000);
 </script>

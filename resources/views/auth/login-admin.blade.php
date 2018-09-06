@@ -35,10 +35,11 @@
                         {{ $errors->first('password') }}
                     </span>
              @endif
-<br>
+            <br>
               <input type="submit" class="fadeIn fourth" value="Log In">
               {!! Form::close() !!}
             <div id="formFooter">
+                @include('auth._flash')
               <a class="underlineHover" href="#">@yamaha</a>
             </div>
           </div>

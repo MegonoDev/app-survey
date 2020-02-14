@@ -219,7 +219,7 @@
     </p>
     <hr> -->
     <div class="row justify-content-center">
-      <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="card">
           <header class="card-header bg-custom text-light px-5 py-5">
             <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>

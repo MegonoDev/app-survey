@@ -76,6 +76,11 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
 
     });
 
+    Route::get('/tes-email', function() {
+        $code = 'kode';
+        return view('email.verificationcode',compact('code'));
+    });
+
 
 
 

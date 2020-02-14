@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>EONESIA</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -200,11 +200,18 @@
     .detail {
       font-size: 0.875rem;
     }
+ /*   .container {*/
+ /*   padding-right:0;*/
+ /*   padding-left:0;*/
+ /*   margin-right:auto;*/
+ /*   margin-left:auto*/
+ /*}*/
   </style>
 </head>
 
 <body>
-  <div class="container p-5">
+    <div class="pt-5 d-none d-sm-block"></div>
+  <div class="container">
     <!-- <br> -->
     <!--  <p class="text-center">
       <h4 class="text-center">Silahkan isi data diri untuk mendapatkan nomor<br> undian Bahagia Keluarga Bersama YAMAHA</h4>
@@ -212,7 +219,7 @@
     </p>
     <hr> -->
     <div class="row justify-content-center">
-      <div class="col-md-10">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="card">
           <header class="card-header bg-custom text-light px-5 py-5">
             <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>

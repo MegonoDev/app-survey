@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
@@ -165,22 +166,57 @@
       transform-style: 2s;
     }
 
+    .bg-custom {
+      background-color: #9300ff;
+    }
+
+    .bg-yamaha {
+      background-color: #f30b16;
+    }
+
+    .card-header:first-child {
+      border-radius: 0;
+    }
+
+    .form-control {
+      border-radius: 0;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: #000;
+      transition: 0.5s;
+    }
+
+    textarea:focus,
+    input:focus,
+    select:focus {
+      outline: 0px !important;
+      -webkit-appearance: none;
+      box-shadow: none !important;
+    }
+
+    .detail {
+      font-size: 0.875rem;
+    }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <br>
-    <p class="text-center">
+  <div class="container p-5">
+    <!-- <br> -->
+    <!--  <p class="text-center">
       <h4 class="text-center">Silahkan isi data diri untuk mendapatkan nomor<br> undian Bahagia Keluarga Bersama YAMAHA</h4>
       </a>
     </p>
-    <hr>
+    <hr> -->
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-10">
         <div class="card">
-          <header class="card-header">
-            <h6 class="card-title mt-2">INFORMASI PERSONAL ANDA</h6>
-            <span>Isi Data Diri Anda</span>
+          <header class="card-header bg-custom text-light px-5 py-5">
+            <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>
+            <span>Silahkan isi data diri Anda untuk mendapatkan nomor undian Bahagia Keluarga Bersama YAMAHA</span>
           </header>
           @include('frontend._form')
         </div>
@@ -220,18 +256,18 @@
       });
     });
   </script>
-   <script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function() {
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
         showOnFocus: true,
-        toggleActive:true,
-        todayHighlight:true,
-        keyboardNavigation:true,
+        toggleActive: true,
+        todayHighlight: true,
+        keyboardNavigation: true,
         autoclose: true
       });
     });
-
   </script>
 </body>
+
 </html>

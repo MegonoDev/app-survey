@@ -10,7 +10,6 @@ class Kabupaten extends Model
         'id_kab',
         'id_prov',
         'nama',
-        'id_jenis'
     ];
 
     protected $primaryKey = 'id_kab';

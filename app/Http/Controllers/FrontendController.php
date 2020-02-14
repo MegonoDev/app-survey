@@ -11,10 +11,15 @@ use GuzzleHttp\Exception\RequestException;
 use App\Http\Requests\MemberRequest;
 use Session;
 use App\Member;
+use App\Repositories\Mailing;
 
 class FrontendController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->sendMail = new Mailing();
+    }
     public function event()
     {
         return view('welcome');
@@ -64,7 +69,7 @@ class FrontendController extends Controller
         $err = curl_error($curl);
         curl_close($curl);
 
-
+        $this->sendMail->sendCode($data);
         Member::create($data);
         Session::flash('flash_notification', [
             'level' => 'success',

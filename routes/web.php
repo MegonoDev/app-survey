@@ -18,6 +18,7 @@ Route::get('/sales/register', 'Auth\RegisterController@salesregisterform')->name
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('pendaftaran/test-drive', 'DopdownController@getData')->name('getData');
 Route::post('select-kabupaten', ['as'=>'select-kabupaten','uses'=>'DopdownController@selectKabupaten']);
+Route::post('select-seri', ['as'=>'select-seri','uses'=>'MotorController@selectSeri']);
 Route::post('select-dealereo', ['as'=>'select-dealereo','uses'=>'DopdownController@selectDealereo']);
 
 Route::post('pendaftaran/post', [

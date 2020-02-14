@@ -255,6 +255,23 @@
         }
       });
     });
+    $('#id_merk').change(function() {
+      var id_merk = $(this).val();
+      var token = $("input[name='_token']").val();
+      $.ajax({
+        url: "<?php echo route('select-seri') ?>",
+        method: 'POST',
+        data: {
+          id_merk: id_merk,
+          _token: token
+        },
+        success: function(data) {
+          $("#id_seri").html('');
+          $("#id_seri").html(data.options);
+        }
+      });
+    });
+
   </script>
   <script type="text/javascript">
     $(document).ready(function() {

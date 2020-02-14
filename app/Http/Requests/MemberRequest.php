@@ -33,11 +33,13 @@ class MemberRequest extends FormRequest
             'handphone' => 'required|min:11|max:13',
             'pekerjaan' => 'required',
             'perkawinan' => 'required',
-            'kendaraan' => 'required',
+            // 'kendaraan' => 'required',
             'id_kab' => 'required',
             'id_prov' => 'required',
-            'motorbaru' => 'required',
-            'motorbaru1' => 'required',
+            'id_seri' => 'required',
+            'id_merk' => 'required',
+            // 'motorbaru' => 'required',
+            // 'motorbaru1' => 'required',
             'ketentuan' => 'required'
 
         ];
@@ -60,9 +62,11 @@ class MemberRequest extends FormRequest
             'perkawinan.required' => 'Status Belum Di pilih',
             'id_prov.required' => 'Provinsi Belum Di pilih',
             'id_kab.required' => 'Kabupaten/Kota Belum Di pilih',
-            'kendaraan.required' => 'Kendaraan Belum Di pilih',
-            'motorbaru.required' => 'Silahkan Jawab Pertanyaan',
-            'motorbaru1.required' => 'Silahkan Memilih Pertanyaan',
+            'id_merk.required' => 'Merk Motor Belum Di pilih',
+            'id_seri.required' => 'Tipe Kendaraan Belum Di pilih',
+            // 'kendaraan.required' => 'Kendaraan Belum Di pilih',
+            // 'motorbaru.required' => 'Silahkan Jawab Pertanyaan',
+            // 'motorbaru1.required' => 'Silahkan Memilih Pertanyaan',
             'ketentuan.required' => 'Silahkan Ceklis Syarat dan Ketentuan'
         ];
     }

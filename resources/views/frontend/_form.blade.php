@@ -128,159 +128,22 @@
   {!! $errors->first('kendaraan', '<p style="color:darkred" class="help-block">:message</p>') !!}
   <div class="row">
     <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">YAMAHA Mio Series
-          {!! Form::checkbox('kendaraan[]', 'YAMAHA Mio Series') !!}
-          <span class="checkmark"></span>
-        </label>
+      <div class="form-group {{ $errors->has('id_merk') ? 'has-error' : '' }}">
+        <label for="id_prov">Merk Motor <b class="text-danger">*</b></label>
+        {!! Form::select('id_merk', ['' => 'merk']+$merk, null, ['class' => 'form-control', 'id' => 'id_merk']) !!}
+        {!! $errors->first('id_merk', '<p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>
     <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">YAMAHA Fino
-          {!! Form::checkbox('kendaraan[]', 'Yamaha Fino') !!}
-          <span class="checkmark"></span>
-        </label>
+      <div class="form-group {{ $errors->has('id_seri') ? 'has-error' : '' }}">
+        <label for="id_seri">Tipe Motor <b class="text-danger">*</b></label>
+        {!! Form::select('id_seri', ['' => 'tipe'], null, ['class' => 'form-control', 'id' => 'id_seri']) !!}
+        {!! $errors->first('id_seri', '<p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">YAMAHA Soul
-          {!! Form::checkbox('kendaraan[]', 'Yamaha Soul') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">YAMAHA Jupiter series(MX, Z)
-          {!! Form::checkbox('kendaraan[]', 'YAMAHA Jupiter series(MX, Z)') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Yamaha MAXI (Nmax, Lexi, Aerox, Xmax)
-          {!! Form::checkbox('kendaraan[]', 'Yamaha MAXI (Nmax, Lexi, Aerox, Xmax)') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Yamaha Sport series(Vixion, R series)
-          {!! Form::checkbox('kendaraan[]', 'Yamaha Sport series(Vixion, R series)') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda Beat
-          {!! Form::checkbox('kendaraan[]', 'Honda Beat') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda Scoopy
-          {!! Form::checkbox('kendaraan[]', 'Honda Scoopy') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda Supra X/125
-          {!! Form::checkbox('kendaraan[]', 'Honda Supra X/125') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda CBR
-          {!! Form::checkbox('kendaraan[]', 'Honda CBR') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda PCX
-          {!! Form::checkbox('kendaraan[]', 'Honda PCX') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda Vario
-          {!! Form::checkbox('kendaraan[]', 'Honda Vario') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Honda Revo
-          {!! Form::checkbox('kendaraan[]', 'Honda Revo') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Suzuki Satria
-          {!! Form::checkbox('kendaraan[]', 'Suzuki Satria') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Suzuki GSX
-          {!! Form::checkbox('kendaraan[]', 'Suzuli GSX') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Suzuki Nex / Nex II
-          {!! Form::checkbox('kendaraan[]', 'Suzuki Nex / Nex II') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('kendaraan') ? 'has-error' : '' }}">
-        <label class="check">Merk Lain/ Belum Mempunyai Sepeda Motor
-          {!! Form::checkbox('kendaraan[]', 'Merk Lain/ Belum Mempunyai Sepeda Motor') !!}
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <header class="card-header">
+ 
+  <!-- <header class="card-header">
     <h6 class="card-title mt-2">Apakah Anda Berminat Membeli Motor Baru Dalam Waktu? <b class="text-danger">*</b></h6>
   </header>
   <hr>
@@ -301,7 +164,7 @@
           <span class="checkround"></span>
         </label>
       </div>
-    </div>
+    </div> 
 
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('motorbaru1') ? 'has-error' : '' }}">
@@ -310,7 +173,7 @@
       </div>
     </div>
   </div>
-
+-->
   <hr>
   <span>
     <b class="text-danger">*</b>

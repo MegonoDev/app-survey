@@ -19,11 +19,13 @@ class Member extends Model
         'status_verifikasi',
         'pekerjaan',
         'perkawinan',
-        'kendaraan',
+        // 'kendaraan', diganti dengan merk dan seri
+        'id_merk',
+        'id_seri',
         'id_kab',
         'id_prov',
-        'motorbaru',
-        'motorbaru1',
+        // 'motorbaru', //dihilangkan
+        // 'motorbaru1', //dihilangkan
         'operator_input'
     ];
 
@@ -40,6 +42,15 @@ class Member extends Model
     public function provinsi()
     {
         return $this->belongsTo('App\Provinsi', 'id_prov');
+    }
+    public function seri()
+    {
+    	return $this->belongsTo('App\Seri', 'id_seri');
+    }
+
+    public function Merk()
+    {
+        return $this->belongsTo('App\Merk', 'id_merk');
     }
 
     public function getTanggallahirAttribute()

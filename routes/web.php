@@ -14,6 +14,12 @@ Route::post('/sales/logout', 'Auth\LoginController@saleslogout')->name('sales.lo
 Route::post('/sales/register', 'Auth\RegisterController@salesregister')->name('register.sales');
 Route::get('/sales/register', 'Auth\RegisterController@salesregisterform')->name('register.sales');
 
+// verifikasi by email/link
+Route::get('/verification/code/{kode}',[
+    'uses' => 'FrontendController@verifikasiByUrl',
+    'as' => 'verifikasiurl'
+]);
+
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('pendaftaran/test-drive', 'DopdownController@getData')->name('getData');
@@ -51,6 +57,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
         'uses' => 'VerifikasiController@getkode',
         'as'   => 'search'
     ]);
+   
     Route::put('verifikasi/kode/', [
         'uses' => 'VerifikasiController@verifikasiKode',
         'as'   => 'verifikasiKode'
@@ -76,11 +83,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
 
     });
 
-<<<<<<< HEAD
-    Route::get('/tes-email', function() {
-=======
     Route::get('tes-email', function() {
->>>>>>> e63b0fdb6ca33aebe17d152923ffefcc568be8a0
         $code = 'kode';
         return view('email.verificationcode',compact('code'));
     });

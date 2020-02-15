@@ -77,6 +77,17 @@ class FrontendController extends Controller
         ]);
         return redirect('/');
     }
+    public function verifikasiByUrl($kode)
+    {
+        $member = Member::where('kode',$kode)->first();
+        $data    = ['status_verifikasi' => '1'];
+        $member->update($data);
+        Session::flash('flash_notification', [
+            'level'=>'success',
+            'message'=>'Kode : '.$member->kode.' <br> Nama : '.$member->nama.'<br> Berhasil di Verifikasi</h4>'
+        ]);
+        return redirect(route('eonesia'));
+    }
 
     public function makeKode()
     {

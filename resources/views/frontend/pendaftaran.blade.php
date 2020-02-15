@@ -246,6 +246,20 @@
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
   <script type="text/javascript">
+    
+
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.tanggal').datepicker({
+        format: "dd-mm-yyyy",
+        showOnFocus: true,
+        toggleActive: true,
+        todayHighlight: true,
+        keyboardNavigation: true,
+        autoclose: true
+      });
+    });
     $('#id_prov').change(function() {
       var id_prov = $(this).val();
       var token = $("input[name='_token']").val();
@@ -276,19 +290,6 @@
           $("#id_seri").html('');
           $("#id_seri").html(data.options);
         }
-      });
-    });
-
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.tanggal').datepicker({
-        format: "dd-mm-yyyy",
-        showOnFocus: true,
-        toggleActive: true,
-        todayHighlight: true,
-        keyboardNavigation: true,
-        autoclose: true
       });
     });
   </script>

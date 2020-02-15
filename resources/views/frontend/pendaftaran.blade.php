@@ -272,12 +272,9 @@
           _token: token
         },
         success: function(data) {
-          $("#id_kab").html('');
-          $("#id_kab").html(data.options);
-        },
-        error: function(jqxhr, status, exception) {
-             alert('Exception:', exception);
-         }
+          $("#id_kab option").remove();
+          $("#id_kab").append(data.options);
+        }
       });
     });
     $('#id_merk').change(function() {
@@ -292,8 +289,8 @@
           _token: token
         },
         success: function(data) {
-          $("#id_seri").html('');
-          $("#id_seri").html(data.options);
+          $("#id_seri option").remove();
+          $("#id_seri").append(data.options);
         }
       });
     });

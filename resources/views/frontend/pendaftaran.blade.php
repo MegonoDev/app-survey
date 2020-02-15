@@ -266,6 +266,7 @@
       $.ajax({
         url: "<?php echo route('select-kabupaten') ?>",
         method: 'POST',
+        cache : false,
         data: {
           id_prov: id_prov,
           _token: token
@@ -282,6 +283,7 @@
       $.ajax({
         url: "<?php echo route('select-seri') ?>",
         method: 'POST',
+        cache : false,
         data: {
           id_merk: id_merk,
           _token: token

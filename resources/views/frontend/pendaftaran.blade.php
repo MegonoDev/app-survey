@@ -274,7 +274,10 @@
         success: function(data) {
           $("#id_kab").html('');
           $("#id_kab").html(data.options);
-        }
+        },
+        error: function(jqxhr, status, exception) {
+             alert('Exception:', exception);
+         }
       });
     });
     $('#id_merk').change(function() {

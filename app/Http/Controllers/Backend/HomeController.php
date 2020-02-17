@@ -22,7 +22,7 @@ class HomeController extends Controller
         $groupby = $request->has('groupby') ? $request->groupby : 'year';
         $type    = $request->has('type') ? $request->type : 'bar';
 
-        $chart = $this->chart($type, 'Data member with '.$type);
+        $chart = $this->chart($type, 'Member data with '.$type);
 
         switch ($groupby) {
             case 'year':

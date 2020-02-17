@@ -1,3 +1,5 @@
+
+<!-- dd($details); -->
 @extends('layouts/eonesia/b-n/master')
 @section('content')
 <div class="page-wrapper">
@@ -64,12 +66,6 @@
                 <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->tanggal_lahir }}">
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-md-12">No Handphone</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->handphone }}">
-              </div>
-            </div>
           </form>
         </div>
       </div>
@@ -79,6 +75,12 @@
         <!-- Tab panes -->
         <div class="card-body">
           <form class="form-horizontal form-material">
+          <div class="form-group">
+              <label class="col-md-12">No Handphone</label>
+              <div class="col-md-12">
+                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->handphone }}">
+              </div>
+            </div>
             <div class="form-group">
               <label class="col-md-12">Kode</label>
               <div class="col-md-12">
@@ -106,12 +108,12 @@
               <label class="col-md-12">Kendaraan</label>
               <div class="col-md-12">
                 <span>
-                    {!! str_replace(",", " - ", $detail->kendaraan) !!}
+                    {{ $detail->merk->nama }} - {{ $detail->seri->nama }}
                 </span><hr>
 
               </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="col-md-12">Jawaban Dari pertanyaan</label>
               <div class="col-md-12">
                   <p>Jawaban 1</p>
@@ -120,7 +122,7 @@
               <div class="col-md-12">
                   <p>Jawaban 2</p>
                 <input type="text"  class="form-control form-control-line" value="{{ $detail->motorbaru1 }}">
-              </div>
+              </div> -->
 
             </div>
             @endforeach

@@ -14,7 +14,7 @@
               </select>
             </div>
             <div class="col-lg-6">
-              <label>Type chart</label>
+              <label>Chart type</label>
               <select name="type" id="type" class="form-control">
                 <option value="">-- select --</option>
                 <option value="pie">Pie</option>

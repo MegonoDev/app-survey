@@ -48,7 +48,7 @@ class Member extends Model
     	return $this->belongsTo('App\Seri', 'id_seri');
     }
 
-    public function Merk()
+    public function merk()
     {
         return $this->belongsTo('App\Merk', 'id_merk');
     }

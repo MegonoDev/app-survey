@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seri extends Model
 {
+    protected $table = 'seri';
     protected $fillable = [
         'id_merk',
         'id_seri',

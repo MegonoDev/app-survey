@@ -52,6 +52,6 @@
 </div>
 @if(Auth::user()->role_id != 3)
 {!! Charts::scripts() !!}
-{!! $chartpie->script() !!} {!! $chartbar->script() !!}
+{!! $chart->script() !!} 
 @endif
  @endsection

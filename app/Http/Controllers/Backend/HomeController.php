@@ -17,22 +17,38 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $groupby = $request->has('groupby') ? $request->groupby : 'year';
+        $type    = $request->has('type') ? $request->type : 'bar';
 
-    $chartbar = Charts::database(Member::all(), 'bar', 'highcharts')
-    ->title('Data Member Pertahun')
-    ->elementLabel("Total")
-    ->dimensions(500, 500)
-    ->responsive(true)
-    ->groupByYear(10);
+        $chart = $this->chart($type, 'Data member with '.$type);
 
+        switch ($groupby) {
+            case 'year':
+                $chart->groupByYear(10);
+                break;
+            case 'gender':
+                $chart->groupBy('jenis_kelamin');
+                break;
+            case 'profesi':
+                $chart->groupBy('pekerjaan');
+                break;
 
-    $chartpie = Charts::database(Member::all(), 'pie', 'highcharts')
-    ->title("Data Member Pertahun")
-    ->dimensions(500, 500)
-    ->responsive(true)
-    ->groupByYear(10);
-    return view('home',compact('chartbar', 'chartpie'));
+            default:
+                $chart->groupByYear(10);
+                break;
+        }
+        return view('home', compact('chart', 'chartcustom'));
+    }
+
+    public function chart($jenis, $judul)
+    {
+        return Charts::database(Member::all(), $jenis, 'highcharts')
+            ->title($judul)
+            ->template("material")
+            ->elementLabel("Total")
+            ->dimensions(400, 400)
+            ->responsive(true);
     }
 }

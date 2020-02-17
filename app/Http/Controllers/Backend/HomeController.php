@@ -39,7 +39,7 @@ class HomeController extends Controller
                 $chart->groupByYear(10);
                 break;
         }
-        return view('home', compact('chart', 'chartcustom'));
+        return view('home', compact('chart'));
     }
 
     public function chart($jenis, $judul)

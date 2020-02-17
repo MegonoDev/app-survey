@@ -27,4 +27,52 @@
     </div>
   </div>
 </div>
+@push('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.tanggal').datepicker({
+        format: "dd-mm-yyyy",
+        showOnFocus: true,
+        toggleActive: true,
+        todayHighlight: true,
+        keyboardNavigation: true,
+        autoclose: true
+      });
+    });
+    $('#id_prov').change(function() {
+      var id_prov = $(this).val();
+      var token = $("input[name='_token']").val();
+      $.ajax({
+        url: "<?php echo route('select-kabupaten') ?>",
+        method: 'POST',
+        cache : false,
+        data: {
+          id_prov: id_prov,
+          _token: token
+        },
+        success: function(data) {
+          $("#id_kab option").remove();
+          $("#id_kab").append(data.options);
+        }
+      });
+    });
+    $('#id_merk').change(function() {
+      var id_merk = $(this).val();
+      var token = $("input[name='_token']").val();
+      $.ajax({
+        url: "<?php echo route('select-seri') ?>",
+        method: 'POST',
+        cache : false,
+        data: {
+          id_merk: id_merk,
+          _token: token
+        },
+        success: function(data) {
+          $("#id_seri option").remove();
+          $("#id_seri").append(data.options);
+        }
+      });
+    });
+  </script>
+  @endpush
 @endsection

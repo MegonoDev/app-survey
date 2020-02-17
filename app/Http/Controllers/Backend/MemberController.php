@@ -12,6 +12,7 @@ use Auth;
 use App\User;
 use DB;
 use App\Dealereo;
+use App\Repositories\Mailing;
 
 class MemberController extends Controller
 {
@@ -19,6 +20,7 @@ class MemberController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->sendMail = new Mailing();
     }
 
     public function index()
@@ -38,7 +40,8 @@ class MemberController extends Controller
     public function create()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-        return view('backend.member.create', compact('provinsi'));
+        $merk       = DB::table('merk')->pluck("nama","id_merk")->all();
+        return view('backend.member.create', compact('provinsi','merk'));
     }
 
     public function store(MemberRequest $request)
@@ -47,49 +50,49 @@ class MemberController extends Controller
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        $data['kendaraan'] = implode(",", $request->kendaraan);
+        // $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
-        $data['operator_input'] = $this->operatorInput();
-		if(isset($request->handphone)){
-			$nohp = str_replace(" ","",$request->handphone);
-            if(!preg_match('/[^+0-9]/',trim($nohp))){
-             if(substr(trim($nohp), 0, 1)!='0'){
-                return redirect('/');
+        $data['operator_input'] = 2;
+        if (isset($request->handphone)) {
+            $nohp = str_replace(" ", "", $request->handphone);
+            if (!preg_match('/[^+0-9]/', trim($nohp))) {
+                if (substr(trim($nohp), 0, 1) != '0') {
+                    return redirect('/');
+                } elseif (substr(trim($nohp), 0, 1) == '0') {
+                    $hp = '62' . substr(trim($nohp), 1);
+                    $data['handphone'] = $hp;
                 }
-             elseif(substr(trim($nohp), 0, 1)=='0'){
-				$hp = '62'.substr(trim($nohp), 1);
-				$data['handphone'] = $hp;
-				}
-			}
+            }
         }
 
-  $curl = curl_init();
-  curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => " {\n   \"from\":\"EONESIA\",\n   \"to\":\"$hp'\",\n   \"text\":\"Terima Kasih Telah Registrasi. Simpan Kode Registrasi Anda $kode. Untuk Melihat Produk Terbaru Klik Link : https://www.yamaha-motor.co.id/product/lexi-s\"\n }",
-  CURLOPT_HTTPHEADER => array(
-    "accept: application/json",
-    "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
-    "cache-control: no-cache",
-    "content-type: application/json",
-    "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
-  ),
-));
-$response = curl_exec($curl);
-$err = curl_error($curl);
-curl_close($curl);
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.infobip.com/sms/1/text/single",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => " {\n   \"from\":\"EONESIA\",\n   \"to\":\"$hp'\",\n   \"text\":\"Terima Kasih Telah Registrasi. Simpan Kode Registrasi Anda $kode. Untuk Melihat Produk Terbaru Klik Link : https://www.yamaha-motor.co.id/product/lexi-s\"\n }",
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",
+                "cache-control: no-cache",
+                "content-type: application/json",
+                "postman-token: c415e5cd-57c5-b553-ae64-e7ecafc6c60f"
+            ),
+        ));
 
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
 
-		 Member::create($data);
-         Session::flash('flash_notification', [
-            'level'=>'success',
-            'message'=>'kode di kirim 1x24 jam ke no handphone '.$request->handphone.' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
+        $this->sendMail->sendCode($data);
+        Member::create($data);
+        Session::flash('flash_notification', [
+            'level' => 'success',
+            'message' => '<h4><i class="material-icons">check</i> Berhasil !</h4>Terima Kasih Telah Registrasi...<br> kode di kirim 1x24 jam ke no handphone ' . $request->handphone . ' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
         ]);
         return redirect(route('customers.index'));
     }

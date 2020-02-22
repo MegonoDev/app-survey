@@ -37,33 +37,19 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' : '' }}">
-        <label>Jenis Kelamin <b class="text-danger">*</b></label>
-        <label class="radio">Laki-laki
-          {!! Form::radio('jenis_kelamin', 'laki-laki') !!}
-          <span class="checkround"></span>
-        </label>
-        <label class="radio">Perempuan
-          {!! Form::radio('jenis_kelamin', 'perempuan') !!}
-          <span class="checkround"></span>
-        </label>
-        {!! $errors->first('jenis_kelamin', '<p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-  </div>
+
   <div class="row">
     <div class="input-field col s12">
       <div class="form-group {{ $errors->has('alamat') ? 'has-error' : '' }}">
         <label for="alamat">Alamat <b class="text-danger">*</b></label>
         {!! Form::text('alamat', null, ['id' => 'alamat', 'class' => 'form-control', 'placeholder' => 'alamat']) !!}
-        <div class="ml-2 mt-1 detail"><i>Alamat lengkap tanpa Kabupaten dan Provinsi</i></div>
+        <div class="ml-2 mt-1 detail"><i>Alamat lengkap tanpa Kelurahan, Kecamatan, Kabupaten dan Provinsi</i></div>
         {!! $errors->first('alamat', '
         <p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="input-field col s12 l6 m12">
       <div class="form-group {{ $errors->has('id_prov') ? 'has-error' : '' }}">
@@ -80,6 +66,24 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="input-field col s12 l6 m12">
+      <div class="form-group {{ $errors->has('id_kec') ? 'has-error' : '' }}">
+        <label for="id_kec">Kecamatan <b class="text-danger">*</b></label>
+        {!! Form::select('id_kec', ['' => 'kecamatan'], null, ['class' => 'form-control', 'id' => 'id_kec']) !!}
+        {!! $errors->first('id_kec', '<p style="color:darkred" class="help-block">:message</p>') !!}
+      </div>
+    </div>
+    <div class="input-field col s12 l6 m12">
+      <div class="form-group {{ $errors->has('id_kel') ? 'has-error' : '' }}">
+        <label for="id_kel">Kelurahan <b class="text-danger">*</b></label>
+        {!! Form::select('id_kel', ['' => 'kelurahan'], null, ['class' => 'form-control', 'id' => 'id_kel']) !!}
+        {!! $errors->first('id_kel', '<p style="color:darkred" class="help-block">:message</p>') !!}
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="input-field col s12">
       <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -105,75 +109,6 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <label for="pekerjaan">Pekerjaan <b class="text-danger">*</b></label>
-      <div class="form-group {{ $errors->has('pekerjaan') ? 'has-error' : '' }}">
-        {!! form::select('pekerjaan', ['Karyawan' => 'Karyawan', 'Pegawai Negeri' => 'Pegawai Negeri', 'TNI atau Polisi' => 'TNI atau Polisi', 'Ibu Rumah Tangga' => 'Ibu Rumah Tangga', 'Wiraswasta'=> 'Wiraswasta'],null, ['id' => 'pekerjaan', 'placeholder' => 'pekerjaan', 'class' => 'form-control']) !!}
-        {!! $errors->first('pekerjaan', '<p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <label for="perkawinan">Status <b class="text-danger">*</b></label>
-      <div class="form-group {{ $errors->has('perkawinan') ? 'has-error' : '' }}">
-        {!! form::select('perkawinan', ['Menikah' => 'Menikah', 'Belum Menikah' => 'Belum Menikah', 'Pisah' => 'Pisah'],null, ['placeholder' => 'status', 'class' => 'form-control' , 'id'=>'perkawinan']) !!} {!! $errors->first('perkawinan', '
-        <p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-  </div>
-  <header class="card-header">
-    <h6 class="card-title mt-2">Tipe Sepeda Motor Yang Anda Miliki Saat Ini? <b class="text-danger">*</b></h6>
-  </header>
-  <hr>
-  {!! $errors->first('kendaraan', '<p style="color:darkred" class="help-block">:message</p>') !!}
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('id_merk') ? 'has-error' : '' }}">
-        <label for="id_prov">Merk Motor <b class="text-danger">*</b></label>
-        {!! Form::select('id_merk', ['' => 'merk']+$merk, null, ['class' => 'form-control', 'id' => 'id_merk']) !!}
-        {!! $errors->first('id_merk', '<p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('id_seri') ? 'has-error' : '' }}">
-        <label for="id_seri">Tipe Motor <b class="text-danger">*</b></label>
-        {!! Form::select('id_seri', ['' => 'tipe'], null, ['class' => 'form-control', 'id' => 'id_seri']) !!}
-        {!! $errors->first('id_seri', '<p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-  </div>
- 
-  <!-- <header class="card-header">
-    <h6 class="card-title mt-2">Apakah Anda Berminat Membeli Motor Baru Dalam Waktu? <b class="text-danger">*</b></h6>
-  </header>
-  <hr>
-  {!! $errors->first('motorbaru', '<p style="color:darkred" class="help-block">:message</p>') !!}
-  <div class="row">
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('motorbaru') ? 'has-error' : '' }}">
-        <label class="radio">3 Bulan Kedepan
-          {!! Form::radio('motorbaru', '3 Bulan Kedepan') !!}
-          <span class="checkround"></span>
-        </label>
-        <label class="radio">6 Bulan Kedepan
-          {!! Form::radio('motorbaru', '6 Bulan Kedepan') !!}
-          <span class="checkround"></span>
-        </label>
-        <label class="radio">1 Tahun Kedepan
-          {!! Form::radio('motorbaru', '1 Tahun Kedepan') !!}
-          <span class="checkround"></span>
-        </label>
-      </div>
-    </div> 
-
-    <div class="input-field col s12 l6 m12">
-      <div class="form-group {{ $errors->has('motorbaru1') ? 'has-error' : '' }}">
-        {!! form::select('motorbaru1', ['Ya. Membeli Sepeda Motor Untuk Pertama Kalinya' => 'Ya, Membeli Sepeda Motor Untuk Pertama Kalinya', 'Ya. Membeli Sepeda Motor Sebagai Pengganti' => 'Ya, Membeli Sepeda Motor Sebagai Pengganti', 'Ya. Membeli Sepeda Motor Sebagai Penambahan' => 'Ya, Membeli Sepeda Motor Sebagai Penambahan', 'Ya. Membeli Sepeda Motor Dalam Jumlah Banyak (Bisnis/Fleet)' => 'Ya, Membeli Sepeda Motor Dalam Jumlah Banyak (Bisnis/Fleet)', 'Tidak. Belum Memiliki Rencana Pembelian Sepeda Motor Baru' => 'Tidak, Belum Memiliki Rencana Pembelian Sepeda Motor Baru'],null, ['placeholder' => 'pilih jawaban', 'class' => 'form-control']) !!}
-        {!! $errors->first('motorbaru1', '<p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-  </div>
--->
   <hr>
   <span>
     <b class="text-danger">*</b>

@@ -9,29 +9,41 @@ class Member extends Model
 {
     protected $fillable = [
         'nama',
-        'jenis_kelamin',
-        'email',
-        'alamat',
         'tempat_lahir',
         'tanggal_lahir',
+        'alamat',
+        'email',
+        'id_prov',
+        'id_kab',
+        'id_kec',
+        'id_kel',
         'handphone',
         'kode',
         'status_verifikasi',
-        'pekerjaan',
-        'perkawinan',
-        // 'kendaraan', diganti dengan merk dan seri
-        'id_merk',
-        'id_seri',
-        'id_kab',
-        'id_prov',
-        // 'motorbaru', //dihilangkan
-        // 'motorbaru1', //dihilangkan
         'operator_input'
+        // 'kendaraan', 
+        // 'id_merk',
+        // 'id_seri',
+        // 'motorbaru', 
+        // 'motorbaru1', 
+        // 'jenis_kelamin',
+        // 'pekerjaan',
+        // 'perkawinan',
     ];
 
     public function dealereo()
     {
     	return $this->belongsTo(Dealereo::class);
+    }
+
+    public function kelurahan()
+    {
+    	return $this->belongsTo('App\Kelurahan', 'id_kel');
+    }
+
+    public function kecamatan()
+    {
+    	return $this->belongsTo('App\Kecamatan', 'id_kec');
     }
 
     public function kabupaten()
@@ -43,15 +55,15 @@ class Member extends Model
     {
         return $this->belongsTo('App\Provinsi', 'id_prov');
     }
-    public function seri()
-    {
-    	return $this->belongsTo('App\Seri', 'id_seri');
-    }
+    // public function seri()
+    // {
+    // 	return $this->belongsTo('App\Seri', 'id_seri');
+    // }
 
-    public function merk()
-    {
-        return $this->belongsTo('App\Merk', 'id_merk');
-    }
+    // public function merk()
+    // {
+    //     return $this->belongsTo('App\Merk', 'id_merk');
+    // }
 
     public function getTanggallahirAttribute()
     {

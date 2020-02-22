@@ -21,4 +21,23 @@ class DopdownController extends Controller
     		return response()->json(['options'=>$data]);
     	}
     }
+
+    public function selectKecamatan(Request $request)
+    {
+    	if($request->ajax()){
+            $kecamatan = DB::table('kecamatans')->where('id_kab', $request->id_kab)->pluck("nama","id_kec")->all();
+            $data      = view('frontend.ajax-kecamatan', compact('kecamatan'))->render();
+    		return response()->json(['options'=>$data]);
+    	}
+    }
+
+    public function selectKelurahan(Request $request)
+    {
+    	if($request->ajax()){
+    		$kelurahan = DB::table('kelurahans')->where('id_kec', $request->id_kec)->pluck("nama","id_kel")->all();
+    		$data      = view('frontend.ajax-kelurahan', compact('kelurahan'))->render();
+    		return response()->json(['options'=>$data]);
+    	}
+    }
+
 }

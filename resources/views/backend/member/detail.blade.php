@@ -1,4 +1,3 @@
-
 <!-- dd($details); -->
 @extends('layouts/eonesia/b-n/master')
 @section('content')
@@ -20,118 +19,84 @@
       </div>
     </div>
     <div class="row">
-    <div class="col-lg-6 col-xlg-9 col-md-7">
-      <div class="card">
-        <!-- Tab panes -->
-        <div class="card-body">
-          <form class="form-horizontal form-material">
-            @foreach($details as $detail)
-            <div class="form-group">
-              <label class="col-md-12"><b>Data ini di Buat {{ $detail->created_at }} </b></label>
-              <div class="col-md-12">
-                <span class="badge badge-pill badge-info">{{ $detail->detail }}</span>
+      <div class="col-lg-6 col-xlg-9 col-md-7">
+        <div class="card">
+          <!-- Tab panes -->
+          <div class="card-body">
+            <form class="form-horizontal form-material">
+              @foreach($details as $detail)
+              <div class="form-group">
+                <label class="col-md-12"><b>Data ini di Buat {{ $detail->created_at }} </b></label>
+                <div class="col-md-12">
+                  <span class="badge badge-pill badge-info">{{ $detail->detail }}</span>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Nama</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->nama }}">
+              <div class="form-group">
+                <label class="col-md-12">Nama</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->nama }}">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Jenis Kelamin</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->jenis_kelamin }}">
+              <div class="form-group">
+                <label class="col-md-12">Alamat</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->alamat }}"> </div>
               </div>
-            </div>
-             <div class="form-group">
-              <label class="col-md-12">Alamat</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->alamat }}"> </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Kabupaten & Provinsi</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->kabupaten->nama }} - {{ $detail->provinsi->nama }}"> </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Tempat Lahir</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->tempat_lahir }}">
+              <div class="form-group">
+                <label class="col-md-12">Kabupaten & Provinsi</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->kabupaten->nama }} - {{ $detail->provinsi->nama }}"> </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Tangggal Lahir</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->tanggal_lahir }}">
+              <div class="form-group">
+                <label class="col-md-12">Kelurahan & Kecamatan</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->kelurahan->nama }} - {{ $detail->kecamatan->nama }}"> </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xlg-9 col-md-7">
+        <div class="card">
+          <!-- Tab panes -->
+          <div class="card-body">
+            <form class="form-horizontal form-material">
+              <div class="form-group">
+                <label class="col-md-12">Tempat Lahir</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->tempat_lahir }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Tangggal Lahir</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->tanggal_lahir }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">No Handphone</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->handphone }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Kode</label>
+                <div class="col-md-12">
+                  <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->kode }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Status Verifikasi</label>
+                <div class="col-md-12">
+                  {!! $detail->StatusVerifikasiAt !!}
+                </div>
+              </div>
+              @endforeach
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xlg-9 col-md-7">
-      <div class="card">
-        <!-- Tab panes -->
-        <div class="card-body">
-          <form class="form-horizontal form-material">
-          <div class="form-group">
-              <label class="col-md-12">No Handphone</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->handphone }}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Kode</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->kode }}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Status Verifikasi</label>
-              <div class="col-md-12">
-                {!! $detail->StatusVerifikasiAt !!}
-              </div>
-            </div>
-            <div class="form-group {{ $errors->has('start_register') ? 'has-error' : '' }}">
-              <label class="col-md-12">Pekerjaan</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->pekerjaan }}"> </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Perkawinan</label>
-              <div class="col-md-12">
-                <input type="text" id="title" class="form-control form-control-line" value="{{ $detail->perkawinan }}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-12">Kendaraan</label>
-              <div class="col-md-12">
-                <span>
-                    {{ $detail->merk->nama }} - {{ $detail->seri->nama }}
-                </span><hr>
-
-              </div>
-            </div>
-            <!-- <div class="form-group">
-              <label class="col-md-12">Jawaban Dari pertanyaan</label>
-              <div class="col-md-12">
-                  <p>Jawaban 1</p>
-                <input type="text"  class="form-control form-control-line" value="{{ $detail->motorbaru }}">
-              </div>
-              <div class="col-md-12">
-                  <p>Jawaban 2</p>
-                <input type="text"  class="form-control form-control-line" value="{{ $detail->motorbaru1 }}">
-              </div> -->
-
-            </div>
-            @endforeach
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
 </div>
 @endsection
-

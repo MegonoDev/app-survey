@@ -38,41 +38,85 @@
         keyboardNavigation: true,
         autoclose: true
       });
-    });
-    $('#id_prov').change(function() {
-      var id_prov = $(this).val();
-      var token = $("input[name='_token']").val();
-      $.ajax({
-        url: "<?php echo route('select-kabupaten') ?>",
-        method: 'POST',
-        cache : false,
-        data: {
-          id_prov: id_prov,
-          _token: token
-        },
-        success: function(data) {
-          $("#id_kab option").remove();
-          $("#id_kab").append(data.options);
-        }
+
+      $('#id_prov').change(function() {
+        var id_prov = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kabupaten') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_prov: id_prov,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kab option").remove();
+            $("#id_kab").append(data.options);
+            $("#id_kec option").remove();
+            $("#id_kec").append('<option value="">kecamatan</option>');
+            $("#id_kel option").remove();
+            $("#id_kel").append('<option value="">kelurahan</option>');
+          }
+        });
       });
-    });
-    $('#id_merk').change(function() {
-      var id_merk = $(this).val();
-      var token = $("input[name='_token']").val();
-      $.ajax({
-        url: "<?php echo route('select-seri') ?>",
-        method: 'POST',
-        cache : false,
-        data: {
-          id_merk: id_merk,
-          _token: token
-        },
-        success: function(data) {
-          $("#id_seri option").remove();
-          $("#id_seri").append(data.options);
-        }
+
+      $('#id_kab').change(function() {
+        var id_kab = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kecamatan') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_kab: id_kab,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kec option").remove();
+            $("#id_kec").append(data.options);
+            $("#id_kel option").remove();
+            $("#id_kel").append('<option value="">kelurahan</option>');
+          }
+        });
       });
+
+      $('#id_kec').change(function() {
+        var id_kec = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kelurahan') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_kec: id_kec,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kel option").remove();
+            $("#id_kel").append(data.options);
+          }
+        });
+      });
+
     });
+    // $('#id_merk').change(function() {
+    //   var id_merk = $(this).val();
+    //   var token = $("input[name='_token']").val();
+    //   $.ajax({
+    //     url: "route ke merk",
+    //     method: 'POST',
+    //     cache : false,
+    //     data: {
+    //       id_merk: id_merk,
+    //       _token: token
+    //     },
+    //     success: function(data) {
+    //       $("#id_seri option").remove();
+    //       $("#id_seri").append(data.options);
+    //     }
+    //   });
+    // });
   </script>
   @endpush
 @endsection

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>EONESIA</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -200,17 +201,11 @@
     .detail {
       font-size: 0.875rem;
     }
- /*   .container {*/
- /*   padding-right:0;*/
- /*   padding-left:0;*/
- /*   margin-right:auto;*/
- /*   margin-left:auto*/
- /*}*/
   </style>
 </head>
 
 <body>
-    <div class="pt-5 d-none d-sm-block"></div>
+  <div class="pt-5 d-none d-sm-block"></div>
   <div class="container">
     <!-- <br> -->
     <!--  <p class="text-center">
@@ -232,7 +227,7 @@
   </div>
   <br>
   <br>
-  <article class="bg-secondary mb-3">
+  <!-- <article class="bg-secondary mb-3">
     <div class="card-body text-center">
       <h3 class="text-white mt-3">EONESIA</h3>
       <p class="h5 text-white">Brand Activation | Apparel & Merchendise | Advertising | Event Organizer | Product
@@ -240,13 +235,13 @@
     </div>
     <br>
     <br>
-  </article>
+  </article> -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
   <script type="text/javascript">
-    
+
 
   </script>
   <script type="text/javascript">
@@ -259,41 +254,85 @@
         keyboardNavigation: true,
         autoclose: true
       });
-    });
-    $('#id_prov').change(function() {
-      var id_prov = $(this).val();
-      var token = $("input[name='_token']").val();
-      $.ajax({
-        url: "<?php echo route('select-kabupaten') ?>",
-        method: 'POST',
-        cache : false,
-        data: {
-          id_prov: id_prov,
-          _token: token
-        },
-        success: function(data) {
-          $("#id_kab option").remove();
-          $("#id_kab").append(data.options);
-        }
+
+      $('#id_prov').change(function() {
+        var id_prov = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kabupaten') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_prov: id_prov,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kab option").remove();
+            $("#id_kab").append(data.options);
+            $("#id_kec option").remove();
+            $("#id_kec").append('<option value="">kecamatan</option>');
+            $("#id_kel option").remove();
+            $("#id_kel").append('<option value="">kelurahan</option>');
+          }
+        });
       });
-    });
-    $('#id_merk').change(function() {
-      var id_merk = $(this).val();
-      var token = $("input[name='_token']").val();
-      $.ajax({
-        url: "<?php echo route('select-seri') ?>",
-        method: 'POST',
-        cache : false,
-        data: {
-          id_merk: id_merk,
-          _token: token
-        },
-        success: function(data) {
-          $("#id_seri option").remove();
-          $("#id_seri").append(data.options);
-        }
+
+      $('#id_kab').change(function() {
+        var id_kab = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kecamatan') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_kab: id_kab,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kec option").remove();
+            $("#id_kec").append(data.options);
+            $("#id_kel option").remove();
+            $("#id_kel").append('<option value="">kelurahan</option>');
+          }
+        });
       });
+
+      $('#id_kec').change(function() {
+        var id_kec = $(this).val();
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kelurahan') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_kec: id_kec,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kel option").remove();
+            $("#id_kel").append(data.options);
+          }
+        });
+      });
+
     });
+    // $('#id_merk').change(function() {
+    //   var id_merk = $(this).val();
+    //   var token = $("input[name='_token']").val();
+    //   $.ajax({
+    //     url: "route ke merk",
+    //     method: 'POST',
+    //     cache : false,
+    //     data: {
+    //       id_merk: id_merk,
+    //       _token: token
+    //     },
+    //     success: function(data) {
+    //       $("#id_seri option").remove();
+    //       $("#id_seri").append(data.options);
+    //     }
+    //   });
+    // });
   </script>
 </body>
 

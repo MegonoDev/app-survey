@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
+use App\Member;
 
 class MemberRequest extends FormRequest
 {
@@ -32,8 +34,8 @@ class MemberRequest extends FormRequest
             'id_kab' => 'required',
             'id_kel' => 'required',
             'id_kec' => 'required',
-            'email' => 'required|email',
-            'handphone' => 'required|min:10|max:13',
+            'email' => 'required|email|unique:members',
+            'handphone' => 'required|min:10|max:13|unique:members',
             'ketentuan' => 'required'
             // 'jenis_kelamin' => 'required',
             // 'id_seri' => 'required',
@@ -47,11 +49,34 @@ class MemberRequest extends FormRequest
         ];
     }
 
+    public function withValidator($validator)
+    {
+
+        $result = Member::where('handphone', $this->formathp($this->handphone))->get();
+        $validator->after(function ($validator) use ($result) {
+            if (!$result->isEmpty()) {
+                $validator->errors()->add('handphone', 'No handphone sudah terdaftar');
+            } 
+        });
+        return $validator;
+    }
+
+    public function formathp($hp)
+    {
+        $nohp = str_replace(" ", "", $hp);
+        if (!preg_match('/[^+0-9]/', trim($nohp))) {
+            if (substr(trim($nohp), 0, 1) == '0') {
+                return '62' . substr(trim($nohp), 1);
+            }
+        }
+    }
+
     public function messages()
     {
         return [
             'nama.required' => 'Nama Mohon Di isi',
             'email.required' => 'Email Dilarang Kosong',
+            'email.unique' => 'Email sudah terdaftar',
             'email.email' => 'Email Anda Tidak Benar',
             'alamat.required' => 'Alamat Mohon Di isi  ',
             'tempat_lahir.required' => 'Tempat Lahir Mohon Di isi',
@@ -75,4 +100,3 @@ class MemberRequest extends FormRequest
         ];
     }
 }
-

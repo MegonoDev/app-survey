@@ -71,11 +71,11 @@ class FrontendController extends Controller
 
         $this->sendMail->sendCode($data);
         Member::create($data);
-        Session::flash('flash_notification', [
-            'level' => 'success',
-            'message' => '<h4><i class="material-icons">check</i> Berhasil !</h4>Terima Kasih Telah Registrasi...<br> kode di kirim 1x24 jam ke no handphone ' . $request->handphone . ' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
-        ]);
-        return redirect('/');
+        // Session::flash('flash_notification', [
+        //     'level' => 'success',
+        //     'message' => '<h4><i class="material-icons">check</i> Berhasil !</h4>Terima Kasih Telah Registrasi...<br> kode di kirim 1x24 jam ke no handphone ' . $request->handphone . ' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
+        // ]);
+        return view('frontend.success');
     }
     public function verifikasiByUrl($kode)
     {

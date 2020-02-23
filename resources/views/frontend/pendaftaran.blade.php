@@ -209,7 +209,6 @@
 </head>
 
 <body>
-  @include('frontend.banner-top')
   <!-- <div class="pt-5 d-none d-sm-block"></div> -->
   <div class="container">
     <!-- <br> -->
@@ -221,19 +220,20 @@
     <div class="row justify-content-center">
       <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="card">
-          <header class="card-header bg-custom text-light px-5 py-5">
+
+  @include('frontend.banner-top')
+          <!-- <header class="card-header bg-custom text-light px-5 py-5">
             <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>
             <span>Silahkan isi data diri Anda untuk mendapatkan nomor undian Bahagia Keluarga Bersama YAMAHA</span>
-          </header>
+          </header> -->
           @include('frontend._form')
+
+  @include('frontend.banner-bot')
         </div>
       </div>
     </div>
   </div>
-  <br/>
-  <br/>
 
-  @include('frontend.banner-bot')
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
@@ -360,6 +360,7 @@
           // nav: true,
           smartSpeed: 200,
           slideSpeed: 500,
+          dots: false,
           slideBy: slidesPerPage,
           responsiveRefreshRate: 100
         }).on('changed.owl.carousel', syncPosition2);

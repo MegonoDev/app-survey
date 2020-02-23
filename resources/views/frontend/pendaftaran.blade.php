@@ -221,14 +221,14 @@
       <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="card">
 
-  @include('frontend.banner-top')
+          @include('frontend.banner-top')
           <!-- <header class="card-header bg-custom text-light px-5 py-5">
             <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>
             <span>Silahkan isi data diri Anda untuk mendapatkan nomor undian Bahagia Keluarga Bersama YAMAHA</span>
           </header> -->
           @include('frontend._form')
 
-  @include('frontend.banner-bot')
+          @include('frontend.banner-bot')
         </div>
       </div>
     </div>
@@ -244,6 +244,14 @@
 
   </script>
   <script type="text/javascript">
+    var provinsi = "{{ old('id_prov') }}";
+    var kabupaten = "{{ old('id_kab') }}";
+    var kecamatan = "{{ old('id_kec') }}";
+    var kelurahan = "{{ old('id_kel') }}";
+    // alert(
+    //   provinsi + '+' + kabupaten + '+' + kecamatan + '+' + kelurahan
+
+    // )
     $(document).ready(function() {
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
@@ -254,8 +262,39 @@
         autoclose: true
       });
 
-      $('#id_prov').change(function() {
-        var id_prov = $(this).val();
+
+      if (provinsi != '') {
+        getKab(provinsi);
+      }
+
+      if (kabupaten != '') {
+        getKec(kabupaten);
+      }
+
+      if (kecamatan != '') {
+        getKel(kecamatan);
+      }
+
+      function getKec(id_kab) {
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kecamatan') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_kab: id_kab,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kec option").remove();
+            $("#id_kec").append(data.options);
+            $("#id_kel option").remove();
+            $("#id_kel").append('<option value="">kelurahan</option>');
+          }
+        });
+      }
+
+      function getKab(id_prov) {
         var token = $("input[name='_token']").val();
         $.ajax({
           url: "<?php echo route('select-kabupaten') ?>",
@@ -274,30 +313,9 @@
             $("#id_kel").append('<option value="">kelurahan</option>');
           }
         });
-      });
+      }
 
-      $('#id_kab').change(function() {
-        var id_kab = $(this).val();
-        var token = $("input[name='_token']").val();
-        $.ajax({
-          url: "<?php echo route('select-kecamatan') ?>",
-          method: 'POST',
-          cache: false,
-          data: {
-            id_kab: id_kab,
-            _token: token
-          },
-          success: function(data) {
-            $("#id_kec option").remove();
-            $("#id_kec").append(data.options);
-            $("#id_kel option").remove();
-            $("#id_kel").append('<option value="">kelurahan</option>');
-          }
-        });
-      });
-
-      $('#id_kec').change(function() {
-        var id_kec = $(this).val();
+      function getKel(id_kec) {
         var token = $("input[name='_token']").val();
         $.ajax({
           url: "<?php echo route('select-kelurahan') ?>",
@@ -312,26 +330,27 @@
             $("#id_kel").append(data.options);
           }
         });
+      }
+
+      $('#id_prov').change(function() {
+        getKab($(this).val());
+      });
+
+      $('#id_kab').change(function() {
+        getKec($(this).val());
+      });
+
+      $('#id_kec').change(function() {
+        getKel($(this).val());
       });
 
     });
-    // $('#id_merk').change(function() {
-    //   var id_merk = $(this).val();
-    //   var token = $("input[name='_token']").val();
-    //   $.ajax({
-    //     url: "route ke merk",
-    //     method: 'POST',
-    //     cache : false,
-    //     data: {
-    //       id_merk: id_merk,
-    //       _token: token
-    //     },
-    //     success: function(data) {
-    //       $("#id_seri option").remove();
-    //       $("#id_seri").append(data.options);
-    //     }
-    //   });
-    // });
+   
+    $(window).on('load', function() {
+      $("#id_kab").val(kabupaten);
+      $("#id_kec").val(kecamatan);
+      $("#id_kel").val(kelurahan);
+    });
   </script>
 
   <script>

@@ -22,14 +22,14 @@ Route::get('/verification/code/{kode}',[
 
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
-Route::get('pendaftaran/test-drive', 'DopdownController@getData')->name('getData');
+Route::get('register', 'DopdownController@getData')->name('getData');
 Route::post('select-kabupaten', ['as'=>'select-kabupaten','uses'=>'DopdownController@selectKabupaten']);
 Route::post('select-kecamatan', ['as'=>'select-kecamatan','uses'=>'DopdownController@selectKecamatan']);
 Route::post('select-kelurahan', ['as'=>'select-kelurahan','uses'=>'DopdownController@selectKelurahan']);
 Route::post('select-dealereo', ['as'=>'select-dealereo','uses'=>'DopdownController@selectDealereo']);
 // Route::post('select-seri', ['as'=>'select-seri','uses'=>'MotorController@selectSeri']);
 
-Route::post('pendaftaran/post', [
+Route::post('register/post', [
 	'uses' => 'FrontendController@registerTestdrive',
 	'as'   => 'registerTestdrive'
 ]);

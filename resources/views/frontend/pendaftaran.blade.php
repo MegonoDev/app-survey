@@ -248,10 +248,7 @@
     var kabupaten = "{{ old('id_kab') }}";
     var kecamatan = "{{ old('id_kec') }}";
     var kelurahan = "{{ old('id_kel') }}";
-    // alert(
-    //   provinsi + '+' + kabupaten + '+' + kecamatan + '+' + kelurahan
 
-    // )
     $(document).ready(function() {
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
@@ -290,6 +287,8 @@
             $("#id_kec").append(data.options);
             $("#id_kel option").remove();
             $("#id_kel").append('<option value="">kelurahan</option>');
+            
+            $("#id_kec").val(kecamatan);
           }
         });
       }
@@ -311,6 +310,8 @@
             $("#id_kec").append('<option value="">kecamatan</option>');
             $("#id_kel option").remove();
             $("#id_kel").append('<option value="">kelurahan</option>');
+
+            $("#id_kab").val(kabupaten);
           }
         });
       }
@@ -328,6 +329,8 @@
           success: function(data) {
             $("#id_kel option").remove();
             $("#id_kel").append(data.options);
+
+            $("#id_kel").val(kelurahan);
           }
         });
       }
@@ -344,12 +347,6 @@
         getKel($(this).val());
       });
 
-    });
-   
-    $(window).on('load', function() {
-      $("#id_kab").val(kabupaten);
-      $("#id_kec").val(kecamatan);
-      $("#id_kel").val(kelurahan);
     });
   </script>
 

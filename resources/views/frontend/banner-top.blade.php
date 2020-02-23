@@ -1,25 +1,18 @@
 <div id="c1" class="owl-carousel owl-theme owl-loaded">
     <div class="owl-stage-outer">
         <div class="owl-stage">
-            <div class="owl-item" style="width: 1351px;">
-                <img src="{{ asset('eonesia/images/banner-demo-1.jpg') }}" class="img-fluid" alt="banner">
+            <div class="owl-item">
+                <img src="{{ asset('eonesia/images/banner/aerox.jpg') }}" class="img-fluid" alt="banner">
             </div>
 
-            <div class="owl-item" style="width: 1351px;">
-                <img src="{{ asset('eonesia/images/banner-demo-2.jpg') }}" class="img-fluid" alt="banner">
+            <div class="owl-item">
+                <img src="{{ asset('eonesia/images/banner/freego.jpg') }}" class="img-fluid" alt="banner">
             </div>
 
-            <div class="owl-item" style="width: 1351px;">
-                <img src="{{ asset('eonesia/images/banner-demo-1.jpg') }}" class="img-fluid" alt="banner">
+            <div class="owl-item">
+                <img src="{{ asset('eonesia/images/banner/lexi.jpg') }}" class="img-fluid" alt="banner">
             </div>
 
-            <div class="owl-item" style="width: 1351px;">
-                <img src="{{ asset('eonesia/images/banner-demo-2.jpg') }}" class="img-fluid" alt="banner">
-            </div>
-
-            <div class="owl-item" style="width: 1351px;">
-                <img src="{{ asset('eonesia/images/banner-demo-1.jpg') }}" class="img-fluid" alt="banner">
-            </div>
         </div>
     </div>
 </div>

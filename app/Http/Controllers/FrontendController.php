@@ -75,6 +75,12 @@ class FrontendController extends Controller
         //     'level' => 'success',
         //     'message' => '<h4><i class="material-icons">check</i> Berhasil !</h4>Terima Kasih Telah Registrasi...<br> kode di kirim 1x24 jam ke no handphone ' . $request->handphone . ' <br>jika kode tidak terkirim ke no handphone anda silahkan hubungi admin.'
         // ]);
+
+        return redirect()->route('successful-register');
+    }
+
+    public function successfulRegister()
+    {
         return view('frontend.success');
     }
     public function verifikasiByUrl($kode)

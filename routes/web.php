@@ -22,6 +22,7 @@ Route::get('/verification/code/{kode}',[
 
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
+Route::get('/register/successful', 'FrontendController@successfulRegister')->name('successful-register');
 Route::get('register', 'DopdownController@getData')->name('getData');
 Route::post('select-kabupaten', ['as'=>'select-kabupaten','uses'=>'DopdownController@selectKabupaten']);
 Route::post('select-kecamatan', ['as'=>'select-kecamatan','uses'=>'DopdownController@selectKecamatan']);

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-      <img src="{{ asset('eonesia/images/banner/terimakasih.jpg') }}" class="img-fluid" style="width:100%;height:100%">
+      <img src="{{ asset('eonesia/images/banner/terimakasih-min.jpg') }}" class="img-fluid" style="width:100%;height:100%">
   
 </body>
 

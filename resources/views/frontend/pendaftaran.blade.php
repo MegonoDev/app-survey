@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
   <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
   <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/banner.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
   <style>
     .radio {
       display: block;
@@ -205,7 +209,8 @@
 </head>
 
 <body>
-  <div class="pt-5 d-none d-sm-block"></div>
+  @include('frontend.banner-top')
+  <!-- <div class="pt-5 d-none d-sm-block"></div> -->
   <div class="container">
     <!-- <br> -->
     <!--  <p class="text-center">
@@ -225,21 +230,15 @@
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <!-- <article class="bg-secondary mb-3">
-    <div class="card-body text-center">
-      <h3 class="text-white mt-3">EONESIA</h3>
-      <p class="h5 text-white">Brand Activation | Apparel & Merchendise | Advertising | Event Organizer | Product
-        <br>| 3D Animation | Exhibition | Multimedia Development | Customer Insight
-    </div>
-    <br>
-    <br>
-  </article> -->
+  <br/>
+  <br/>
+
+  @include('frontend.banner-bot')
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
   <script type="text/javascript">
 
 
@@ -333,6 +332,81 @@
     //     }
     //   });
     // });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+
+      var sync1 = $("#c1");
+      var sync2 = $("#c2");
+      var slidesPerPage = 1;
+      var syncedSecondary = true;
+
+      sync1.owlCarousel({
+        items: 1,
+        slideSpeed: 2000,
+        // nav: true,
+        autoplay: true,
+        loop: true,
+        responsiveRefreshRate: 200,
+      }).on('changed.owl.carousel', syncPosition);
+
+      sync2
+        .on('initialized.owl.carousel', function() {
+          sync2.find(".owl-item").eq(0).addClass("current");
+        })
+        .owlCarousel({
+          items: slidesPerPage,
+          // nav: true,
+          smartSpeed: 200,
+          slideSpeed: 500,
+          slideBy: slidesPerPage,
+          responsiveRefreshRate: 100
+        }).on('changed.owl.carousel', syncPosition2);
+
+      function syncPosition(el) {
+
+        var count = el.item.count - 1;
+        var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+        if (current < 0) {
+          current = count;
+        }
+        if (current > count) {
+          current = 0;
+        }
+
+
+        sync2
+          .find(".owl-item")
+          .removeClass("current")
+          .eq(current)
+          .addClass("current");
+        var onscreen = sync2.find('.owl-item.active').length - 1;
+        var start = sync2.find('.owl-item.active').first().index();
+        var end = sync2.find('.owl-item.active').last().index();
+
+        if (current > end) {
+          sync2.data('owl.carousel').to(current, 100, true);
+        }
+        if (current < start) {
+          sync2.data('owl.carousel').to(current - onscreen, 100, true);
+        }
+      }
+
+      function syncPosition2(el) {
+        if (syncedSecondary) {
+          var number = el.item.index;
+          sync1.data('owl.carousel').to(number, 100, true);
+        }
+      }
+
+      sync2.on("click", ".owl-item", function(e) {
+        e.preventDefault();
+        var number = $(this).index();
+        sync1.data('owl.carousel').to(number, 300, true);
+      });
+    });
   </script>
 </body>
 

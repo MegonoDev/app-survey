@@ -81,12 +81,12 @@ class FrontendController extends Controller
     {
         $member = Member::where('kode', $kode)->first();
         $data    = ['status_verifikasi' => '1'];
+        if($member){
         $member->update($data);
-        Session::flash('flash_notification', [
-            'level' => 'success',
-            'message' => 'Kode : ' . $member->kode . ' <br> Nama : ' . $member->nama . '<br> Berhasil di Verifikasi</h4>'
-        ]);
-        return redirect(route('eonesia'));
+        return redirect('https://yamaha-motor.co.id');
+        }else{
+            return redirect('/');
+        }
     }
 
     public function makeKode()

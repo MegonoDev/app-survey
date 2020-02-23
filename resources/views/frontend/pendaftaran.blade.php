@@ -362,7 +362,7 @@
           slideSpeed: 500,
           dots: false,
           slideBy: slidesPerPage,
-          responsiveRefreshRate: 100
+          responsiveRefreshRate: 200
         }).on('changed.owl.carousel', syncPosition2);
 
       function syncPosition(el) {

@@ -244,12 +244,12 @@
 
   </script>
   <script type="text/javascript">
-    var provinsi = "{{ old('id_prov') }}";
-    var kabupaten = "{{ old('id_kab') }}";
-    var kecamatan = "{{ old('id_kec') }}";
-    var kelurahan = "{{ old('id_kel') }}";
-
     $(document).ready(function() {
+
+      var provinsi = "{{ old('id_prov') }}";
+      var kabupaten = "{{ old('id_kab') }}";
+      var kecamatan = "{{ old('id_kec') }}";
+      var kelurahan = "{{ old('id_kel') }}";
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
         showOnFocus: true,
@@ -272,26 +272,6 @@
         getKel(kecamatan);
       }
 
-      function getKec(id_kab) {
-        var token = $("input[name='_token']").val();
-        $.ajax({
-          url: "<?php echo route('select-kecamatan') ?>",
-          method: 'POST',
-          cache: false,
-          data: {
-            id_kab: id_kab,
-            _token: token
-          },
-          success: function(data) {
-            $("#id_kec option").remove();
-            $("#id_kec").append(data.options);
-            $("#id_kel option").remove();
-            $("#id_kel").append('<option value="">kelurahan</option>');
-            
-            $("#id_kec").val(kecamatan);
-          }
-        });
-      }
 
       function getKab(id_prov) {
         var token = $("input[name='_token']").val();
@@ -312,6 +292,27 @@
             $("#id_kel").append('<option value="">kelurahan</option>');
 
             $("#id_kab").val(kabupaten);
+          }
+        });
+      }
+
+      function getKec(id_kab) {
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-kecamatan') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            id_kab: id_kab,
+            _token: token
+          },
+          success: function(data) {
+            $("#id_kec option").remove();
+            $("#id_kec").append(data.options);
+            $("#id_kel option").remove();
+            $("#id_kel").append('<option value="">kelurahan</option>');
+
+            $("#id_kec").val(kecamatan);
           }
         });
       }
@@ -362,6 +363,7 @@
         items: 1,
         slideSpeed: 2000,
         // nav: true,
+        lazyLoad: true,
         autoplay: true,
         loop: true,
         responsiveRefreshRate: 200,
@@ -377,6 +379,7 @@
           smartSpeed: 200,
           slideSpeed: 500,
           dots: false,
+          lazyLoad: true,
           slideBy: slidesPerPage,
           responsiveRefreshRate: 200
         }).on('changed.owl.carousel', syncPosition2);

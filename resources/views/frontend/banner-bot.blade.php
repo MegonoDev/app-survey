@@ -2,15 +2,15 @@
     <div class="owl-stage-outer">
         <div class="owl-stage">
             <div class="owl-item">
-                <img data-src="{{ asset('eonesia/images/banner/nmax-min.jpg') }}" data-src-retina="{{ asset('eonesia/images/banner/nmax.jpg') }}" class="owl-lazy img-fluid" alt="banner">
+                <img src="{{ asset('eonesia/images/banner/nmax-min.jpg') }}"  class="img-fluid" alt="banner">
             </div>
 
             <div class="owl-item">
-                <img data-src="{{ asset('eonesia/images/banner/xsr-min.jpg') }}" data-src-retina="{{ asset('eonesia/images/banner/xsr.jpg') }}" class="owl-lazy img-fluid" alt="banner">
+                <img src="{{ asset('eonesia/images/banner/xsr-min.jpg') }}"  class="img-fluid" alt="banner">
             </div>
 
             <div class="owl-item">
-                <img  data-src="{{ asset('eonesia/images/banner/wr-min.jpg') }}" data-src-retina="{{ asset('eonesia/images/banner/wr.jpg') }}" class="owl-lazy img-fluid" alt="banner">
+                <img  src="{{ asset('eonesia/images/banner/wr-min.jpg') }}" class="img-fluid" alt="banner">
             </div>
 
         </div>

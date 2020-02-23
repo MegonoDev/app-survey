@@ -363,7 +363,7 @@
         items: 1,
         slideSpeed: 2000,
         // nav: true,
-        lazyLoad: true,
+        // lazyLoad: true,
         autoplay: true,
         loop: true,
         responsiveRefreshRate: 200,
@@ -379,7 +379,7 @@
           smartSpeed: 200,
           slideSpeed: 500,
           dots: false,
-          lazyLoad: true,
+          // lazyLoad: true,
           slideBy: slidesPerPage,
           responsiveRefreshRate: 200
         }).on('changed.owl.carousel', syncPosition2);

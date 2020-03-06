@@ -41,7 +41,7 @@ class MemberController extends Controller
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
         $dealer = DB::table('dealereos')->pluck("nama_dealer","id")->all();
-        return view('backend.member.create', compact('provinsi','merk'));
+        return view('backend.member.create', compact('provinsi','dealer'));
     }
 
     public function store(MemberRequest $request)

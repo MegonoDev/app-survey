@@ -30,6 +30,16 @@
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
+
+      var provinsi = "{{ old('id_prov') }}";
+      var kabupaten = "{{ old('id_kab') }}";
+      var kecamatan = "{{ old('id_kec') }}";
+      var kelurahan = "{{ old('id_kel') }}";
+
+
+      var dealer = "{{ old('dealereo_id') }}";
+      var sales = "{{ old('sales_id') }}";
+
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
         showOnFocus: true,
@@ -39,8 +49,26 @@
         autoclose: true
       });
 
-      $('#id_prov').change(function() {
-        var id_prov = $(this).val();
+
+      if (provinsi != '') {
+        getKab(provinsi);
+      }
+
+      if (kabupaten != '') {
+        getKec(kabupaten);
+      }
+
+      if (kecamatan != '') {
+        getKel(kecamatan);
+      }
+
+
+      if (dealer != '') {
+        getSales(dealer);
+      }
+
+
+      function getKab(id_prov) {
         var token = $("input[name='_token']").val();
         $.ajax({
           url: "<?php echo route('select-kabupaten') ?>",
@@ -57,12 +85,13 @@
             $("#id_kec").append('<option value="">kecamatan</option>');
             $("#id_kel option").remove();
             $("#id_kel").append('<option value="">kelurahan</option>');
+
+            $("#id_kab").val(kabupaten);
           }
         });
-      });
+      }
 
-      $('#id_kab').change(function() {
-        var id_kab = $(this).val();
+      function getKec(id_kab) {
         var token = $("input[name='_token']").val();
         $.ajax({
           url: "<?php echo route('select-kecamatan') ?>",
@@ -77,12 +106,13 @@
             $("#id_kec").append(data.options);
             $("#id_kel option").remove();
             $("#id_kel").append('<option value="">kelurahan</option>');
+
+            $("#id_kec").val(kecamatan);
           }
         });
-      });
+      }
 
-      $('#id_kec').change(function() {
-        var id_kec = $(this).val();
+      function getKel(id_kec) {
         var token = $("input[name='_token']").val();
         $.ajax({
           url: "<?php echo route('select-kelurahan') ?>",
@@ -95,28 +125,48 @@
           success: function(data) {
             $("#id_kel option").remove();
             $("#id_kel").append(data.options);
+
+            $("#id_kel").val(kelurahan);
           }
         });
+      }
+
+      function getSales(dealereo_id) {
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-sales') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            dealereo_id: dealereo_id,
+            _token: token
+          },
+          success: function(data) {
+            $("#sales_id option").remove();
+            $("#sales_id").append(data.options);
+            $("#sales_id").val(sales);
+          }
+        });
+      }
+
+      $('#id_prov').change(function() {
+        getKab($(this).val());
+      });
+
+      $('#id_kab').change(function() {
+        getKec($(this).val());
+      });
+
+      $('#id_kec').change(function() {
+        getKel($(this).val());
+      });
+
+      $('#dealereo_id').change(function() {
+        getSales($(this).val());
+
       });
 
     });
-    // $('#id_merk').change(function() {
-    //   var id_merk = $(this).val();
-    //   var token = $("input[name='_token']").val();
-    //   $.ajax({
-    //     url: "route ke merk",
-    //     method: 'POST',
-    //     cache : false,
-    //     data: {
-    //       id_merk: id_merk,
-    //       _token: token
-    //     },
-    //     success: function(data) {
-    //       $("#id_seri option").remove();
-    //       $("#id_seri").append(data.options);
-    //     }
-    //   });
-    // });
   </script>
   @endpush
 @endsection

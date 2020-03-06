@@ -9,7 +9,7 @@ class DopdownController extends Controller
     public function getData()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-        $dealer = DB::table('dealereos')->pluck("kode_dealer","id")->all();
+        $dealer = DB::table('dealereos')->pluck("nama_dealer","id")->all();
     	return view('frontend.pendaftaran',compact('provinsi','dealer'));
     }
 

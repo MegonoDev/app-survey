@@ -17,12 +17,12 @@ class Member extends Model
         'id_kab',
         'id_kec',
         'id_kel',
-        // 'dealereo_id',
         'sales_id',
         'handphone',
         'kode',
         'status_verifikasi',
         'operator_input'
+        // 'dealereo_id',
         // 'kendaraan', 
         // 'id_merk',
         // 'id_seri',

@@ -9,7 +9,6 @@ class DopdownController extends Controller
     public function getData()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-        $merk   = DB::table('merk')->pluck("nama","id_merk")->all();
     	return view('frontend.pendaftaran',compact('merk','provinsi'));
     }
 

@@ -34,6 +34,8 @@ class FrontendController extends Controller
         // $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
         $data['operator_input'] = 2;
+        // $data['dealereo_id'] = (int)$request->get('dealereo_id');
+        // $data['sales_id'] = (int)$request->get('sales_id');
         if (isset($request->handphone)) {
             $nohp = str_replace(" ", "", $request->handphone);
             if (!preg_match('/[^+0-9]/', trim($nohp))) {

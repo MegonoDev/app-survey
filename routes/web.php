@@ -27,7 +27,7 @@ Route::get('register', 'DopdownController@getData')->name('getData');
 Route::post('select-kabupaten', ['as'=>'select-kabupaten','uses'=>'DopdownController@selectKabupaten']);
 Route::post('select-kecamatan', ['as'=>'select-kecamatan','uses'=>'DopdownController@selectKecamatan']);
 Route::post('select-kelurahan', ['as'=>'select-kelurahan','uses'=>'DopdownController@selectKelurahan']);
-Route::post('select-dealereo', ['as'=>'select-dealereo','uses'=>'DopdownController@selectDealereo']);
+Route::post('select-sales', ['as'=>'select-sales','uses'=>'DopdownController@selectSales']);
 // Route::post('select-seri', ['as'=>'select-seri','uses'=>'MotorController@selectSeri']);
 
 Route::post('register/post', [
@@ -38,7 +38,7 @@ Route::post('register/post', [
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::post('kabupaten-select', ['as'=>'kabupaten-select','uses'=>'MemberController@kabupatenSelect']);
+    // Route::post('kabupaten-select', ['as'=>'kabupaten-select','uses'=>'MemberController@kabupatenSelect']);
     Route::get('customers/kode/{kode}', 'MemberController@detailCustomer')->name('detail.customer');
     Route::resource('dealer', 'DealereoController', ['except' => [
         'create', 'show'
@@ -85,12 +85,6 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
     ]);
 
     });
-
-    Route::get('tes-email', function() {
-        $code = 'kode';
-        return view('email.verificationcode',compact('code'));
-    });
-
 
 
 

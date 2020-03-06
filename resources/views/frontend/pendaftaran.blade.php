@@ -209,23 +209,14 @@
 </head>
 
 <body>
-  <!-- <div class="pt-5 d-none d-sm-block"></div> -->
   <div class="container">
-    <!-- <br> -->
-    <!--  <p class="text-center">
-      <h4 class="text-center">Silahkan isi data diri untuk mendapatkan nomor<br> undian Bahagia Keluarga Bersama YAMAHA</h4>
-      </a>
-    </p>
-    <hr> -->
+
     <div class="row justify-content-center">
       <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="card">
 
           @include('frontend.banner-top')
-          <!-- <header class="card-header bg-custom text-light px-5 py-5">
-            <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>
-            <span>Silahkan isi data diri Anda untuk mendapatkan nomor undian Bahagia Keluarga Bersama YAMAHA</span>
-          </header> -->
+
           @include('frontend._form')
 
           @include('frontend.banner-bot')
@@ -250,6 +241,11 @@
       var kabupaten = "{{ old('id_kab') }}";
       var kecamatan = "{{ old('id_kec') }}";
       var kelurahan = "{{ old('id_kel') }}";
+
+
+      var dealer = "{{ old('dealereo_id') }}";
+      var sales = "{{ old('sales_id') }}";
+
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
         showOnFocus: true,
@@ -270,6 +266,11 @@
 
       if (kecamatan != '') {
         getKel(kecamatan);
+      }
+
+
+      if (dealer != '') {
+        getSales(dealer);
       }
 
 
@@ -336,6 +337,24 @@
         });
       }
 
+      function getSales(dealereo_id) {
+        var token = $("input[name='_token']").val();
+        $.ajax({
+          url: "<?php echo route('select-sales') ?>",
+          method: 'POST',
+          cache: false,
+          data: {
+            dealereo_id: dealereo_id,
+            _token: token
+          },
+          success: function(data) {
+            $("#sales_id option").remove();
+            $("#sales_id").append(data.options);
+            $("#sales_id").val(sales);
+          }
+        });
+      }
+
       $('#id_prov').change(function() {
         getKab($(this).val());
       });
@@ -346,6 +365,11 @@
 
       $('#id_kec').change(function() {
         getKel($(this).val());
+      });
+
+      $('#dealereo_id').change(function() {
+        getSales($(this).val());
+
       });
 
     });

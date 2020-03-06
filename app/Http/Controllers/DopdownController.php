@@ -9,7 +9,8 @@ class DopdownController extends Controller
     public function getData()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-    	return view('frontend.pendaftaran',compact('merk','provinsi'));
+        $dealer = DB::table('dealereos')->pluck("kode_dealer","id")->all();
+    	return view('frontend.pendaftaran',compact('provinsi','dealer'));
     }
 
     public function selectKabupaten(Request $request)
@@ -37,6 +38,15 @@ class DopdownController extends Controller
     		$data      = view('frontend.ajax-kelurahan', compact('kelurahan'))->render();
     		return response()->json(['options'=>$data]);
     	}
+    }
+
+    public function selectSales(Request $request)
+    {
+        if($request->ajax()){
+    		$sales = DB::table('users')->where('dealereo_id', $request->dealereo_id)->pluck("namalengkap","id")->all();
+    		$data      = view('frontend.ajax-sales', compact('sales'))->render();
+    		return response()->json(['options'=>$data]);
+    	} 
     }
 
 }

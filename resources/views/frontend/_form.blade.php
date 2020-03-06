@@ -109,6 +109,23 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="input-field col s12 l6 m12">
+      <div class="form-group {{ $errors->has('dealereo_id') ? 'has-error' : '' }}">
+        <label for="dealereo_id">Dealer <b class="text-danger">*</b></label>
+        {!! Form::select('dealereo_id', ['' => 'dealer']+$dealer, null, ['class' => 'form-control', 'id' => 'dealereo_id']) !!}
+        {!! $errors->first('dealereo_id', '<p style="color:darkred" class="help-block">:message</p>') !!}
+      </div>
+    </div>
+    <div class="input-field col s12 l6 m12">
+      <div class="form-group {{ $errors->has('sales_id') ? 'has-error' : '' }}">
+        <label for="sales_id">Sales <b class="text-danger">*</b></label>
+        {!! Form::select('sales_id', ['' => 'sales'], null, ['class' => 'form-control', 'id' => 'sales_id']) !!}
+        {!! $errors->first('sales_id', '<p style="color:darkred" class="help-block">:message</p>') !!}
+      </div>
+    </div>
+  </div>
+
   <hr>
   <span>
     <b class="text-danger">*</b>

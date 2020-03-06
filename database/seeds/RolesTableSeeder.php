@@ -19,23 +19,23 @@ class RolesTableSeeder extends Seeder
         ]);
 
         $dealer = Dealereo::create([
-            'kode_dealer' => 'OBOH02',
+            'kode_dealer' => 'PUM',
             'nama_dealer' => 'PUTRA UTAMA MOTOR',
             'cabang' => 'SUKOHARJO'
         ]);
         $dealer = Dealereo::create([
-            'kode_dealer' => 'KNDNG2',
+            'kode_dealer' => 'KM',
             'nama_dealer' => 'KONDANG MOTOR',
             'cabang' => 'SUKOHARJO'
         ]);
         $dealer = Dealereo::create([
-            'kode_dealer' => 'TUNAS2',
+            'kode_dealer' => 'TJM',
             'nama_dealer' => 'TUNAS JAYA MOTOR',
             'cabang' => 'SUKOHARJO'
         ]);
 
         $dealer = Dealereo::create([
-            'kode_dealer' => 'YMHDT2',
+            'kode_dealer' => 'YDK',
             'nama_dealer' => 'YAMAHA DETA KARTASURA',
             'cabang' => 'SUKOHARJO'
         ]);

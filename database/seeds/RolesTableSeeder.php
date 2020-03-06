@@ -24,13 +24,19 @@ class RolesTableSeeder extends Seeder
             'cabang' => 'SUKOHARJO'
         ]);
         $dealer = Dealereo::create([
-            'kode_dealer' => 'DEALER3',
-            'nama_dealer' => 'JOINT EVENT CUZTOMMAXI YAMAHA THE PARK',
+            'kode_dealer' => 'KNDNG2',
+            'nama_dealer' => 'KONDANG MOTOR',
             'cabang' => 'SUKOHARJO'
         ]);
         $dealer = Dealereo::create([
-            'kode_dealer' => 'DEALER4',
-            'nama_dealer' => 'TJM GROUP',
+            'kode_dealer' => 'TUNAS2',
+            'nama_dealer' => 'TUNAS JAYA MOTOR',
+            'cabang' => 'SUKOHARJO'
+        ]);
+
+        $dealer = Dealereo::create([
+            'kode_dealer' => 'YMHDT2',
+            'nama_dealer' => 'YAMAHA DETA KARTASURA',
             'cabang' => 'SUKOHARJO'
         ]);
     }

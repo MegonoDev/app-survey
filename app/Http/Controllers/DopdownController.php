@@ -4,53 +4,59 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+
 class DopdownController extends Controller
 {
     public function getData()
     {
-        $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-        $dealer = DB::table('dealereos')->pluck("nama_dealer","id")->all();
-    	return view('frontend.pendaftaran',compact('provinsi','dealer'));
+        $provinsi   = DB::table('provinsis')->pluck("nama", "id_prov")->all();
+        $sales = DB::table('users')
+            ->orderBy('namalengkap', 'asc')
+            ->join('dealereos', 'dealereos.id', '=', 'users.dealereo_id')
+            ->selectRaw("CONCAT(namalengkap,' - ',dealereos.nama_dealer) as namafull,users.id")
+            ->where('role_id', '3')
+            ->pluck("namafull", "users.id")
+            ->all();
+        return view('frontend.pendaftaran', compact('provinsi', 'sales'));
     }
 
     public function selectKabupaten(Request $request)
     {
-    	if($request->ajax()){
-    		$kabupaten = DB::table('kabupatens')->where('id_prov', $request->id_prov)->pluck("nama","id_kab")->all();
-    		$data      = view('frontend.ajax-kabupaten', compact('kabupaten'))->render();
-    		return response()->json(['options'=>$data]);
-    	}
+        if ($request->ajax()) {
+            $kabupaten = DB::table('kabupatens')->where('id_prov', $request->id_prov)->pluck("nama", "id_kab")->all();
+            $data      = view('frontend.ajax-kabupaten', compact('kabupaten'))->render();
+            return response()->json(['options' => $data]);
+        }
     }
 
     public function selectKecamatan(Request $request)
     {
-    	if($request->ajax()){
-            $kecamatan = DB::table('kecamatans')->where('id_kab', $request->id_kab)->pluck("nama","id_kec")->all();
+        if ($request->ajax()) {
+            $kecamatan = DB::table('kecamatans')->where('id_kab', $request->id_kab)->pluck("nama", "id_kec")->all();
             $data      = view('frontend.ajax-kecamatan', compact('kecamatan'))->render();
-    		return response()->json(['options'=>$data]);
-    	}
+            return response()->json(['options' => $data]);
+        }
     }
 
     public function selectKelurahan(Request $request)
     {
-    	if($request->ajax()){
-    		$kelurahan = DB::table('kelurahans')->where('id_kec', $request->id_kec)->pluck("nama","id_kel")->all();
-    		$data      = view('frontend.ajax-kelurahan', compact('kelurahan'))->render();
-    		return response()->json(['options'=>$data]);
-    	}
+        if ($request->ajax()) {
+            $kelurahan = DB::table('kelurahans')->where('id_kec', $request->id_kec)->pluck("nama", "id_kel")->all();
+            $data      = view('frontend.ajax-kelurahan', compact('kelurahan'))->render();
+            return response()->json(['options' => $data]);
+        }
     }
 
     public function selectSales(Request $request)
     {
-        if($request->ajax()){
+        if ($request->ajax()) {
             $sales = DB::table('users')
-                     ->where('dealereo_id', $request->dealereo_id)
-                     ->orderBy('namalengkap', 'ASC')
-                     ->pluck("namalengkap","id")
-                     ->all();
-    		$data      = view('frontend.ajax-sales', compact('sales'))->render();
-    		return response()->json(['options'=>$data]);
-    	} 
+                ->where('dealereo_id', $request->dealereo_id)
+                ->orderBy('namalengkap', 'ASC')
+                ->pluck("namalengkap", "id")
+                ->all();
+            $data      = view('frontend.ajax-sales', compact('sales'))->render();
+            return response()->json(['options' => $data]);
+        }
     }
-
 }

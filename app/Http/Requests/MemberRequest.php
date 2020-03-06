@@ -37,8 +37,8 @@ class MemberRequest extends FormRequest
             'email' => 'required|email|unique:members',
             'handphone' => 'required|min:10|max:13|unique:members',
             'ketentuan' => 'required',
-            'dealereo_id' => 'required',
-            'sales_id' => 'required'
+            'sales_id' => 'required',
+            // 'dealereo_id' => 'required',
             // 'jenis_kelamin' => 'required',
             // 'id_seri' => 'required',
             // 'kendaraan' => 'required',
@@ -91,8 +91,8 @@ class MemberRequest extends FormRequest
             'id_kec.required' => 'Kecamatan belum dipilih',
             'id_kel.required' => 'Kelurahan belum dipilih',
             'sales_id.required' => 'Sales belum dipilih',
-            'dealereo_id.required' => 'Dealer belum dipilih',
             'ketentuan.required' => 'Silahkan Ceklis Syarat dan Ketentuan'
+            // 'dealereo_id.required' => 'Dealer belum dipilih',
             // 'jenis_kelamin.required' => 'Jenis Kelamin belum diPilih',
             // 'id_merk.required' => 'Merk Motor belum dipilih',
             // 'id_seri.required' => 'Tipe Kendaraan belum dipilih',

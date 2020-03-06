@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Activitie;
-use Illuminate\Support\Facades\DB;
-use Carbon;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use App\Http\Requests\MemberRequest;
-use Session;
+// use Illuminate\Http\Request;
+// use App\Activitie;
+// use Illuminate\Support\Facades\DB;
+// use Carbon;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Exception\RequestException;
+// use Session;
 use App\Member;
+use App\Http\Requests\MemberRequest;
 use App\Repositories\Mailing;
 
 class FrontendController extends Controller
@@ -31,11 +31,8 @@ class FrontendController extends Controller
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        // $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
         $data['operator_input'] = 2;
-        // $data['dealereo_id'] = (int)$request->get('dealereo_id');
-        // $data['sales_id'] = (int)$request->get('sales_id');
         if (isset($request->handphone)) {
             $nohp = str_replace(" ", "", $request->handphone);
             if (!preg_match('/[^+0-9]/', trim($nohp))) {

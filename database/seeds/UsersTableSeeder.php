@@ -122,14 +122,14 @@ class UsersTableSeeder extends Seeder
             ],
 
             //=============================== end of OBOH02 =============================//
-        
+
 
             [
                 'namalengkap'     => 'TEDI',
                 'name'     => 'TEDI ',
                 'email'    => 'TEDI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -138,7 +138,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'FRENGKI',
                 'email'    => 'FRENGKI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -147,7 +147,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'YUDI',
                 'email'    => 'YUDI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -156,7 +156,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'JATI',
                 'email'    => 'JATI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -165,7 +165,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'TRIYANTO',
                 'email'    => 'TRIYANTO@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -174,7 +174,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'ASNAR',
                 'email'    => 'ASNAR@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -183,7 +183,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'DWIWIT',
                 'email'    => 'DWIWIT@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -192,7 +192,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'GALUH',
                 'email'    => 'GALUH@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -201,7 +201,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'BUDI',
                 'email'    => 'BUDI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -210,7 +210,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'AGUS',
                 'email'    => 'AGUS@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -219,7 +219,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'IDA',
                 'email'    => 'IDA@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -228,18 +228,18 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'JOKOPRAS',
                 'email'    => 'JOKOPRAS@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '3',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
-            
-            //================================== end of dealer 3 =================/
+
+            //================================== end of kondang motor =================/
             [
                 'namalengkap'     => 'FITRA BLINK',
                 'name'     => 'FITRABLINK',
                 'email'    => 'FITRABLINK@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -248,7 +248,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'ANTOKSAPUTRA',
                 'email'    => 'ANTOKSAPUTRA@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -257,7 +257,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'NANANG',
                 'email'    => 'NANANG@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -266,7 +266,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'WAHYU',
                 'email'    => 'WAHYU@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -275,7 +275,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'ANGGA',
                 'email'    => 'ANGGA@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -284,7 +284,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'DWIRUSLAN',
                 'email'    => 'DWIRUSLAN@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -293,7 +293,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'EDITILANG',
                 'email'    => 'EDITILANG@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -302,7 +302,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'NOVIA',
                 'email'    => 'NOVIA@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -311,7 +311,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'NIAFUJI',
                 'email'    => 'NIAFUJI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -320,7 +320,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'HARYANTO',
                 'email'    => 'HARYANTO@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -329,7 +329,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'IHSAN',
                 'email'    => 'IHSAN@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -338,17 +338,17 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'EGYARI',
                 'email'    => 'EGYARI@test.com',
                 'role_id'    => '3',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
-            // end of sales dealer 4 =========
+            // end of sales TJM =========
             [
                 'namalengkap'     => 'HERI WIGUNAWAN',
                 'name'     => 'HERIWIGUNAWAN',
                 'email'    => 'HERIWIGUNAWAN@test.com',
                 'role_id'    => '2',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -357,7 +357,7 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'ABDULRAZAK',
                 'email'    => 'ABDULRAZAK@test.com',
                 'role_id'    => '2',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
@@ -366,12 +366,48 @@ class UsersTableSeeder extends Seeder
                 'name'     => 'SUGIYARTO',
                 'email'    => 'SUGIYARTO@test.com',
                 'role_id'    => '2',
-                'dealereo_id'    => '2',
+                'dealereo_id'    => '4',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
-                //======================== end of dealer 4 ==================//
+            //======================== end of TJM ==================//
 
-            ]);
+            [
+                'namalengkap'     => 'SUMANTO',
+                'name'     => 'SUMANTO',
+                'email'    => 'SUMANTO@test.com',
+                'role_id'    => '2',
+                'dealereo_id'    => '5',
+                'no_handphone' => '081234567890',
+                'password' => bcrypt('password')
+            ],
+            [
+                'namalengkap'     => 'AHMAD NUR HIDAYAT',
+                'name'     => 'AHMADNURHIDAYAT',
+                'email'    => 'AHMADNURHIDAYAT@test.com',
+                'role_id'    => '2',
+                'dealereo_id'    => '5',
+                'no_handphone' => '081234567890',
+                'password' => bcrypt('password')
+            ],
+            [
+                'namalengkap'     => 'MUHAMMAD SOLIKHIN',
+                'name'     => 'MUHAMMADSOLIKHIN',
+                'email'    => 'MUHAMMADSOLIKHIN@test.com',
+                'role_id'    => '2',
+                'dealereo_id'    => '5',
+                'no_handphone' => '081234567890',
+                'password' => bcrypt('password')
+            ],
+            [
+                'namalengkap'     => 'DANI OCTABRIANTO',
+                'name'     => 'DANIOCTABRIANTO',
+                'email'    => 'DANIOCTABRIANTO@test.com',
+                'role_id'    => '2',
+                'dealereo_id'    => '5',
+                'no_handphone' => '081234567890',
+                'password' => bcrypt('password')
+            ],
+        ]);
     }
 }

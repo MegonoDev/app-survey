@@ -241,9 +241,6 @@
       var kabupaten = "{{ old('id_kab') }}";
       var kecamatan = "{{ old('id_kec') }}";
       var kelurahan = "{{ old('id_kel') }}";
-
-
-      var dealer = "{{ old('dealereo_id') }}";
       var sales = "{{ old('sales_id') }}";
 
       $('.tanggal').datepicker({
@@ -267,12 +264,6 @@
       if (kecamatan != '') {
         getKel(kecamatan);
       }
-
-
-      if (dealer != '') {
-        getSales(dealer);
-      }
-
 
       function getKab(id_prov) {
         var token = $("input[name='_token']").val();
@@ -337,24 +328,6 @@
         });
       }
 
-      function getSales(dealereo_id) {
-        var token = $("input[name='_token']").val();
-        $.ajax({
-          url: "<?php echo route('select-sales') ?>",
-          method: 'POST',
-          cache: false,
-          data: {
-            dealereo_id: dealereo_id,
-            _token: token
-          },
-          success: function(data) {
-            $("#sales_id option").remove();
-            $("#sales_id").append(data.options);
-            $("#sales_id").val(sales);
-          }
-        });
-      }
-
       $('#id_prov').change(function() {
         getKab($(this).val());
       });
@@ -365,11 +338,6 @@
 
       $('#id_kec').change(function() {
         getKel($(this).val());
-      });
-
-      $('#dealereo_id').change(function() {
-        getSales($(this).val());
-
       });
 
     });

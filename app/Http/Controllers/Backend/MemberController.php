@@ -50,7 +50,6 @@ class MemberController extends Controller
         $data['kode'] = $this->makeKode();
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        // $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
         $data['operator_input'] = 2;
         if (isset($request->handphone)) {

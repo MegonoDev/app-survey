@@ -40,7 +40,7 @@ class MemberController extends Controller
     public function create()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-        $merk       = DB::table('merk')->pluck("nama","id_merk")->all();
+        $dealer = DB::table('dealereos')->pluck("nama_dealer","id")->all();
         return view('backend.member.create', compact('provinsi','merk'));
     }
 

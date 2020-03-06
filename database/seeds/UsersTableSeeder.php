@@ -376,7 +376,7 @@ class UsersTableSeeder extends Seeder
                 'namalengkap'     => 'SUMANTO',
                 'name'     => 'SUMANTO',
                 'email'    => 'SUMANTO@test.com',
-                'role_id'    => '2',
+                'role_id'    => '3',
                 'dealereo_id'    => '5',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
@@ -385,7 +385,7 @@ class UsersTableSeeder extends Seeder
                 'namalengkap'     => 'AHMAD NUR HIDAYAT',
                 'name'     => 'AHMADNURHIDAYAT',
                 'email'    => 'AHMADNURHIDAYAT@test.com',
-                'role_id'    => '2',
+                'role_id'    => '3',
                 'dealereo_id'    => '5',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
@@ -394,7 +394,7 @@ class UsersTableSeeder extends Seeder
                 'namalengkap'     => 'MUHAMMAD SOLIKHIN',
                 'name'     => 'MUHAMMADSOLIKHIN',
                 'email'    => 'MUHAMMADSOLIKHIN@test.com',
-                'role_id'    => '2',
+                'role_id'    => '3',
                 'dealereo_id'    => '5',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
@@ -403,7 +403,7 @@ class UsersTableSeeder extends Seeder
                 'namalengkap'     => 'DANI OCTABRIANTO',
                 'name'     => 'DANIOCTABRIANTO',
                 'email'    => 'DANIOCTABRIANTO@test.com',
-                'role_id'    => '2',
+                'role_id'    => '3',
                 'dealereo_id'    => '5',
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')

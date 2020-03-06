@@ -43,7 +43,11 @@ class DopdownController extends Controller
     public function selectSales(Request $request)
     {
         if($request->ajax()){
-    		$sales = DB::table('users')->where('dealereo_id', $request->dealereo_id)->pluck("namalengkap","id")->all();
+            $sales = DB::table('users')
+                     ->where('dealereo_id', $request->dealereo_id)
+                     ->orderBy('namalengkap', 'ASC')
+                     ->pluck("namalengkap","id")
+                     ->all();
     		$data      = view('frontend.ajax-sales', compact('sales'))->render();
     		return response()->json(['options'=>$data]);
     	} 

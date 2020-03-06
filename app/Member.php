@@ -17,7 +17,7 @@ class Member extends Model
         'id_kab',
         'id_kec',
         'id_kel',
-        'dealereo_id',
+        // 'dealereo_id',
         'sales_id',
         'handphone',
         'kode',

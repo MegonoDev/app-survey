@@ -106,7 +106,7 @@ class MemberController extends Controller
         } elseif($role == 2) {
             $members = Member::where('operator_input', '2')->latest()->paginate(10);
         } elseif ($role == 3) {
-            $members = Member::where('operator_input', $sales)->latest()->paginate(10);
+            $members = Member::where('sales_id', $sales)->latest()->paginate(10);
         }
         return $members;
     }

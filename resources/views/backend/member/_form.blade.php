@@ -108,15 +108,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <div class="form-group {{ $errors->has('sales_id') ? 'has-error' : '' }}">
-        <label for="sales_id">Sales <b class="text-danger">*</b></label>
-        {!! Form::select('sales_id', [$user->id => $user->namalengkap],$user->id, ['class' => 'form-control', 'id' => 'sales_id','readonly'=>'true']) !!}
-        {!! $errors->first('sales_id', '<p style="color:darkred" class="help-block">:message</p>') !!}
-      </div>
-    </div>
-  </div>
+  <input type="hidden" value="{{ $user->id }}" name="sales_id">
   <hr>
   <span>
     <b class="text-danger">*</b>

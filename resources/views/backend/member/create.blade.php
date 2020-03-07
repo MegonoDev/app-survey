@@ -35,7 +35,6 @@
     var kabupaten = "{{ old('id_kab') }}";
     var kecamatan = "{{ old('id_kec') }}";
     var kelurahan = "{{ old('id_kel') }}";
-    var sales = "{{ old('sales_id') }}";
 
     $('.tanggal').datepicker({
       format: "dd-mm-yyyy",

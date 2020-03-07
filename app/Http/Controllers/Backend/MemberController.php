@@ -53,8 +53,10 @@ class MemberController extends Controller
 
     public function store(MemberRequest $request)
     {
+        $user = Auth::user();
         $data = $request->all();
         $data['kode'] = $this->makeKode();
+        $data['sales_id'] = $user->id;
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));

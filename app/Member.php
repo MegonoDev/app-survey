@@ -33,6 +33,11 @@ class Member extends Model
         // 'perkawinan',
     ];
 
+    public function hadiah()
+    {
+        return $this->hasOne(Hadiah::class,'user_id');
+    }
+    
     public function dealereo()
     {
     	return $this->belongsTo(Dealereo::class);

@@ -444,25 +444,15 @@ class UsersTableSeeder extends Seeder
             ],
 
             //================== end of diler 7 ===========//
-            [
-                'namalengkap'     => 'ZULI',
-                'name'     => 'ZULI',
-                'email'    => 'ZULI@test.com',
-                'role_id'    => '3',
-                'dealereo_id'    => '8',
-                'no_handphone' => '081234567890',
-                'password' => bcrypt('password')
-            ],
-
-            [
-                'namalengkap'     => 'ZULI',
-                'name'     => 'ZULI',
-                'email'    => 'ZULI@test.com',
-                'role_id'    => '3',
-                'dealereo_id'    => '8',
-                'no_handphone' => '081234567890',
-                'password' => bcrypt('password')
-            ],
+            // [
+            //     'namalengkap'     => 'ZULI',
+            //     'name'     => 'ZULI',
+            //     'email'    => 'ZULI@test.com',
+            //     'role_id'    => '3',
+            //     'dealereo_id'    => '8',
+            //     'no_handphone' => '081234567890',
+            //     'password' => bcrypt('password')
+            // ],
 
             [
                 'namalengkap'     => 'AFIS',

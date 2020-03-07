@@ -10,14 +10,7 @@ class DopdownController extends Controller
     public function getData()
     {
         $provinsi   = DB::table('provinsis')->pluck("nama", "id_prov")->all();
-        $sales = DB::table('users')
-            ->orderBy('namalengkap', 'asc')
-            ->join('dealereos', 'dealereos.id', '=', 'users.dealereo_id')
-            ->selectRaw("CONCAT(namalengkap,' - ',dealereos.nama_dealer) as namafull,users.id")
-            ->where('role_id', '3')
-            ->pluck("namafull", "users.id")
-            ->all();
-        return view('frontend.pendaftaran', compact('provinsi', 'sales'));
+        return view('frontend.pendaftaran', compact('provinsi'));
     }
 
     public function selectKabupaten(Request $request)

@@ -20,6 +20,8 @@ Route::get('/verification/code/{kode}',[
     'as' => 'verifikasiurl'
 ]);
 
+Route::get('/cari-sales','Select2Controller@loadSales')->name('cari-sales');
+// Route::get('/cari-sales/s/','Select2Controller@loadOldSales')->name('old-sales');
 
 Route::get('/', 'FrontendController@event')->name('eonesia');
 Route::get('/register/successful', 'FrontendController@successfulRegister')->name('successful-register');

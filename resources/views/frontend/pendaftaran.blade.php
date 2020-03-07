@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/banner.css') }}">
   <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
   <style>
     .radio {
       display: block;
@@ -230,10 +231,8 @@
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-  <script type="text/javascript">
+  <script src="{{ asset('js/select2.js') }}"></script>
 
-
-  </script>
   <script type="text/javascript">
     $(document).ready(function() {
 
@@ -417,6 +416,30 @@
         e.preventDefault();
         var number = $(this).index();
         sync1.data('owl.carousel').to(number, 300, true);
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+
+      $('.cari-sales').select2({
+        placeholder: 'Cari...',
+        ajax: {
+          url: '/cari-sales',
+          dataType: 'json',
+          delay: 250,
+          processResults: function(data) {
+            return {
+              results: $.map(data, function(item) {
+                return {
+                  text: item.namafull,
+                  id: item.sales_id
+                }
+              })
+            };
+          },
+          cache: true
+        }
       });
     });
   </script>

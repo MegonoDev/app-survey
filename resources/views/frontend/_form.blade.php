@@ -112,7 +112,7 @@
     <div class="input-field col s12">
       <div class="form-group {{ $errors->has('sales_id') ? 'has-error' : '' }}">
         <label for="sales_id">Sales <b class="text-danger">*</b></label>
-        {!! Form::select('sales_id', ['' => 'sales']+$sales, null, ['class' => 'form-control', 'id' => 'sales_id']) !!}
+        <select name="sales_id" id="sales_id" class="cari-sales form-control"></select>
         {!! $errors->first('sales_id', '<p style="color:darkred" class="help-block">:message</p>') !!}
       </div>
     </div>

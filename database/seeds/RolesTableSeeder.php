@@ -39,5 +39,23 @@ class RolesTableSeeder extends Seeder
             'nama_dealer' => 'YAMAHA DETA KARTASURA',
             'cabang' => 'SUKOHARJO'
         ]);
+
+        $dealer = Dealereo::create([
+            'kode_dealer' => 'SBR1',
+            'nama_dealer' => 'SUMBER BARU REJEKI SRATEN 1',
+            'cabang' => '-'
+        ]);
+
+        $dealer = Dealereo::create([
+            'kode_dealer' => 'SBR2',
+            'nama_dealer' => 'SUMBER BARU REJEKI SRATEN 2',
+            'cabang' => '-'
+        ]);
+
+        $dealer = Dealereo::create([
+            'kode_dealer' => 'TBS',
+            'nama_dealer' => 'SUMBER BARU REJEKI TBS',
+            'cabang' => '-'
+        ]);
     }
 }

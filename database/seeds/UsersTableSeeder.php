@@ -113,7 +113,7 @@ class UsersTableSeeder extends Seeder
             // ],
             // [
             //     'namalengkap'     => 'SLAMET',
-            //     'name'     => 'SLAMET ',
+            //     'name'     => 'SLAMET',
             //     'email'    => 'SLAMET@test.com',
             //     'role_id'    => '3',
             //     'dealereo_id'    => '2',
@@ -121,7 +121,17 @@ class UsersTableSeeder extends Seeder
             //     'password' => bcrypt('password')
             // ],
 
-            // //=============================== end of OBOH02 =============================//
+            [
+                'namalengkap'     => 'SEPTIAN AGUNG BAGUS PRASETYO',
+                'name'     => 'SEPTIANAGUNGBAGUSPRASETYO',
+                'email'    => 'SEPTIANAGUNGBAGUSPRASETYO@test.com',
+                'role_id'    => '3',
+                'dealereo_id'    => '2',
+                'no_handphone' => '081234567890',
+                'password' => bcrypt('password')
+            ],
+
+            //=============================== end of Putra UTAMA MOTOR =============================//
 
 
             // [
@@ -408,42 +418,42 @@ class UsersTableSeeder extends Seeder
             //     'no_handphone' => '081234567890',
             //     'password' => bcrypt('password')
             // ],
-            //================ end of diler 5 ===================//
+            // //================ end of diler 5 ===================//
 
 
-            [
-                'namalengkap'     => 'ALIF',
-                'name'     => 'ALIF',
-                'email'    => 'ALIF@test.com',
-                'role_id'    => '3',
-                'dealereo_id'    => '6',
-                'no_handphone' => '081234567890',
-                'password' => bcrypt('password')
-            ],
-            //=========================== end of diler 6 ===============//
+            // [
+            //     'namalengkap'     => 'ALIF',
+            //     'name'     => 'ALIF',
+            //     'email'    => 'ALIF@test.com',
+            //     'role_id'    => '3',
+            //     'dealereo_id'    => '6',
+            //     'no_handphone' => '081234567890',
+            //     'password' => bcrypt('password')
+            // ],
+            // //=========================== end of diler 6 ===============//
 
 
-            [
-                'namalengkap'     => 'SYABAN',
-                'name'     => 'SYABAN',
-                'email'    => 'SYABAN@test.com',
-                'role_id'    => '3',
-                'dealereo_id'    => '7',
-                'no_handphone' => '081234567890',
-                'password' => bcrypt('password')
-            ],
+            // [
+            //     'namalengkap'     => 'SYABAN',
+            //     'name'     => 'SYABAN',
+            //     'email'    => 'SYABAN@test.com',
+            //     'role_id'    => '3',
+            //     'dealereo_id'    => '7',
+            //     'no_handphone' => '081234567890',
+            //     'password' => bcrypt('password')
+            // ],
 
-            [
-                'namalengkap'     => 'RANI',
-                'name'     => 'RANI',
-                'email'    => 'RANI@test.com',
-                'role_id'    => '3',
-                'dealereo_id'    => '7',
-                'no_handphone' => '081234567890',
-                'password' => bcrypt('password')
-            ],
+            // [
+            //     'namalengkap'     => 'RANI',
+            //     'name'     => 'RANI',
+            //     'email'    => 'RANI@test.com',
+            //     'role_id'    => '3',
+            //     'dealereo_id'    => '7',
+            //     'no_handphone' => '081234567890',
+            //     'password' => bcrypt('password')
+            // ],
 
-            //================== end of diler 7 ===========//
+            // // ================== end of diler 7 ===========//
             // [
             //     'namalengkap'     => 'ZULI',
             //     'name'     => 'ZULI',
@@ -454,15 +464,15 @@ class UsersTableSeeder extends Seeder
             //     'password' => bcrypt('password')
             // ],
 
-            [
-                'namalengkap'     => 'AFIS',
-                'name'     => 'AFIS',
-                'email'    => 'AFIS@test.com',
-                'role_id'    => '3',
-                'dealereo_id'    => '8',
-                'no_handphone' => '081234567890',
-                'password' => bcrypt('password')
-            ],
+            // [
+            //     'namalengkap'     => 'AFIS',
+            //     'name'     => 'AFIS',
+            //     'email'    => 'AFIS@test.com',
+            //     'role_id'    => '3',
+            //     'dealereo_id'    => '8',
+            //     'no_handphone' => '081234567890',
+            //     'password' => bcrypt('password')
+            // ],
         ]);
     }
 }

@@ -32,8 +32,17 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
+                        <form id="konfirmasi" class="form-horizontal form-material">@csrf
+                            <input type="hidden" name="member_id" id="member_id" value="">
+                            <input type="hidden" name="kode" id="kode" value="">
+                            <div class="form-group text-center" id="after" style="display:none">
+                                <button type="button" value="0" name="is_hangus" class="konfirmasi-button btn btn-success"><i class="fa fa-check"></i> Konfirmasi</button>
+                                <button type="button" value="1" name="is_hangus" class="konfirmasi-button btn btn-outline-danger"><i class="fa fa-times"></i> Hapus Kupon</button>
+                            </div>
+                        </form>
                     </div>
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -99,10 +108,44 @@
     $(document).ready(function() {
 
         $('#undian-button').click(function() {
-                $('#hasil-undian').empty();
-                $('#hasil-undian').fadeOut(400);
+            $('#hasil-undian').empty();
+            $('#hasil-undian').fadeOut(400);
             acakPemenang();
+        });
+
+        $('.konfirmasi-button').click(function() {
+            konfirmasiPemenang($(this).val());
         })
+
+        function konfirmasiPemenang(val) {
+            var member_id = $('#member_id').val();
+            var kode = $('#kode').val();
+            var is_hangus = val;
+            var token = $("input[name='_token']").val();
+            $.ajax({
+                url: "<?php echo route('store-pemenang') ?>",
+                method: 'POST',
+                cache: false,
+                data: {
+                    member_id: member_id,
+                    kode: kode,
+                    is_hangus: is_hangus,
+                    _token: token
+                },
+                success: function(data) {
+                    showFirst();
+                }
+            })
+        }
+
+        function showFirst() {
+            $('#member_id').val('');
+            $('#kode').val('');
+            $('#after').hide();
+            $('#hasil-undian').empty();
+            $('#hasil-undian').hide();
+            $('#undian-button').fadeIn(1000);
+        }
 
         function acakPemenang() {
             var token = $("input[name='_token']").val();
@@ -115,9 +158,14 @@
                     _token: token
                 },
                 success: function(data) {
-                    if(data.result){
-                    var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon ( ' + data.result.kode + ' ) !! ';
-                    }else{
+                    if (data.result) {
+                        var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon ( ' + data.result.kode + ' ) !! ';
+
+                        $("#member_id").val(data.result.id);
+                        $("#kode").val(data.result.kode);
+                        $('#undian-button').hide();
+                        $('#after').fadeIn(1000);
+                    } else {
                         var text = 'Tidak ada Customer tersisa.';
                     }
                     $("#hasil-undian").append(text);

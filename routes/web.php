@@ -86,8 +86,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
         'as'   => 'cetak.laporan-post.pdf'
     ]);
 
+    //undian
     Route::get('undian','HadiahController@index')->name('hadiah.index');
     Route::post('undian','HadiahController@undiPemenang')->name('undi-pemenang');
+    Route::post('store-undian','HadiahController@storePemenang')->name('store-pemenang');
 
     });
 

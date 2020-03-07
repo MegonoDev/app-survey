@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class HadiahController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
     public function index()
     {
-        $members = Hadiah::paginate(15);
+        $members = Hadiah::where('is_hangus', 0)->paginate(15);
         $totalMember = count($members);
         return view('backend.hadiah.index', compact('members', 'totalMember'));
     }
@@ -28,16 +29,26 @@ class HadiahController extends Controller
                 ->whereNotIn('kode', function ($query) {
                     $query->select('kode')->from('hadiahs');
                 })
-                ->where('status_verifikasi',1)
+                ->where('status_verifikasi', 1)
                 ->inRandomOrder()
                 ->first();
-                if($winner){
-                    Hadiah::create(['member_id'=>$winner->id,'kode'=>$winner->kode]);
-                }
             $data = [
                 'result' => $winner,
             ];
             return response()->json($data);
         }
+    }
+
+    public function storePemenang(Request $request)
+    {
+        $data = $request->all();
+        if ($data) {
+            Hadiah::create($data);
+        }
+        $result = [
+            'success' => 'ok',
+            'result' => $data
+        ];
+        return response()->json($result);
     }
 }

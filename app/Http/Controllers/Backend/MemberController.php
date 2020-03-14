@@ -116,6 +116,8 @@ class MemberController extends Controller
                 $members = Member::unverified();
             } elseif ($request->status == null) {
                 $members = Member::latest();
+            } else {
+                $members = Member::latest();
             }
         } else {
             $members = Member::latest();

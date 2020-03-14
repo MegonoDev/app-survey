@@ -110,10 +110,12 @@ class MemberController extends Controller
         $role = Auth::user()->role_id;
         $sales = Auth::user()->id;
         if ($request->has('status')) {
-            if ($request->status == 1) {
+            if ($request->status == 'verified') {
                 $members = Member::verified();
-            } else {
+            } elseif ($request->status == 'unverified') {
                 $members = Member::unverified();
+            } elseif ($request->status == null) {
+                $members = Member::latest();
             }
         } else {
             $members = Member::latest();

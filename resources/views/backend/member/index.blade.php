@@ -93,7 +93,7 @@
                 @endforeach
               </table>
               <hr>
-              <div class="float-left"> {{ $members->links() }}</div>
+              <div class="float-left"> {{ $members->appends($_GET)->links() }}</div>
               <div class="float-right"><span class="badge badge-dark"> Jumlah Data : <b>{{ $totalMember }} </b></span></div>
             </div>
           </div>

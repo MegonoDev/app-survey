@@ -17,7 +17,7 @@ class HadiahController extends Controller
     public function index()
     {
         $members = Hadiah::where('is_hangus', 0)->paginate(15);
-        $totalMember = count($members);
+        $totalMember = $members->total();
         return view('backend.hadiah.index', compact('members', 'totalMember'));
     }
 

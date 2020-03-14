@@ -26,7 +26,7 @@ class MemberController extends Controller
     public function index()
     {
         $members = $this->userCheckMember();
-        $totalMember = count($members);
+        $totalMember = $members->total();
         return view('backend.member.index', compact('members', 'totalMember'));
     }
 

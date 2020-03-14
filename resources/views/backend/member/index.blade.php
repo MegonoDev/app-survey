@@ -40,6 +40,19 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Member Test Drive</h4>
+            <div class="my-1">
+              <form action="{{ route('customers.index') }}" method="get" class="form-horizontal">
+              <div class="form-group">
+              <label>Filter :</label>
+              <select name="status" class="form-control col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <option value="">Status</option>
+                <option value="1">Diverifikasi</option>
+                <option value="0">Belum Diverifikasi</option>
+              </select>
+              <button class="btn btn-md btn-success my-2">Filter</button>
+              </div>
+              </form>
+            </div>
             <div class="table-responsive">
               <table class="table">
                 <thead class="thead-dark">

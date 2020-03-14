@@ -23,9 +23,9 @@ class MemberController extends Controller
         $this->sendMail = new Mailing();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $members = $this->userCheckMember();
+        $members = $this->userCheckMember($request);
         $totalMember = $members->total();
         return view('backend.member.index', compact('members', 'totalMember'));
     }
@@ -48,7 +48,7 @@ class MemberController extends Controller
             ->where('role_id', '3')
             ->pluck("namafull", "users.id")
             ->all();
-        return view('backend.member.create', compact('provinsi', 'sales','user'));
+        return view('backend.member.create', compact('provinsi', 'sales', 'user'));
     }
 
     public function store(MemberRequest $request)
@@ -105,16 +105,25 @@ class MemberController extends Controller
         return redirect(route('customers.index'));
     }
 
-    public function userCheckMember()
+    public function userCheckMember(Request $request)
     {
         $role = Auth::user()->role_id;
         $sales = Auth::user()->id;
+        if ($request->has('status')) {
+            if ($request->status == 1) {
+                $members = Member::verified();
+            } else {
+                $members = Member::unverified();
+            }
+        } else {
+            $members = Member::latest();
+        }
         if ($role == 1) {
-            $members = Member::latest()->paginate(10);
+            $members = $members->paginate(10);
         } elseif ($role == 2) {
-            $members = Member::where('operator_input', '2')->latest()->paginate(10);
+            $members = $members->where('operator_input', '2')->paginate(10);
         } elseif ($role == 3) {
-            $members = Member::where('sales_id', $sales)->latest()->paginate(10);
+            $members = $members->where('sales_id', $sales)->paginate(10);
         }
         return $members;
     }

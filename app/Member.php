@@ -96,4 +96,15 @@ class Member extends Model
             return '<span class="badge badge-success">Sudah Di Verifikasi</span>';
         }
     }
+
+    //scope
+
+    public function scopeVerified($query)
+    {
+        return $query->where('status_verifikasi',1);
+    }
+    public function scopeUnverified($query)
+    {
+        return $query->where('status_verifikasi',0);
+    }
 }

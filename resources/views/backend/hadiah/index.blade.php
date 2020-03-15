@@ -25,7 +25,7 @@
                         <form id="konfirmasi" class="form-horizontal form-material">@csrf
                             <input type="hidden" name="member_id" id="member_id" value="">
                             <div class="col-md-12 text-center my-4">
-                                <h4 id="hasil-undian"></h4>
+                                <h5 id="hasil-undian"></h5>
                             </div>
                             <input type="hidden" name="kode" id="kode" value="">
                             <div class="form-group text-center" id="after" style="display:none">
@@ -207,8 +207,7 @@
                 },
                 success: function(data) {
                     if (data.result) {
-                        var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon ( ' + data.result.kode + ' ) !! ';
-
+                        var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon (' + data.result.kode + ').'+'<br/>Sales :  '+data.result.namalengkap+' <br/>Dealer : '+data.result.nama_dealer;
                         $("#member_id").val(data.result.id);
                         $("#kode").val(data.result.kode);
                         $('#undian-button').hide();

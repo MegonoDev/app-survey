@@ -27,6 +27,9 @@ class HadiahController extends Controller
         if ($request->has('go')) {
 
             $winner = DB::table('members')
+                ->select('members.*', 'users.*','dealereos.*')
+                ->join('users', 'users.id', '=', 'members.sales_id')
+                ->join('dealereos', 'dealereos.id', '=', 'users.dealereo_id')
                 ->whereNotIn('kode', function ($query) {
                     $query->select('kode')->from('hadiahs');
                 })

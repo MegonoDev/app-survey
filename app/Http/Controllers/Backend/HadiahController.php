@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\HadiahRequest;
 use App\Hadiah;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,7 @@ class HadiahController extends Controller
         }
     }
 
-    public function storePemenang(Request $request)
+    public function storePemenang(HadiahRequest $request)
     {
         $data = $request->all();
         if ($data) {

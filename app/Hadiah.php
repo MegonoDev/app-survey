@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 class Hadiah extends Model
 {
     protected $table = 'hadiahs';
-    protected $fillable = ['kode', 'member_id', 'is_hangus'];
+    protected $fillable = ['kode', 'member_id', 'hadiah', 'is_hangus'];
 
     public function member()
     {

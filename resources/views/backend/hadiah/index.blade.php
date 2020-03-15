@@ -21,14 +21,18 @@
             <div class="col-12">
                 <div class="card">
                     <!-- Tab panes -->
-                    <div class="card-body" id="card-undian" style="height:12em">
-                        <form id="konfirmasi" class="form-horizontal form-material">@csrf
+                    <div class="card-body" id="card-undian">
+                        <form id="konfirmasi" class="form-horizontal form-material" style="display:none;">@csrf
                             <input type="hidden" name="member_id" id="member_id" value="">
                             <div class="col-md-12 text-center my-4">
-                                <h5 id="hasil-undian"></h5>
+                                <p id="hasil-undian"></p>
                             </div>
                             <input type="hidden" name="kode" id="kode" value="">
-                            <div class="form-group text-center" id="after" style="display:none">
+                            <div class="form-group text-center ">
+                                <input type="text" name="hadiah" id="hadiah" placeholder="Hadiah Untuk Pemenang ini" class="form-control col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div id="error"></div>
+                            </div>
+                            <div class="form-group text-center">
                                 <button type="button" value="0" name="is_hangus" class="konfirmasi-button btn btn-success"><i class="fa fa-check"></i> Konfirmasi</button>
                                 <button type="button" value="1" name="is_hangus" class="konfirmasi-button btn btn-outline-danger"><i class="fa fa-times"></i> Hapus Kupon</button>
                             </div>
@@ -68,14 +72,15 @@
                                     <th>Alamat</th>
                                     <th>Kode</th>
                                     <th>No handphone</th>
+                                    <th>Hadiah</th>
                                     <th>Detail</th>
                                     <th>Sales</th>
                                     <th>Dealer</th>
                                 </tr>
                             </thead>
                             <?php $no = 1; ?> @foreach ($members as $member )
-                            
-                         <tbody>
+
+                            <tbody>
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{ $member->member->nama }}</td>
@@ -83,6 +88,7 @@
                                     <td>{{ $member->member->alamat }} </td>
                                     <td><span class="badge badge-warning">{{ $member->kode }}</span></td>
                                     <td>{{ $member->member->handphone }}</td>
+                                    <td>{{ $member->hadiah }}</td>
                                     <td>
                                         <a href="{{ route('detail.customer',$member->kode) }}" data-toggle="tooltip" data-placement="top">
                                             <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="Detail {{ $member->member->nama }}">
@@ -97,12 +103,12 @@
                                         {!! $member->member->sales->dealereo->nama_dealer !!}
                                     </td>
                                 </tr>
-                            </tbody> 
+                            </tbody>
 
                             @endforeach
                         </table>
                         <hr>
-                       <div class="float-left"> {{ $members->links() }}</div> 
+                        <div class="float-left"> {{ $members->links() }}</div>
                         <div class="float-right"><span class="badge badge-dark"> Jumlah Data : <b>{{ $totalMember }} </b></span></div>
                     </div>
                 </div>
@@ -117,7 +123,7 @@
     $(document).ready(function() {
         $('#undian-button').click(function() {
             // $('#hasil-undian').empty();
-            $('#box-awal').hide();
+            $('#box-awal').fadeOut(1000);
             // $('#hasil-undian').fadeOut(400);
             randomAnimation();
         });
@@ -147,8 +153,7 @@
                             var nama = document.createElement("span");
                             var kelas = key % 2 == 0 ? "left" : "right";
                             nama.classList.add(kelas);
-
-                            nama.classList.add("inblok");
+                            // nama.classList.add("inblok");
                             var namamember = document.createTextNode(member['nama']);
                             nama.appendChild(namamember);
                             box.append(nama);
@@ -157,8 +162,9 @@
                             }, 300 * key);
                         });
                         setTimeout(function() {
-                                acakPemenang();
-                            }, 300 * members.length);
+                            $('#hasil-nama').hide();
+                            acakPemenang();
+                        }, 300 * members.length);
 
                     }
                 }
@@ -170,6 +176,7 @@
         function konfirmasiPemenang(val) {
             var member_id = $('#member_id').val();
             var kode = $('#kode').val();
+            var hadiah = $('#hadiah').val();
             var is_hangus = val;
             var token = $("input[name='_token']").val();
             $.ajax({
@@ -179,22 +186,34 @@
                 data: {
                     member_id: member_id,
                     kode: kode,
+                    hadiah: hadiah,
                     is_hangus: is_hangus,
                     _token: token
                 },
                 success: function(data) {
                     showFirst();
+                },
+                error: function(xhr) {
+                    
+                    var errors = xhr.responseJSON;
+                    $.each(errors.errors, function(i, error) {
+                        if (i == 'hadiah') {
+                            $('#error').append('<b style="color:red">'+error[0]+'</b>');
+                        }
+                    });
                 }
             })
         }
 
         function showFirst() {
-            $('#hasil-nama').hide();
+            // $('#hasil-nama').hide();
             $('#box-awal').show()
             $('#member_id').val('');
             $('#kode').val('');
-            $('#after').hide();
+            $('#konfirmasi').hide();
             $('#hasil-undian').empty();
+            $('#error').empty();
+            $('#hadiah').empty();
             $('#hasil-undian').hide();
             $('#undian-button').fadeIn(1000);
         }
@@ -212,7 +231,7 @@
                 success: function(data) {
                     if (data.result) {
                         console.log(data.result)
-                        var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon (' + data.result.kode + ').'+'<br/>Sales :  '+data.result.namalengkap+' <br/>Dealer : '+data.result.nama_dealer;
+                        var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon (' + data.result.kode + ').' + '<br/>Sales :  ' + data.result.namalengkap + ' <br/>Dealer : ' + data.result.nama_dealer;
                         $("#member_id").val(data.result.id);
                         $("#kode").val(data.result.kode);
                         $('#undian-button').hide();
@@ -222,6 +241,7 @@
                     }
                     $("#hasil-undian").append(text);
                     $('#hasil-undian').fadeIn(1000);
+                    $('#konfirmasi').fadeIn(1000);
                 }
             });
         }

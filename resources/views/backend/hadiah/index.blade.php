@@ -21,28 +21,33 @@
             <div class="col-12">
                 <div class="card">
                     <!-- Tab panes -->
-                    <div class="card-body">
-                        <form class="form-horizontal form-material" id="form-undian">@csrf
-                            <div class="form-group text-center">
-                                <label class="col-md-12 my-2">Pilih Member Secara Acak</label>
-                                <div class="col-md-12">
-                                    <h1 id="hasil-undian" style="display:none"></h1>
-                                    <div class="form-group">
-                                        <button type="button" id="undian-button" class="btn btn-md btn-primary col-sm-4 my-1">Acak Pemenang</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="card-body" id="card-undian" style="height:12em">
                         <form id="konfirmasi" class="form-horizontal form-material">@csrf
                             <input type="hidden" name="member_id" id="member_id" value="">
+                            <div class="col-md-12 text-center my-4">
+                                <h4 id="hasil-undian"></h4>
+                            </div>
                             <input type="hidden" name="kode" id="kode" value="">
                             <div class="form-group text-center" id="after" style="display:none">
                                 <button type="button" value="0" name="is_hangus" class="konfirmasi-button btn btn-success"><i class="fa fa-check"></i> Konfirmasi</button>
                                 <button type="button" value="1" name="is_hangus" class="konfirmasi-button btn btn-outline-danger"><i class="fa fa-times"></i> Hapus Kupon</button>
                             </div>
                         </form>
-                    </div>
+                        <div id="hasil-nama"></div>
+                        <div id="box-awal">
+                            <form class="form-horizontal form-material" id="form-undian">@csrf
+                                <div class="form-group text-center my-4">
+                                    <label class="col-md-12">Pilih Member Secara Acak</label>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <button type="button" id="undian-button" class="btn btn-md btn-primary col-sm-4 my-1">Acak Pemenang</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,16 +111,57 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
-
         $('#undian-button').click(function() {
-            $('#hasil-undian').empty();
-            $('#hasil-undian').fadeOut(400);
-            acakPemenang();
+            // $('#hasil-undian').empty();
+            $('#box-awal').hide();
+            // $('#hasil-undian').fadeOut(400);
+            randomAnimation();
         });
 
         $('.konfirmasi-button').click(function() {
             konfirmasiPemenang($(this).val());
         })
+
+        function randomAnimation() {
+            var token = $("input[name='_token']").val();
+            $.ajax({
+                url: "<?php echo route('all-pemenang') ?>",
+                method: 'POST',
+                cache: false,
+                data: {
+                    go: 'random',
+                    _token: token
+                },
+                success: function(data) {
+                    if (data.result) {
+                        var members = data.result;
+
+                        var box = $('#hasil-nama').show();
+                        $.each(members, function(key, member) {
+                            // $(this).append('<span>'+member['nama']+'<span>');
+                            // box.addClass('inblok'); 
+                            var nama = document.createElement("span");
+                            var kelas = key % 2 == 0 ? "left" : "right";
+                            nama.classList.add(kelas);
+
+                            nama.classList.add("inblok");
+                            var namamember = document.createTextNode(member['nama']);
+                            nama.appendChild(namamember);
+                            box.append(nama);
+                            setTimeout(function() {
+                                nama.classList.add("show");
+                            }, 300 * key);
+                        });
+                        setTimeout(function() {
+                                acakPemenang();
+                            }, 300 * members.length);
+
+                    }
+                }
+            });
+        }
+
+
 
         function konfirmasiPemenang(val) {
             var member_id = $('#member_id').val();

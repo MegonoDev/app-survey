@@ -90,6 +90,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
     Route::get('undian','HadiahController@index')->name('hadiah.index');
     Route::post('undian','HadiahController@undiPemenang')->name('undi-pemenang');
     Route::post('store-undian','HadiahController@storePemenang')->name('store-pemenang');
+    Route::post('all-pemenang','HadiahController@allPemenang')->name('all-pemenang');
 
     });
 

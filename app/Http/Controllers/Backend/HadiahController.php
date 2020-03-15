@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Hadiah;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Member;
 
 class HadiahController extends Controller
 {
@@ -36,6 +37,8 @@ class HadiahController extends Controller
                 'result' => $winner,
             ];
             return response()->json($data);
+        } else {
+            return 'bad parameter';
         }
     }
 
@@ -50,5 +53,24 @@ class HadiahController extends Controller
             'result' => $data
         ];
         return response()->json($result);
+    }
+
+    public function allPemenang(Request $request)
+    {
+
+        if ($request->has('go')) {
+
+            $data = Member::verified()->inRandomOrder();
+            if (count($data->get()) > 20) {
+                $data =  $data->limit(20)->get();
+            } else {
+                $data =  $data->get();
+            }
+            $result = [
+                'success' => 'ok',
+                'result' => $data
+            ];
+            return response()->json($result);
+        }
     }
 }

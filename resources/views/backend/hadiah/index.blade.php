@@ -74,7 +74,7 @@
                                 </tr>
                             </thead>
                             <?php $no = 1; ?> @foreach ($members as $member )
-                            <tbody>
+                           {{--  <tbody>
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{ $member->member->nama }}</td>
@@ -94,7 +94,9 @@
                                         {!! $member->member->StatusVerifikasiAt !!}
                                     </td>
                                 </tr>
+                                
                             </tbody>
+                            --}}
                             @endforeach
                         </table>
                         <hr>

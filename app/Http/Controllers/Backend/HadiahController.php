@@ -17,7 +17,7 @@ class HadiahController extends Controller
 
     public function index()
     {
-        $members = Hadiah::where('is_hangus', 0)->paginate(15);
+        $members = Hadiah::nothangus()->paginate(15);
         $totalMember = $members->total();
         return view('backend.hadiah.index', compact('members', 'totalMember'));
     }
@@ -27,7 +27,7 @@ class HadiahController extends Controller
         if ($request->has('go')) {
 
             $winner = DB::table('members')
-                ->select('members.*', 'users.*','dealereos.*')
+                ->select('members.*', 'users.namalengkap','dealereos.nama_dealer')
                 ->join('users', 'users.id', '=', 'members.sales_id')
                 ->join('dealereos', 'dealereos.id', '=', 'users.dealereo_id')
                 ->whereNotIn('kode', function ($query) {

@@ -68,13 +68,14 @@
                                     <th>Alamat</th>
                                     <th>Kode</th>
                                     <th>No handphone</th>
-                                    <th>Daftar</th>
                                     <th>Detail</th>
-                                    <th>Status</th>
+                                    <th>Sales</th>
+                                    <th>Dealer</th>
                                 </tr>
                             </thead>
                             <?php $no = 1; ?> @foreach ($members as $member )
-                           {{--  <tbody>
+                            
+                         <tbody>
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{ $member->member->nama }}</td>
@@ -82,7 +83,6 @@
                                     <td>{{ $member->member->alamat }} </td>
                                     <td><span class="badge badge-warning">{{ $member->kode }}</span></td>
                                     <td>{{ $member->member->handphone }}</td>
-                                    <td>{{ $member->CreatedAt }}</td>
                                     <td>
                                         <a href="{{ route('detail.customer',$member->kode) }}" data-toggle="tooltip" data-placement="top">
                                             <span class="badge badge-primary" data-toggle="tooltip" data-placement="top" title="Detail {{ $member->member->nama }}">
@@ -91,16 +91,18 @@
                                         </a>
                                     </td>
                                     <td>
-                                        {!! $member->member->StatusVerifikasiAt !!}
+                                        {!! $member->member->sales->namalengkap !!}
+                                    </td>
+                                    <td>
+                                        {!! $member->member->sales->dealereo->nama_dealer !!}
                                     </td>
                                 </tr>
-                                
-                            </tbody>
-                            --}}
+                            </tbody> 
+
                             @endforeach
                         </table>
                         <hr>
-                        <div class="float-left"> {{ $members->links() }}</div>
+                       <div class="float-left"> {{ $members->links() }}</div> 
                         <div class="float-right"><span class="badge badge-dark"> Jumlah Data : <b>{{ $totalMember }} </b></span></div>
                     </div>
                 </div>
@@ -209,6 +211,7 @@
                 },
                 success: function(data) {
                     if (data.result) {
+                        console.log(data.result)
                         var text = 'Selamat kepada ' + data.result.nama + ' dengan kupon (' + data.result.kode + ').'+'<br/>Sales :  '+data.result.namalengkap+' <br/>Dealer : '+data.result.nama_dealer;
                         $("#member_id").val(data.result.id);
                         $("#kode").val(data.result.kode);

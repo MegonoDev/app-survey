@@ -35,9 +35,12 @@ class Member extends Model
 
     public function hadiah()
     {
-        return $this->hasOne(Hadiah::class,'user_id');
+        return $this->hasOne(Hadiah::class,'kode');
     }
-    
+    public function sales()
+    {
+        return $this->belongsTo(User::class,'sales_id');
+    }
     public function dealereo()
     {
     	return $this->belongsTo(Dealereo::class);
@@ -62,15 +65,6 @@ class Member extends Model
     {
         return $this->belongsTo('App\Provinsi', 'id_prov');
     }
-    // public function seri()
-    // {
-    // 	return $this->belongsTo('App\Seri', 'id_seri');
-    // }
-
-    // public function merk()
-    // {
-    //     return $this->belongsTo('App\Merk', 'id_merk');
-    // }
 
     public function getTanggallahirAttribute()
     {

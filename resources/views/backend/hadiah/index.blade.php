@@ -185,6 +185,8 @@
         }
 
         function showFirst() {
+            $('#hasil-nama').hide();
+            $('#box-awal').show()
             $('#member_id').val('');
             $('#kode').val('');
             $('#after').hide();

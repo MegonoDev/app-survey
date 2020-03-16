@@ -42,6 +42,14 @@
                                 $errors->first('email', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
+                        <div class="form-group {{ $errors->has('dealer') ? 'has-error' : '' }}">
+                            <label class="col-md-12">Dealer</label>
+                            <div class="col-md-12">
+                                {!! Form::select('dealer', ['' => '-- Dealer --']+$dealer, null, ['id' => 'dealer', 'class' => 'form-control
+                                form-control-line']) !!} {!!
+                                $errors->first('dealer', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 {!! Form::submit("CETAK LAPORAN", ['class' => 'btn btn-primary']) !!}

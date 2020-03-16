@@ -11,6 +11,7 @@ use Auth;
 use Excel;
 use App\Exports\DataExport;
 use App\Exports\PdfExport;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 
@@ -24,7 +25,9 @@ class CetakController extends Controller
 
     public function cetakLaporanExcel()
     {
-        return view('backend.cetak.excel');
+        $dealer =  DB::table('dealereos')->pluck("nama_dealer", "id")->all();
+            
+        return view('backend.cetak.excel',compact('dealer'));
     }
 
     public function cetakLaporanPostExcel(Request $request)
@@ -32,7 +35,9 @@ class CetakController extends Controller
         $members = $this->userCheckMember($request);
         $bulan = $request->get('bulan');
         $tahun = $request->get('tahun');
-        $filename = 'Laporan Data Member '.$bulan.'-'.$tahun;
+        $dealer = $request->get('dealer');
+        $dealer = Dealereo::find($dealer);
+        $filename = 'Laporan Data Member '.$bulan.'-'.$tahun.' by Dealer '.$dealer->nama_dealer;
         if (count($members) == "") {
             Session::flash('flash_notification', [
                 'level'=>'danger',
@@ -49,11 +54,11 @@ class CetakController extends Controller
             $print = [['No',
                        'Nama',
                        'Email',
-                       'Jenis Kelamin',
                        'Alamat',
                        'Tempat Lahir',
                        'Tanggal Lahir',
                        'Kode',
+                       'Sales',
                        'Tanggal Register']];
             $no = 1;
 
@@ -61,11 +66,11 @@ class CetakController extends Controller
              array_push($print, [$no++,
                                 $member->nama,
                                 $member->email,
-                                $member->jenis_kelamin,
                                 $member->alamat,
                                 $member->tempat_lahir,
                                 $member->tanggal_lahir,
                                 $member->kode,
+                                $member->sales->namalengkap,
                                 $member->CreatedAt]);
             }
 			$excel->sheet('Laporan Surat Masuk -'.$bulan.'-'.$tahun, function($sheet) use ($print, $no)
@@ -120,16 +125,18 @@ class CetakController extends Controller
     {
         $bulan = $request->get('bulan');
         $tahun = $request->get('tahun');
+        $dealer = $request->get('dealer');
         $role = Auth::user()->role_id;
         $sales = Auth::user()->id;
         if ($role == 1) {
-            $members = Member::whereMonth('created_at', $bulan)
-                            ->whereYear('created_at', $tahun)
-                            ->get();
+
+
+            $dealereo = Dealereo::find($dealer);
+            $members = $dealereo->members()->whereMonth('members.created_at',$bulan)->whereYear('members.created_at', $tahun)->get();
         } elseif($role == 2) {
-            $members = Member::where('operator_input', '2')->whereMonth('created_at', $bulan)
-                            ->whereYear('created_at', $tahun)
-                            ->get();
+        $dealer = Auth::user()->dealereo_id;
+        $dealereo = Dealereo::find($dealer);
+            $members = $dealereo->members()->where('members.operator_input', '2')->whereMonth('members.created_at',$bulan)->whereYear('members.created_at', $tahun)->get();
         } elseif ($role == 3) {
             $members = Member::where('operator_input', $sales)->whereMonth('created_at', $bulan)
                             ->whereYear('created_at', $tahun)

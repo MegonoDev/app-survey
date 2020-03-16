@@ -15,6 +15,7 @@
   <link href="{{ asset('eonesia/b-n/main/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
   <link href="{{ asset('css/bootstrap-datepicker3.css') }}">
   <link href="{{ asset('css/bjquery.tagsinput.min.css') }}">
+  <link href="{{ asset('css/random.css') }}" rel="stylesheet">
   <style>
     .radio {
       display: block;

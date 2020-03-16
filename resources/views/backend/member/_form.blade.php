@@ -108,7 +108,7 @@
       </div>
     </div>
   </div>
-
+  <input type="hidden" value="{{ $user->id }}" name="sales_id">
   <hr>
   <span>
     <b class="text-danger">*</b>
@@ -134,4 +134,3 @@
   </div>
   {!! Form::close() !!}
 </article>
-

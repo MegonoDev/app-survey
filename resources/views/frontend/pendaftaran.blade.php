@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/banner.css') }}">
   <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
   <style>
     .radio {
       display: block;
@@ -209,23 +210,14 @@
 </head>
 
 <body>
-  <!-- <div class="pt-5 d-none d-sm-block"></div> -->
   <div class="container">
-    <!-- <br> -->
-    <!--  <p class="text-center">
-      <h4 class="text-center">Silahkan isi data diri untuk mendapatkan nomor<br> undian Bahagia Keluarga Bersama YAMAHA</h4>
-      </a>
-    </p>
-    <hr> -->
+
     <div class="row justify-content-center">
       <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="card">
 
           @include('frontend.banner-top')
-          <!-- <header class="card-header bg-custom text-light px-5 py-5">
-            <h2 class="card-title mt-2">INFORMASI PERSONAL ANDA</h2>
-            <span>Silahkan isi data diri Anda untuk mendapatkan nomor undian Bahagia Keluarga Bersama YAMAHA</span>
-          </header> -->
+
           @include('frontend._form')
 
           @include('frontend.banner-bot')
@@ -239,10 +231,8 @@
   <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-  <script type="text/javascript">
+  <script src="{{ asset('js/select2.js') }}"></script>
 
-
-  </script>
   <script type="text/javascript">
     $(document).ready(function() {
 
@@ -250,6 +240,8 @@
       var kabupaten = "{{ old('id_kab') }}";
       var kecamatan = "{{ old('id_kec') }}";
       var kelurahan = "{{ old('id_kel') }}";
+      var sales = "{{ old('sales_id') }}";
+
       $('.tanggal').datepicker({
         format: "dd-mm-yyyy",
         showOnFocus: true,
@@ -271,7 +263,6 @@
       if (kecamatan != '') {
         getKel(kecamatan);
       }
-
 
       function getKab(id_prov) {
         var token = $("input[name='_token']").val();
@@ -425,6 +416,30 @@
         e.preventDefault();
         var number = $(this).index();
         sync1.data('owl.carousel').to(number, 300, true);
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+
+      $('.cari-sales').select2({
+        placeholder: 'Cari...',
+        ajax: {
+          url: '/cari-sales',
+          dataType: 'json',
+          delay: 250,
+          processResults: function(data) {
+            return {
+              results: $.map(data, function(item) {
+                return {
+                  text: item.namafull,
+                  id: item.sales_id
+                }
+              })
+            };
+          },
+          cache: true
+        }
       });
     });
   </script>

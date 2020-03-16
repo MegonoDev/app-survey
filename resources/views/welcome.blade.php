@@ -144,43 +144,43 @@
       <!-- <div class="container-fluid grey lighten-2"> <div class="row center"> -->
       <div class="carousel">
         <div class="col l4 s12">
-          <a class="carousel-item" href="#one!"><img class="responsive-img center" src="https://www.eonesia.id/image/kerjasama/png/bri.png"></a>
+          <a class="carousel-item" href="#one!"><img class="responsive-img center" src="https://www.eonesia.id/img/patner/bri.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#two!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/indosat.png"></a>
+          <a class="carousel-item" href="#two!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/indosat.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#three!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/xl.png"></a>
+          <a class="carousel-item" href="#three!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/xl.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#four!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/bpjs.png"></a>
+          <a class="carousel-item" href="#four!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/bpjs.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#five!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/blackberry.png"></a>
+          <a class="carousel-item" href="#five!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/blackberry.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#six!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/abc.png"></a>
+          <a class="carousel-item" href="#six!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/abc.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#seven!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/pos.png"></a>
+          <a class="carousel-item" href="#seven!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/pos.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#eight!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/ojk.png"></a>
+          <a class="carousel-item" href="#eight!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/ojk.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#nine!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/pnm.png"></a>
+          <a class="carousel-item" href="#nine!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/pnm.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#ten!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/propan.png"></a>
+          <a class="carousel-item" href="#ten!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/propan.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#eleven!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/telkom.png"></a>
+          <a class="carousel-item" href="#eleven!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/telkom.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#twelve!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/yamaha.png"></a>
+          <a class="carousel-item" href="#twelve!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/yamaha.png"></a>
         </div>
         <div class="col l4 s12">
-          <a class="carousel-item" href="#thirteen!"><img class="responsive-img" src="https://www.eonesia.id/image/kerjasama/png/biznet.png"></a>
+          <a class="carousel-item" href="#thirteen!"><img class="responsive-img" src="https://www.eonesia.id/img/patner/biznet.png"></a>
         </div>
       </div>
     </div>
@@ -258,7 +258,7 @@
     </div>
     <div class="footer-copyright blue-grey darken-3">
       <div class="container">
-        <a class="white-text" href="">© 2017 e.o.n.e.s.i.a All rights reserved</a>
+        <a class="white-text" href="">© {{ date('Y') }} e.o.n.e.s.i.a All rights reserved</a>
         <a href="#" class="right white-text">
           Web Design By MegonoDev</a>
       </div>

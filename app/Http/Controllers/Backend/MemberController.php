@@ -23,11 +23,11 @@ class MemberController extends Controller
         $this->sendMail = new Mailing();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-       $members = $this->userCheckMember();
-       $totalMember = count($members);
-       return view('backend.member.index', compact('members', 'totalMember'));
+        $members = $this->userCheckMember($request);
+        $totalMember = $members->total();
+        return view('backend.member.index', compact('members', 'totalMember'));
     }
 
     public function detailCustomer($kode)
@@ -39,18 +39,26 @@ class MemberController extends Controller
 
     public function create()
     {
-        $provinsi   = DB::table('provinsis')->pluck("nama","id_prov")->all();
-        $merk       = DB::table('merk')->pluck("nama","id_merk")->all();
-        return view('backend.member.create', compact('provinsi','merk'));
+        $user = Auth::user();
+        $provinsi   = DB::table('provinsis')->pluck("nama", "id_prov")->all();
+        $sales = DB::table('users')
+            ->orderBy('namalengkap', 'asc')
+            ->join('dealereos', 'dealereos.id', '=', 'users.dealereo_id')
+            ->selectRaw("CONCAT(namalengkap,' - ',dealereos.nama_dealer) as namafull,users.id")
+            ->where('role_id', '3')
+            ->pluck("namafull", "users.id")
+            ->all();
+        return view('backend.member.create', compact('provinsi', 'sales', 'user'));
     }
 
     public function store(MemberRequest $request)
     {
+        $user = Auth::user();
         $data = $request->all();
         $data['kode'] = $this->makeKode();
+        $data['sales_id'] = $user->id;
         $kode = $this->makeKode();
         $data['status_verifikasi'] = 0;
-        // $data['kendaraan'] = implode(",", $request->kendaraan);
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
         $data['operator_input'] = 2;
         if (isset($request->handphone)) {
@@ -97,40 +105,55 @@ class MemberController extends Controller
         return redirect(route('customers.index'));
     }
 
-    public function userCheckMember()
+    public function userCheckMember(Request $request)
     {
         $role = Auth::user()->role_id;
         $sales = Auth::user()->id;
+        if ($request->has('status')) {
+            if ($request->status == 'verified') {
+                $members = Member::verified();
+            } elseif ($request->status == 'unverified') {
+                $members = Member::unverified();
+            } elseif ($request->status == null) {
+                $members = Member::latest();
+            } else {
+                $members = Member::latest();
+            }
+        } else {
+            $members = Member::latest();
+        }
         if ($role == 1) {
-            $members = Member::latest()->paginate(10);
-        } elseif($role == 2) {
-            $members = Member::where('operator_input', '2')->latest()->paginate(10);
+            $members = $members->paginate(10);
+        } elseif ($role == 2) {
+            $members = $members->where('operator_input', '2')->paginate(10);
         } elseif ($role == 3) {
-            $members = Member::where('operator_input', $sales)->latest()->paginate(10);
+            $members = $members->where('sales_id', $sales)->paginate(10);
         }
         return $members;
     }
 
     public function kabupatenSelect(Request $request)
     {
-    	if($request->ajax()){
-    		$kabupaten = DB::table('kabupatens')->where('id_prov', $request->id_prov)->pluck("nama","id_kab")->all();
-    		$data      = view('backend.member.kabupaten', compact('kabupaten'))->render();
-    		return response()->json(['options'=>$data]);
-    	}
+        if ($request->ajax()) {
+            $kabupaten = DB::table('kabupatens')->where('id_prov', $request->id_prov)->pluck("nama", "id_kab")->all();
+            $data      = view('backend.member.kabupaten', compact('kabupaten'))->render();
+            return response()->json(['options' => $data]);
+        }
     }
 
     public function makeKode()
-	{
-			$collection = collect(['A', 2, 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M',
-								   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-								   'a','b','c','d',6,'f',9,'h','i','j','k','l','m','n','o','p',
-								   'q','r','s','t','u','v','w','x','y','z',
-								   1, 'B', 3, 4, 5, 'e', 7, 8, 'g']);
-            $random = $collection->random(5);
-            $random->all();
-			$kode = preg_replace("/[^a-zA-Z0-9]/", "", $random);
-			return $kode;
+    {
+        $collection = collect([
+            'A', 2, 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            'a', 'b', 'c', 'd', 6, 'f', 9, 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            1, 'B', 3, 4, 5, 'e', 7, 8, 'g'
+        ]);
+        $random = $collection->random(5);
+        $random->all();
+        $kode = preg_replace("/[^a-zA-Z0-9]/", "", $random);
+        return $kode;
     }
 
     public function operatorInput()
@@ -139,7 +162,7 @@ class MemberController extends Controller
         $sales = Auth::user()->id;
         if ($role == 3) {
             $operator = $sales;
-        } else{
+        } else {
             $operator = 2;
         }
         return $operator;

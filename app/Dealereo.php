@@ -20,6 +20,11 @@ class Dealereo extends Model
         return $this->hasManyThrough('App\Member', 'App\User','dealereo_id', 'sales_id', 'id');
     }
 
+    public function getEmailAttribute()
+    {
+        return $this->members->email;
+    }
+
     public function users()
     {
     	return $this->hasMany(User::class,'dealereo_id');

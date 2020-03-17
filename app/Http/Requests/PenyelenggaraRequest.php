@@ -24,13 +24,15 @@ class PenyelenggaraRequest extends FormRequest
     public function rules()
     {
         return [
-            'kode_dealer' => 'required|string|unique:dealereos'
+            'kode_dealer' => 'required|string|unique:dealereos',
+            'nama_dealer' => 'required'
         ];
     }
     public function messages(Type $var = null)
     {
         return[
             'kode_dealer.required' => 'Kode Dealer Dilarang Kosong',
+            'nama_dealer.required' => 'Nama Dealer Dilarang Kosong',
             'kode_dealer.unique' => 'Kode Dealer Sudah Ada',
         ];
     }

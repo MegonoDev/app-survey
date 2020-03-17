@@ -11,6 +11,7 @@ use Auth;
 use Excel;
 use App\Exports\DataExport;
 use App\Exports\PdfExport;
+use App\Http\Requests\ExcelRequest;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
@@ -30,14 +31,26 @@ class CetakController extends Controller
         return view('backend.cetak.excel', compact('dealer'));
     }
 
-    public function cetakLaporanPostExcel(Request $request)
+    public function cetakLaporanPostExcel(ExcelRequest $request)
     {
         $members = $this->userCheckMember($request);
         $bulan = $request->get('bulan');
         $tahun = $request->get('tahun');
         $dealer = $request->get('dealer');
-        $dealer = Dealereo::find($dealer);
-        $filename = 'Laporan Data Member ' . $bulan . '-' . $tahun . ' by Dealer ' . $dealer->nama_dealer;
+        if ($request->has('dealer')) {
+            if ($request->dealer != null) {
+                if ($request->dealer == 1) {
+                    $filename = 'Laporan Data Member ' . $bulan . '-' . $tahun . ' by All Dealer';
+                } else {
+                    $dealer = Dealereo::findOrFail($dealer);
+                    $filename = 'Laporan Data Member ' . $bulan . '-' . $tahun . ' by Dealer ' . $dealer->nama_dealer;
+                }
+            } else {
+                $filename = 'Laporan Data Member ' . $bulan . '-' . $tahun;
+            }
+        } else {
+            $filename = 'Laporan Data Member ' . $bulan . '-' . $tahun;
+        }
         if (count($members) == "") {
             Session::flash('flash_notification', [
                 'level' => 'danger',
@@ -65,17 +78,25 @@ class CetakController extends Controller
             $no = 1;
 
             foreach ($members as $member) {
-                array_push($print, [
-                    $no++,
-                    $member->nama,
-                    $member->email,
-                    $member->alamat,
-                    $member->tempat_lahir,
-                    $member->tanggal_lahir,
-                    $member->kode,
-                    $member->sales->namalengkap,
-                    $member->CreatedAt
-                ]);
+                if ($member->sales != null) {
+                    $sales = $member->sales->namalengkap;
+                } elseif ($member->namalengkap != null) {
+                    $sales = $member->namalengkap;
+                } else {
+                    $sales = '-';
+                }
+                $sales =
+                    array_push($print, [
+                        $no++,
+                        $member->nama,
+                        $member->email,
+                        $member->alamat,
+                        $member->tempat_lahir,
+                        $member->tanggal_lahir,
+                        $member->kode,
+                        $sales,
+                        $member->CreatedAt
+                    ]);
             }
             $excel->sheet('Laporan Surat Masuk -' . $bulan . '-' . $tahun, function ($sheet) use ($print, $no) {
                 $no = $no + 1;
@@ -121,7 +142,7 @@ class CetakController extends Controller
         return $pdf->setPaper('legal', 'landscape')->download($filename . '.pdf');
     }
 
-    public function userCheckMember(Request $request)
+    public function userCheckMember(ExcelRequest $request)
     {
         $bulan = $request->get('bulan');
         $tahun = $request->get('tahun');
@@ -129,28 +150,34 @@ class CetakController extends Controller
         $role = Auth::user()->role_id;
         $sales = Auth::user()->id;
         if ($role == 1) {
-
-
-            $dealereo = Dealereo::where('id',$dealer)->first();
-            
-           $members = $dealereo->members()
+            if ($dealer) {
+                if ($dealer == 1) {
+                    $members = Member::orderBy('sales_id')->get();
+                } else {
+                    $dealereo = Dealereo::where('id', $dealer)->first();
+                    if ($dealereo) {
+                        $members = $dealereo->members()
+                            ->orderBy('sales_id')
+                            ->whereMonth('members.created_at', $bulan)
+                            ->whereYear('members.created_at', $tahun)
+                            ->groupBy('members.email')
+                            ->get();
+                    }
+                }
+            } else {
+                $members = Member::orderBy('sales_id')->get();
+            }
+        } elseif ($role == 2) {
+            $dealer = Auth::user()->dealereo_id;
+            $dealereo = Dealereo::find($dealer);
+            $members = $dealereo->members()->where('members.operator_input', '2')
                 ->orderBy('sales_id')
                 ->whereMonth('members.created_at', $bulan)
                 ->whereYear('members.created_at', $tahun)
                 ->groupBy('members.email')
                 ->get();
-
-        } elseif ($role == 2) {
-            $dealer = Auth::user()->dealereo_id;
-            $dealereo = Dealereo::find($dealer);
-            $members = $dealereo->members()->where('members.operator_input', '2')
-            ->orderBy('sales_id')
-            ->whereMonth('members.created_at', $bulan)
-            ->whereYear('members.created_at', $tahun)
-            ->groupBy('members.email')
-            ->get();
         } elseif ($role == 3) {
-            $members = Member::where('operator_input', $sales)->whereMonth('created_at', $bulan)
+            $members = Member::where('sales_id', $sales)->whereMonth('created_at', $bulan)
                 ->whereYear('created_at', $tahun)
                 ->get();
         }

@@ -1,4 +1,4 @@
-@extends('layouts/eonesia/b-n/master') 
+@extends('layouts/eonesia/b-n/master')
 @section('content')
 <div class="page-wrapper">
     <div class="container-fluid">
@@ -39,9 +39,10 @@
                             <div class="col-md-12">
                                 {!! Form::selectRange('tahun', 1980,2021,null, ['id' => 'title', 'class' => 'form-control
                                 form-control-line', 'placeholder' => '-- Tahun --']) !!} {!!
-                                $errors->first('email', '<p class="help-block">:message</p>') !!}
+                                $errors->first('tahun', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
+                        @if(Auth::user()->role_id == '1')
                         <div class="form-group {{ $errors->has('dealer') ? 'has-error' : '' }}">
                             <label class="col-md-12">Dealer</label>
                             <div class="col-md-12">
@@ -50,6 +51,7 @@
                                 $errors->first('dealer', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
+                        @endif
                         <div class="form-group">
                             <div class="col-sm-12">
                                 {!! Form::submit("CETAK LAPORAN", ['class' => 'btn btn-primary']) !!}

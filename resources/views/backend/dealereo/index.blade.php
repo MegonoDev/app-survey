@@ -34,7 +34,6 @@
                                 </thead>
                                 <?php $no = 1; ?>
                                 @foreach ($dealereos as $dealereo )
-                                @dd($dealereo)
                                 <tbody>
                                     <tr>
                                         <td>{{ $no++ }}</td>

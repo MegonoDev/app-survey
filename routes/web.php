@@ -88,6 +88,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend','middleware' => ['
 
     //undian
     Route::get('undian','HadiahController@index')->name('hadiah.index');
+    Route::get('undian/{id}/edit/','HadiahController@edit')->name('hadiah.edit');
+    Route::put('undian/{id}/update/','HadiahController@update')->name('hadiah.update');
+    Route::delete('undian/delete/{id}/post/','HadiahController@destroy')->name('hadiah.destroy');
     Route::post('undian','HadiahController@undiPemenang')->name('undi-pemenang');
     Route::post('store-undian','HadiahController@storePemenang')->name('store-pemenang');
     Route::post('all-pemenang','HadiahController@allPemenang')->name('all-pemenang');

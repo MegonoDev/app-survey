@@ -123,11 +123,11 @@ class MemberController extends Controller
             $members = Member::latest();
         }
         if ($role == 1) {
-            $members = $members->paginate(10);
+            $members = $members->groupBy('email')->paginate(10);
         } elseif ($role == 2) {
-            $members = $members->where('operator_input', '2')->paginate(10);
+            $members = $members->where('operator_input', '2')->groupBy('email')->paginate(10);
         } elseif ($role == 3) {
-            $members = $members->where('sales_id', $sales)->paginate(10);
+            $members = $members->where('sales_id', $sales)->groupBy('email')->paginate(10);
         }
         return $members;
     }

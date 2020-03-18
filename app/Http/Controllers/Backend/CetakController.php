@@ -152,7 +152,7 @@ class CetakController extends Controller
         if ($role == 1) {
             if ($dealer) {
                 if ($dealer == 1) {
-                    $members = Member::orderBy('sales_id')->get();
+                    $members = Member::orderBy('sales_id')->groupBy('email')->get();
                 } else {
                     $dealereo = Dealereo::where('id', $dealer)->first();
                     if ($dealereo) {

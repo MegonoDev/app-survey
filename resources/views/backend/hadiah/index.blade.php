@@ -76,6 +76,7 @@
                                     <th>Detail</th>
                                     <th>Sales</th>
                                     <th>Dealer</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <?php $no = 1; ?> @foreach ($members as $member )
@@ -102,6 +103,16 @@
                                     <td>
                                         {!! $member->member->sales->dealereo->nama_dealer !!}
                                     </td>
+                                    <td>
+                                    {!! Form::open(['route' => ['hadiah.destroy', $member->id], 'method' =>'DELETE'])!!}
+                                           <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route ('hadiah.edit',$member->id) }}" class="btn btn-success  waves-effect waves-light"> 
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </a>
+                                            <button type="submit" data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger  waves-effect waves-light">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                            {!! Form::close() !!}
+                                            </td>
                                 </tr>
                             </tbody>
 

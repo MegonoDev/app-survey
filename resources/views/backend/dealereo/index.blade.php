@@ -28,15 +28,19 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Kode Dealer</th>
+                                        <th>Nama Dealer</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php $no = 1; ?>
                                 @foreach ($dealereos as $dealereo )
+                                @dd($dealereo)
                                 <tbody>
                                     <tr>
                                         <td>{{ $no++ }}</td>
+                                        
                                         <td>{{ $dealereo->kode_dealer }}</td>
+                                        <td>{{ $dealereo->nama_dealer }}</td>
                                         </td>
                                         <td>
                                             {!! Form::open(['route' => ['dealer.destroy', $dealereo->id], 'method' =>'DELETE'])!!}

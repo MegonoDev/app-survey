@@ -16,8 +16,8 @@ display: inline-block;
     position: absolute;
     top: 200px;
     /* width: 250px; */
-    -webkit-transition: all 1.1s;
-    transition: all 1.1s;
+    -webkit-transition: all 2s;
+    transition: all 2s;
     opacity: 0
 }
 

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Dealereo extends Model
 {
     protected $fillable = [
-        'kode_dealer'
+        'kode_dealer',
+        'nama_dealer',
     ];
 
     public function role()

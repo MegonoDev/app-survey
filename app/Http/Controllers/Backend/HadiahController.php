@@ -20,7 +20,7 @@ class HadiahController extends Controller
 
     public function index()
     {
-        $members = Hadiah::nothangus()->paginate(15);
+        $members = Hadiah::nothangus()->latest()->paginate(15);
         $totalMember = $members->total();
         return view('backend.hadiah.index', compact('members', 'totalMember'));
     }

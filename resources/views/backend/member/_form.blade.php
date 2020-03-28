@@ -108,7 +108,19 @@
       </div>
     </div>
   </div>
+  @if(Auth::user()->role_id == 1)
+  <div class="row">
+    <div class="input-field col s12">
+      <div class="form-group {{ $errors->has('sales_id') ? 'has-error' : '' }}">
+        <label for="sales_id">Sales <b class="text-danger">*</b></label>
+        <select name="sales_id" id="sales_id" class="cari-sales form-control"></select>
+        {!! $errors->first('sales_id', '<p style="color:darkred" class="help-block">:message</p>') !!}
+      </div>
+    </div>
+  </div>
+  @else
   <input type="hidden" value="{{ $user->id }}" name="sales_id">
+  @endif
   <hr>
   <span>
     <b class="text-danger">*</b>

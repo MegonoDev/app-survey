@@ -28,6 +28,7 @@
   </div>
 </div>
 @push('scripts')
+<script src="{{ asset('js/select2.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
 
@@ -135,5 +136,32 @@
 
   });
 </script>
+<script>
+  $(document).ready(function() {
+
+    $('.cari-sales').select2({
+      placeholder: 'Cari...',
+      ajax: {
+        url: '/cari-sales',
+        dataType: 'json',
+        delay: 250,
+        processResults: function(data) {
+          return {
+            results: $.map(data, function(item) {
+              return {
+                text: item.namafull,
+                id: item.sales_id
+              }
+            })
+          };
+        },
+        cache: true
+      }
+    });
+  });
+</script>
+@endpush
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/select2.css') }}">
 @endpush
 @endsection

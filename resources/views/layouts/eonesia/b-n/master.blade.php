@@ -16,6 +16,7 @@
   <link href="{{ asset('css/bootstrap-datepicker3.css') }}">
   <link href="{{ asset('css/bjquery.tagsinput.min.css') }}">
   <link href="{{ asset('css/random.css') }}" rel="stylesheet">
+  @stack('css')
   <style>
     .radio {
       display: block;

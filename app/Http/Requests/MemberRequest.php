@@ -36,8 +36,8 @@ class MemberRequest extends FormRequest
             'id_kec' => 'required',
             'email' => 'required|email|unique:members',
             'handphone' => 'required|min:10|max:13|unique:members',
+            'sales_id' => 'nullable',
             'ketentuan' => 'required',
-            'sales_id' => 'required',
             // 'dealereo_id' => 'required',
             // 'jenis_kelamin' => 'required',
             // 'id_seri' => 'required',
@@ -90,7 +90,7 @@ class MemberRequest extends FormRequest
             'id_kab.required' => 'Kabupaten/Kota belum dipilih',
             'id_kec.required' => 'Kecamatan belum dipilih',
             'id_kel.required' => 'Kelurahan belum dipilih',
-            'sales_id.required' => 'Sales belum dipilih',
+            // 'sales_id.required' => 'Sales belum dipilih',
             'ketentuan.required' => 'Silahkan Ceklis Syarat dan Ketentuan'
             // 'dealereo_id.required' => 'Dealer belum dipilih',
             // 'jenis_kelamin.required' => 'Jenis Kelamin belum diPilih',

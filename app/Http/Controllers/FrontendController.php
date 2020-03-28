@@ -28,8 +28,9 @@ class FrontendController extends Controller
     public function registerTestdrive(MemberRequest $request)
     {
         $data = $request->all();
+        $data['sales_id'] = $request->input('sales_id', '52');
         $data['kode'] = $this->makeKode();
-        $kode = $this->makeKode();
+        $kode= $this->makeKode();
         $data['status_verifikasi'] = 0;
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($request->tanggal_lahir));
         $data['operator_input'] = 2;

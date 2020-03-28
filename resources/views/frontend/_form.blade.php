@@ -108,6 +108,7 @@
       </div>
     </div>
   </div>
+  {{--
   <div class="row">
     <div class="input-field col s12">
       <div class="form-group {{ $errors->has('sales_id') ? 'has-error' : '' }}">
@@ -117,6 +118,7 @@
       </div>
     </div>
   </div>
+  --}}
   <hr>
   <span>
     <b class="text-danger">*</b>

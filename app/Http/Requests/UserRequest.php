@@ -25,9 +25,9 @@ class UserRequest extends FormRequest
     {
         return [
             'namalengkap' => 'required',
-            'name' => 'required|alpha_dash|unique:users',
-            'email' => 'required|unique:users',
-            'no_handphone' => 'required|unique:users'
+            'name' => 'required|alpha_dash',
+            'email' => 'required',
+            'no_handphone' => 'required'
         ];
     }
     public function messages(Type $var = null)

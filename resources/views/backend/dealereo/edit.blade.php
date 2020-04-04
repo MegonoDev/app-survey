@@ -5,6 +5,11 @@
     {!! Form::text('kode_dealer', null, ['id' => 'title', 'class' => 'form-control form-control-line', 'placeholder' => 'Dealer']) !!}
     {!! $errors->first('kode_dealer', '<p style="color:darkred" class="help-block">:message</p>') !!}
   </div>
+
+  <div class="col-md-12">
+    {!! Form::text('nama_dealer', null, ['id' => 'title', 'class' => 'form-control form-control-line', 'placeholder' => 'Nama Dealer']) !!}
+    {!! $errors->first('nama_dealer', '<p style="color:darkred" class="help-block">:message</p>') !!}
+  </div>
 </div>
 <div class="form-group">
   <div class="col-sm-12">

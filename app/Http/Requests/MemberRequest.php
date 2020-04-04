@@ -36,7 +36,7 @@ class MemberRequest extends FormRequest
             'id_kec' => 'required',
             'email' => 'required|email|unique:members',
             'handphone' => 'required|min:10|max:13|unique:members',
-            'sales_id' => 'nullable',
+            'sales_id' => 'required',
             'ketentuan' => 'required',
             // 'dealereo_id' => 'required',
             // 'jenis_kelamin' => 'required',

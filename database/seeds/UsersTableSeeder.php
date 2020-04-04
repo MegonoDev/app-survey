@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
+            /*
             [
                 'namalengkap' => 'JOKO SAPUTRO',
                 'name'     => 'JOKOSAPUTRO',
@@ -473,6 +474,7 @@ class UsersTableSeeder extends Seeder
                 'no_handphone' => '081234567890',
                 'password' => bcrypt('password')
             ],
+            */
         ]);
     }
 }

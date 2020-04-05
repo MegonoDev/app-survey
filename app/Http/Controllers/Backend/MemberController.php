@@ -82,7 +82,7 @@ class MemberController extends Controller
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => " {\n   \"from\":\"EONESIA\",\n   \"to\":\"$hp'\",\n   \"text\":\"Terima Kasih Telah Registrasi. Simpan Kode Registrasi Anda $kode. Untuk Melihat Produk Terbaru Klik Link : https://www.yamaha-motor.co.id/product/lexi-s\"\n }",
+            CURLOPT_POSTFIELDS => " {\n   \"from\":\"YAMGROUP\",\n   \"to\":\"$hp'\",\n   \"text\":\"Terima Kasih Telah Registrasi. Simpan Kode Registrasi Anda $kode. Untuk Melihat Produk Terbaru Klik Link : https://www.yamaha-motor.co.id/product/lexi-s\"\n }",
             CURLOPT_HTTPHEADER => array(
                 "accept: application/json",
                 "authorization: Basic UmlzYUNyZWF0aXZpbmRvOmVvbmVzaWExMjMkJA==",

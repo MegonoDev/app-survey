@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <meta name="eonesia" content="">
-  <link href="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('eonesia/f-n/css/login.css') }}">
-  <link rel="shortcut icon" href="{{ asset('eonesia/images/favicon.ico') }}" type="image/x-icon">
+  <meta name="yamgroup" content="">
+  <link href="{{ asset('yamgroup/b-n/assets/node_modules/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('yamgroup/f-n/css/login.css') }}">
+  <link rel="shortcut icon" href="{{ asset('yamgroup/images/favicon.ico') }}" type="image/x-icon">
   <title>YAMAHA</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <div class="wrapper fadeInDown">
           <div id="formContent">
             <div class="fadeIn first">
-              <img src="{{ asset('eonesia/images/logo2.png') }}" style="width:50%; height:auto;" id="icon" alt="User Icon" />
+              <img src="{{ asset('yamgroup/images/logo2.png') }}" style="width:50%; height:auto;" id="icon" alt="User Icon" />
             </div>
             {!! Form::open(['route'=>'register.sales' ]) !!}
             @csrf
@@ -80,7 +80,7 @@
       </div>
     </div>
   </div>
-  <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
-  <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('yamgroup/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ asset('yamgroup/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 </body>
 </html>

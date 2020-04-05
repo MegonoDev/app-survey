@@ -58,15 +58,15 @@ return array(
     ],
 
     'properties' => [
-        'creator'        => 'EONESIA',
-        'lastModifiedBy' => 'EONESIA',
+        'creator'        => 'YAMGROUP',
+        'lastModifiedBy' => 'YAMGROUP',
         'title'          => 'Spreadsheet',
         'description'    => 'Default spreadsheet export',
         'subject'        => 'Spreadsheet export',
         'keywords'       => 'maatwebsite, excel, export',
         'category'       => 'Excel',
-        'manager'        => 'EONESIA',
-        'company'        => 'EONESIA',
+        'manager'        => 'YAMGROUP',
+        'company'        => 'YAMGROUP',
     ],
 
     /*
@@ -106,7 +106,7 @@ return array(
     |
     */
 
-    'creator'    => 'EONESIA',
+    'creator'    => 'YAMGROUP',
 
     'csv'        => [
         /*

@@ -60,8 +60,8 @@ class CetakController extends Controller
         }
         // return Excel::download(new DataExport($members), $filename.'.xls');
         return Excel::create($filename, function ($excel) use ($members, $bulan, $tahun) {
-            $excel->setTitle('EONESIA');
-            $excel->setCreator('EONESIA')->setCompany('EONESIA');
+            $excel->setTitle('YAMGROUP');
+            $excel->setCreator('YAMGROUP')->setCompany('YAMGROUP');
             $excel->setDescription('DATA CUSTOMER');
 
             $print = [[

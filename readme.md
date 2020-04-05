@@ -1,7 +1,7 @@
 
 <b>TEST DRIVE YAMAHA</b>
 
-1. git clone https://gitlab.com/Dedi-kurniawan/eonesiaregister.git
+1. git clone 
 2. composer update
 3. cp .env.example .env
 4. seeting .env

@@ -1,10 +1,10 @@
-@extends('layouts/eonesia/b-n/master')
+@extends('layouts/yamgroup/b-n/master')
 @section('content')
 <div class="page-wrapper">
   <div class="container-fluid">
     <div class="row page-titles">
       <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Data Event Eonesia</h4>
+        <h4 class="text-themecolor">Data Event Yamgroup</h4>
       </div>
       <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">

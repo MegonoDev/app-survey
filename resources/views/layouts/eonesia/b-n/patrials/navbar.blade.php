@@ -2,8 +2,8 @@
   <nav class="navbar top-navbar navbar-expand-md navbar-dark">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
-        <img src="{{ asset('eonesia/images/logo.png') }}" alt="homepage" height="50" class="dark-logo" />
-        <span>YAMAHA<img src="{{ asset('eonesia/images/logo.png') }}" class="light-logo" alt="homepage"/></span>
+        <img src="{{ asset('yamgroup/images/logo.png') }}" alt="homepage" height="50" class="dark-logo" />
+        <span>YAMAHA<img src="{{ asset('yamgroup/images/logo.png') }}" class="light-logo" alt="homepage"/></span>
       </a>
     </div>
     <div class="navbar-collapse">
@@ -18,7 +18,7 @@
         <li class="nav-item dropdown">
           <div class="btn-group">
             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="{{ asset('eonesia/images/admin.jpeg') }}" alt="user" class="img-circle" width="30"> &nbsp;&nbsp;&nbsp;
+              <img src="{{ asset('yamgroup/images/admin.jpeg') }}" alt="user" class="img-circle" width="30"> &nbsp;&nbsp;&nbsp;
               <font style="color:black">
                 {{ Auth::user()->name }}
               </font>

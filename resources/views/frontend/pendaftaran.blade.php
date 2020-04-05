@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>EONESIA</title>
+  <title>YAMGROUP</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
   <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
@@ -227,8 +227,8 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-  <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ asset('yamgroup/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('yamgroup/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
   <script src="{{ asset('js/select2.js') }}"></script>

@@ -23,8 +23,8 @@ Route::get('/verification/code/{kode}',[
 Route::get('/cari-sales','Select2Controller@loadSales')->name('cari-sales');
 // Route::get('/cari-sales/s/','Select2Controller@loadOldSales')->name('old-sales');
 
-// Route::get('/', 'FrontendController@event')->name('eonesia');
-Route::get('/', 'DopdownController@getData')->name('eonesia');
+// Route::get('/', 'FrontendController@event')->name('yamgroup');
+Route::get('/', 'DopdownController@getData')->name('yamgroup');
 
 Route::get('/successful', 'FrontendController@successfulRegister')->name('successful-register');
 // Route::get('database', 'DopdownController@getData')->name('getData');

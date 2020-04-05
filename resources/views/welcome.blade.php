@@ -3,13 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>EONESIA</title>
+  <title>YAMGROUP</title>
   <!-- CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ asset('eonesia/f-n/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="{{ asset('eonesia/f-n/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="{{ asset('yamgroup/f-n/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="{{ asset('yamgroup/f-n/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
   <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('eonesia/f-n/css/animate.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('yamgroup/f-n/css/animate.css')}}">
   <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
   <style>
     .material-icons {
@@ -32,7 +32,7 @@
   <div class="navbar-fixed hoverable">
     <nav class="transparentBG" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">EONESIA</a>
+        <a id="logo-container" href="#" class="brand-logo">YAMGROUP</a>
         <ul class="right hide-on-med-and-down">
           <li>
             <a id="logo-container" class="scrollspy" href="#">HOME</a>
@@ -75,7 +75,7 @@
     <div class="container">
       <br>
       <br>
-      <h1 class="header center orange-text">EVENT EONESIA</h1>
+      <h1 class="header center orange-text">YAMGROUP</h1>
       <div class="row center">
         <h5 class="header col s12 light">Brand Activation | Apparel & Merchendise |
                         Advertising | Event Organizer | Product | 3D Animation | Exhibition | Multimedia
@@ -139,7 +139,7 @@
     <h1 id="patner" class="header event-tersedia center">OUR PATNER</h1>
   </a>
   <div class="parallax-container patner-bawah">
-    <div class="parallax"><img src="{{ asset('eonesia/images/bh.png')}}"></div>
+    <div class="parallax"><img src="{{ asset('yamgroup/images/bh.png')}}"></div>
     <div class="">
       <!-- <div class="container-fluid grey lighten-2"> <div class="row center"> -->
       <div class="carousel">
@@ -199,7 +199,7 @@
               </tr>
               <tr>
                 <td>Brand Name</td>
-                <td>: EONESIA</td>
+                <td>: YAMGROUP</td>
               </tr>
               <tr>
                 <td class="striped">Legal Creativindo</td>
@@ -272,12 +272,12 @@
 </div>
 
 
-  <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
-  <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
-  <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>
+  <script src="{{ asset('yamgroup/f-n/js/particles.js')}}"></script>
+  <script src="{{ asset('yamgroup/f-n/js/app.js')}}"></script>
+  <script src="{{ asset('yamgroup/f-n/js/lib/stats.js')}}"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{ asset('eonesia/f-n/js/materialize.js')}}"></script>
-  <script src="{{ asset('eonesia/f-n/js/init.js')}}"></script>
-  <script src="{{ asset('eonesia/f-n/js/eonesia.js')}}"></script>
+  <script src="{{ asset('yamgroup/f-n/js/materialize.js')}}"></script>
+  <script src="{{ asset('yamgroup/f-n/js/init.js')}}"></script>
+  <script src="{{ asset('yamgroup/f-n/js/yamgroup.js')}}"></script>
 </body>
 </html>

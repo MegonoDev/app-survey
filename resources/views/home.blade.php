@@ -1,4 +1,4 @@
-@extends('layouts/eonesia/b-n/master') @section('content')
+@extends('layouts/yamgroup/b-n/master') @section('content')
 <div class="page-wrapper">
   <div class="container-fluid">
     <div class="row page-titles">
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    @include('layouts.eonesia.b-n.patrials._flash')
+    @include('layouts.yamgroup.b-n.patrials._flash')
     {{--  <div class="row">
       <div class="col-lg-12">
         <div class="card oh">

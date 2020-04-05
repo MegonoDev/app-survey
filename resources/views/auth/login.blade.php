@@ -5,19 +5,19 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-        <title>EONESIA</title>
+        <title>YAMGROUP</title>
 
         <!-- CSS -->
         <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet">
         <link
-            href="{{ asset('eonesia/f-n/css/materialize.css')}}"
+            href="{{ asset('yamgroup/f-n/css/materialize.css')}}"
             type="text/css"
             rel="stylesheet"
             media="screen,projection"/>
         <link
-            href="{{ asset('eonesia/f-n/css/style.css')}}"
+            href="{{ asset('yamgroup/f-n/css/style.css')}}"
             type="text/css"
             rel="stylesheet"
             media="screen,projection"/>
@@ -25,7 +25,7 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="{{ asset('eonesia/f-n/css/animate.css')}}">
+            href="{{ asset('yamgroup/f-n/css/animate.css')}}">
 
         <style>
             body {
@@ -131,13 +131,13 @@
             <div class="section"></div>
             <div class="section"></div>
         </main>
-        <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
-        <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
-        <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>
+        <script src="{{ asset('yamgroup/f-n/js/particles.js')}}"></script>
+        <script src="{{ asset('yamgroup/f-n/js/app.js')}}"></script>
+        <script src="{{ asset('yamgroup/f-n/js/lib/stats.js')}}"></script>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="{{ asset('eonesia/f-n/js/materialize.js')}}"></script>
+        <script src="{{ asset('yamgroup/f-n/js/materialize.js')}}"></script>
         <!-- <script src="js/materialize.min.js"></script> -->
-        <script src="{{ asset('eonesia/f-n/js/init.js')}}"></script>
-        <script src="{{ asset('eonesia/f-n/js/eonesia.js')}}"></script>
+        <script src="{{ asset('yamgroup/f-n/js/init.js')}}"></script>
+        <script src="{{ asset('yamgroup/f-n/js/yamgroup.js')}}"></script>
     </body>
 </html>

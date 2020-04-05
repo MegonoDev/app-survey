@@ -23,9 +23,11 @@ Route::get('/verification/code/{kode}',[
 Route::get('/cari-sales','Select2Controller@loadSales')->name('cari-sales');
 // Route::get('/cari-sales/s/','Select2Controller@loadOldSales')->name('old-sales');
 
-Route::get('/', 'FrontendController@event')->name('eonesia');
-Route::get('/database/successful', 'FrontendController@successfulRegister')->name('successful-register');
-Route::get('database', 'DopdownController@getData')->name('getData');
+// Route::get('/', 'FrontendController@event')->name('eonesia');
+Route::get('/', 'DopdownController@getData')->name('eonesia');
+
+Route::get('/successful', 'FrontendController@successfulRegister')->name('successful-register');
+// Route::get('database', 'DopdownController@getData')->name('getData');
 Route::post('select-kabupaten', ['as'=>'select-kabupaten','uses'=>'DopdownController@selectKabupaten']);
 Route::post('select-kecamatan', ['as'=>'select-kecamatan','uses'=>'DopdownController@selectKecamatan']);
 Route::post('select-kelurahan', ['as'=>'select-kelurahan','uses'=>'DopdownController@selectKelurahan']);

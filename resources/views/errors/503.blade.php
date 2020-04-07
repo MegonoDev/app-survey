@@ -9,8 +9,8 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="https://eonesia.id/img/icon.png">
     <title>Errors</title>
-    <link href="{{ asset('yamgroup/b-n/main/dist/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('yamgroup/b-n/main/dist/css/pages/error-pages.css')}}" rel="stylesheet">
+    <link href="{{ asset('eonesia/b-n/main/dist/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('eonesia/b-n/main/dist/css/pages/error-pages.css')}}" rel="stylesheet">
 </head>
 <body class="skin-default-dark fixed-layout">
     <section id="wrapper" class="error-page">
@@ -22,9 +22,9 @@
                 <a href="#" onclick="goBack()" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">Back</a> </div>
         </div>
     </section>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/popper/popper.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/waves.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/popper/popper.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/waves.js')}}"></script>
 </body>
 </html>

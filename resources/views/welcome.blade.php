@@ -6,10 +6,10 @@
   <title>YAMGROUP</title>
   <!-- CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ asset('yamgroup/f-n/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="{{ asset('yamgroup/f-n/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="{{ asset('eonesia/f-n/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="{{ asset('eonesia/f-n/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection" />
   <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('yamgroup/f-n/css/animate.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('eonesia/f-n/css/animate.css')}}">
   <link rel="shortcut icon" href="https://eonesia.id/img/icon.png" type="image/x-icon">
   <style>
     .material-icons {
@@ -139,7 +139,7 @@
     <h1 id="patner" class="header event-tersedia center">OUR PATNER</h1>
   </a>
   <div class="parallax-container patner-bawah">
-    <div class="parallax"><img src="{{ asset('yamgroup/images/bh.png')}}"></div>
+    <div class="parallax"><img src="{{ asset('eonesia/images/bh.png')}}"></div>
     <div class="">
       <!-- <div class="container-fluid grey lighten-2"> <div class="row center"> -->
       <div class="carousel">
@@ -272,12 +272,12 @@
 </div>
 
 
-  <script src="{{ asset('yamgroup/f-n/js/particles.js')}}"></script>
-  <script src="{{ asset('yamgroup/f-n/js/app.js')}}"></script>
-  <script src="{{ asset('yamgroup/f-n/js/lib/stats.js')}}"></script>
+  <script src="{{ asset('eonesia/f-n/js/particles.js')}}"></script>
+  <script src="{{ asset('eonesia/f-n/js/app.js')}}"></script>
+  <script src="{{ asset('eonesia/f-n/js/lib/stats.js')}}"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{ asset('yamgroup/f-n/js/materialize.js')}}"></script>
-  <script src="{{ asset('yamgroup/f-n/js/init.js')}}"></script>
-  <script src="{{ asset('yamgroup/f-n/js/yamgroup.js')}}"></script>
+  <script src="{{ asset('eonesia/f-n/js/materialize.js')}}"></script>
+  <script src="{{ asset('eonesia/f-n/js/init.js')}}"></script>
+  <script src="{{ asset('eonesia/f-n/js/eonesia.js')}}"></script>
 </body>
 </html>

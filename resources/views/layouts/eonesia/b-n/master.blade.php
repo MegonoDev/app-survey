@@ -9,10 +9,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://eonesia.id/img/icon.png">
   <title>YAMGROUP</title>
 
-  <link href="{{ asset('yamgroup/b-n/assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
-  <link href="{{ asset('yamgroup/b-n/assets/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('yamgroup/b-n/main/dist/css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('yamgroup/b-n/main/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
+  <link href="{{ asset('eonesia/b-n/assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
+  <link href="{{ asset('eonesia/b-n/assets/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('eonesia/b-n/main/dist/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('eonesia/b-n/main/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
   <link href="{{ asset('css/bootstrap-datepicker3.css') }}">
   <link href="{{ asset('css/bjquery.tagsinput.min.css') }}">
   <link href="{{ asset('css/random.css') }}" rel="stylesheet">
@@ -180,28 +180,28 @@
 </head>
 <body class="skin-default-dark fixed-layout">
   <div id="main-wrapper">
-    @include('layouts.yamgroup.b-n.patrials.navbar')
-    @include('layouts.yamgroup.b-n.patrials.sidebar')
+    @include('layouts.eonesia.b-n.patrials.navbar')
+    @include('layouts.eonesia.b-n.patrials.sidebar')
     @yield('content')
   </div>
   <br>
   <footer class="footer">
     <center> © {{ date('Y') }} YAMAHA</center>
 </footer>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/popper/popper.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/perfect-scrollbar.jquery.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/waves.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/sidebarmenu.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/custom.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/raphael/raphael-min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/morrisjs/morris.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/d3/d3.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/assets/node_modules/c3-master/c3.min.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/dashboard1.js')}}"></script>
-    <script src="{{ asset('yamgroup/b-n/main/dist/js/dropdown.js') }}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/popper/popper.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/perfect-scrollbar.jquery.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/waves.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/sidebarmenu.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/custom.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/raphael/raphael-min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/morrisjs/morris.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/d3/d3.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/assets/node_modules/c3-master/c3.min.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/dashboard1.js')}}"></script>
+    <script src="{{ asset('eonesia/b-n/main/dist/js/dropdown.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/jquery.tagsinput.min.js') }}"></script>
     <script type="text/javascript">

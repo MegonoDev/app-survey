@@ -1,5 +1,5 @@
 <!-- dd($details); -->
-@extends('layouts/yamgroup/b-n/master')
+@extends('layouts/eonesia/b-n/master')
 @section('content')
 <div class="page-wrapper">
   <div class="container-fluid">

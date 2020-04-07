@@ -12,5 +12,6 @@ class RolesTableSeeder extends Seeder
         $role = Role::create(['nama' => 'pic']);
         $role = Role::create(['nama' => 'sales']);
 
+        Dealereo::create(['nama_dealer' => 'all']);
     }
 }

@@ -2,15 +2,15 @@
     <div class="owl-stage-outer">
         <div class="owl-stage">
             <div class="owl-item">
-                <img src="{{ asset('yamgroup/images/banner/nmax-min.jpg') }}"  class="img-fluid" alt="banner">
+                <img src="{{ asset('eonesia/images/banner/nmax-min.jpg') }}"  class="img-fluid" alt="banner">
             </div>
 
             <div class="owl-item">
-                <img src="{{ asset('yamgroup/images/banner/xsr-min.jpg') }}"  class="img-fluid" alt="banner">
+                <img src="{{ asset('eonesia/images/banner/xsr-min.jpg') }}"  class="img-fluid" alt="banner">
             </div>
 
             <div class="owl-item">
-                <img  src="{{ asset('yamgroup/images/banner/wr-min.jpg') }}" class="img-fluid" alt="banner">
+                <img  src="{{ asset('eonesia/images/banner/wr-min.jpg') }}" class="img-fluid" alt="banner">
             </div>
 
         </div>

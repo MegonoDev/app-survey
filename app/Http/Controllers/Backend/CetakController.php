@@ -72,6 +72,7 @@ class CetakController extends Controller
                 'Tempat Lahir',
                 'Tanggal Lahir',
                 'Kode',
+                'Dealer',
                 'Sales',
                 'Tanggal Register'
             ]];
@@ -80,11 +81,15 @@ class CetakController extends Controller
             foreach ($members as $member) {
                 if ($member->sales != null) {
                     $sales = $member->sales->namalengkap;
+                    $dealer = $member->sales->dealereo->nama_dealer;
                 } elseif ($member->namalengkap != null) {
                     $sales = $member->namalengkap;
+                    $dealer = $member->dealereo->nama_dealer;
                 } else {
                     $sales = '-';
+                    $dealer = '-';
                 }
+                // dd($member);
                 $sales =
                     array_push($print, [
                         $no++,
@@ -94,6 +99,7 @@ class CetakController extends Controller
                         $member->tempat_lahir,
                         $member->tanggal_lahir,
                         $member->kode,
+                        $dealer,
                         $sales,
                         $member->CreatedAt
                     ]);
